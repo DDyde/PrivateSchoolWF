@@ -14,16 +14,19 @@ namespace PrivateSchoolWF.pages.professor
 {
     public partial class professorEditPage : Form
     {
-        public professorEditPage()
+        int ruleId;
+        public professorEditPage(int _ruleId)
         {
             InitializeComponent();
             LoadCombobox();
+            ruleId = _ruleId;
         }
         int id;
-        public professorEditPage(int _id)
+        public professorEditPage(int _id, int _ruleId)
         {
             InitializeComponent();
             id = _id;
+            ruleId = _ruleId;
             LoadString();
             LoadCombobox();
         }
@@ -70,41 +73,65 @@ namespace PrivateSchoolWF.pages.professor
 
         private void addRow_Click(object sender, EventArgs e)
         {
-            connectDB connectDB = new connectDB();
-            MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
-                ($@"INSERT INTO `преподаватель`(`surname`, `name`, `middlename`, `work_experience` ,`qualification`,
+            if (ruleId == 1 || ruleId == 2)
+            {
+                connectDB connectDB = new connectDB();
+                MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
+                    ($@"INSERT INTO `преподаватель`(`surname`, `name`, `middlename`, `work_experience` ,`qualification`,
                     `id_position`) 
                     VALUES ('{surnameProfessor.Text}','{nameProfessor.Text}','{middlenameProfessor.Text}',
                     '{professorWorkExp.Text}','{professorQualification.Text}','{professorPosition.SelectedValue}')", connectDB.GetConnection());
-            DataTable dataTable = new DataTable();
-            sqlDataAdapter.Fill(dataTable);
-            Close();
+                DataTable dataTable = new DataTable();
+                sqlDataAdapter.Fill(dataTable);
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("У вас недостатачно прав");
+            }
+            
         }
 
         private void changeRow_Click(object sender, EventArgs e)
         {
-            connectDB connectDB = new connectDB();
-            connectDB.openCon();
-            MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
-                ($@"UPDATE `преподаватель` SET `surname` = '{surnameProfessor.Text}', `name` = '{nameProfessor.Text}', `middlename` = '{middlenameProfessor.Text}',
+            if (ruleId == 1 || ruleId == 2)
+            {
+                connectDB connectDB = new connectDB();
+                connectDB.openCon();
+                MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
+                    ($@"UPDATE `преподаватель` SET `surname` = '{surnameProfessor.Text}', `name` = '{nameProfessor.Text}', `middlename` = '{middlenameProfessor.Text}',
                 `qualification` = '{professorQualification.Text}', `id_position` = '{professorPosition.SelectedValue}', `work_experience` = '{professorWorkExp.Text}'
                 WHERE id_professor={id}", connectDB.GetConnection());
-            DataTable dataTable = new DataTable();
-            sqlDataAdapter.Fill(dataTable);
-            connectDB.closeCon();
-            Close();
+                DataTable dataTable = new DataTable();
+                sqlDataAdapter.Fill(dataTable);
+                connectDB.closeCon();
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("У вас недостатачно прав");
+            }
+            
         }
 
         private void deleteRow_Click(object sender, EventArgs e)
         {
-            connectDB connectDB = new connectDB();
-            connectDB.openCon();
-            MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
-                ($@"DELETE FROM `преподаватель` WHERE id_professor={id}", connectDB.GetConnection());
-            DataTable dataTable = new DataTable();
-            sqlDataAdapter.Fill(dataTable);
-            connectDB.closeCon();
-            Close();
+            if (ruleId == 1)
+            {
+                connectDB connectDB = new connectDB();
+                connectDB.openCon();
+                MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
+                    ($@"DELETE FROM `преподаватель` WHERE id_professor={id}", connectDB.GetConnection());
+                DataTable dataTable = new DataTable();
+                sqlDataAdapter.Fill(dataTable);
+                connectDB.closeCon();
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("У вас недостатачно прав");
+            }
+            
         }
     }
 }

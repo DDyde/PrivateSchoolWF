@@ -67,6 +67,7 @@
             this.addRowButton.TabIndex = 0;
             this.addRowButton.Text = "Добавить запись";
             this.addRowButton.UseVisualStyleBackColor = true;
+            this.addRowButton.Click += new System.EventHandler(this.addRowButton_Click);
             // 
             // parentPage
             // 

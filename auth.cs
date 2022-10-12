@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,8 +20,56 @@ namespace PrivateSchoolWF
 
         private void authButton_Click(object sender, EventArgs e)
         {
-            connectDB connectDB = new connectDB();
-            
+            try
+            {
+                connectDB connectDB = new connectDB();
+                string login = loginBox.Text;
+                string password = passwordBox.Text;
+                int roleId;
+
+                MySqlDataAdapter dataAdapter = new MySqlDataAdapter();
+                DataTable dataTable = new DataTable();
+
+                string query = $@"SELECT пользователь.login, пользователь.password, пользователь.email, сотрудник.id_position
+                                FROM пользователь 
+                                JOIN сотрудник ON сотрудник.id_Employee = пользователь.id_Employee WHERE (Login = '{login}'
+                                OR Email = '{login}') AND Password ='{password}'";
+
+                MySqlCommand sqlCommand = new MySqlCommand(query, connectDB.GetConnection());
+                dataAdapter.SelectCommand = sqlCommand;
+                dataAdapter.Fill(dataTable);
+
+                if (dataTable.Rows.Count == 1)
+                {
+                    roleId = Int16.Parse(dataTable.Rows[0][3].ToString());
+                    MessageBox.Show("Вход выполнен успешно!");
+                    mainPage mainPage = new mainPage(roleId);
+                    mainPage.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Вы ввели не верный логин или пароль");
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        private void showPass_Click(object sender, EventArgs e)
+        {
+            passwordBox.UseSystemPasswordChar = false;
+            showPass.Visible = false;
+            hidePass.Visible = true;
+        }
+
+        private void hidePass_Click(object sender, EventArgs e)
+        {
+            passwordBox.UseSystemPasswordChar = true;
+            showPass.Visible = true;
+            hidePass.Visible = false;
         }
     }
 }

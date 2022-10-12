@@ -61,6 +61,7 @@
             this.addRow.TabIndex = 2;
             this.addRow.Text = "Добавить";
             this.addRow.UseVisualStyleBackColor = true;
+            this.addRow.Click += new System.EventHandler(this.addRow_Click);
             // 
             // changeRow
             // 
@@ -70,6 +71,7 @@
             this.changeRow.TabIndex = 3;
             this.changeRow.Text = "Изменить";
             this.changeRow.UseVisualStyleBackColor = true;
+            this.changeRow.Click += new System.EventHandler(this.changeRow_Click);
             // 
             // deleteRow
             // 
@@ -79,6 +81,7 @@
             this.deleteRow.TabIndex = 4;
             this.deleteRow.Text = "Удалить";
             this.deleteRow.UseVisualStyleBackColor = true;
+            this.deleteRow.Click += new System.EventHandler(this.deleteRow_Click);
             // 
             // assigmentToCourseEditPage
             // 

@@ -13,8 +13,10 @@ namespace PrivateSchoolWF.pages.assigmentToCourse
 {
     public partial class assigmentToCourse : Form
     {
-        public assigmentToCourse()
+        int ruleId;
+        public assigmentToCourse(int _ruleId)
         {
+            ruleId = _ruleId;
             InitializeComponent();
             loadData();
         }
@@ -35,31 +37,47 @@ namespace PrivateSchoolWF.pages.assigmentToCourse
 
         private void assigmentToCourse_FormClosed(object sender, FormClosedEventArgs e)
         {
-            mainPage mainPage = new mainPage();
+            mainPage mainPage = new mainPage(ruleId);
             mainPage.Show();
         }
 
         private void assigmentListGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
+            if (ruleId == 1 || ruleId == 2)
             {
-                int id = Convert.ToInt32(assigmentListGrid[0, e.RowIndex].Value);
-                assigmentToCourseEditPage assigmentToCourseEditPage = new assigmentToCourseEditPage(id);
-                assigmentToCourseEditPage.ShowDialog();
-                loadData();
+                try
+                {
+                    int id = Convert.ToInt32(assigmentListGrid[0, e.RowIndex].Value);
+                    assigmentToCourseEditPage assigmentToCourseEditPage = new assigmentToCourseEditPage(id, ruleId);
+                    assigmentToCourseEditPage.ShowDialog();
+                    loadData();
+                }
+                catch (ArgumentOutOfRangeException) { }
+                catch (InvalidCastException)
+                {
+                    addRowButton_Click(null, null);
+                }
             }
-            catch (ArgumentOutOfRangeException) { }
-            catch (InvalidCastException)
+            else
             {
-                addRowButton_Click(null, null);
+                MessageBox.Show("У вас недостатачно прав");
             }
+            
 
         }
         private void addRowButton_Click(object sender, EventArgs e)
         {
-            assigmentToCourseEditPage assigmentToCourseEditPage = new assigmentToCourseEditPage();
-            assigmentToCourseEditPage.ShowDialog();
-            loadData();
+            if (ruleId == 1 || ruleId == 2)
+            {
+                assigmentToCourseEditPage assigmentToCourseEditPage = new assigmentToCourseEditPage(ruleId);
+                assigmentToCourseEditPage.ShowDialog();
+                loadData();
+            }
+            else
+            {
+                MessageBox.Show("У вас недостатачно прав");
+            }
+            
         }
     }
 }

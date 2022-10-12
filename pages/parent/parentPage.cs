@@ -13,8 +13,10 @@ namespace PrivateSchoolWF.pages.parent
 {
     public partial class parentPage : Form
     {
-        public parentPage()
+        int ruleId;
+        public parentPage(int _ruleId)
         {
+            ruleId = _ruleId;
             InitializeComponent();
             loadData();
         }
@@ -32,31 +34,46 @@ namespace PrivateSchoolWF.pages.parent
 
         private void parentPage_FormClosed(object sender, FormClosedEventArgs e)
         {
-            mainPage mainPage = new mainPage();
+            mainPage mainPage = new mainPage(ruleId);
             mainPage.Show();
         }
 
         private void parentListGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
+            if (ruleId == 1 || ruleId == 2)
             {
-                int id = Convert.ToInt32(parentListGrid[0, e.RowIndex].Value);
-                parentEditPage parentEditPage = new parentEditPage(id);
-                parentEditPage.ShowDialog();
-                loadData();
+                try
+                {
+                    int id = Convert.ToInt32(parentListGrid[0, e.RowIndex].Value);
+                    parentEditPage parentEditPage = new parentEditPage(id, ruleId);
+                    parentEditPage.ShowDialog();
+                    loadData();
+                }
+                catch (ArgumentOutOfRangeException) { }
+                catch (InvalidCastException)
+                {
+                    addRowButton_Click(null, null);
+                }
             }
-            catch (ArgumentOutOfRangeException) { }
-            catch (InvalidCastException)
+            else
             {
-                addRowButton_Click(null, null);
+                MessageBox.Show("У вас недостатачно прав");
             }
 
         }
         private void addRowButton_Click(object sender, EventArgs e)
         {
-            parentEditPage parentEditPage = new parentEditPage();
-            parentEditPage.ShowDialog();
-            loadData();
+            if (ruleId == 1 || ruleId == 2)
+            {
+                parentEditPage parentEditPage = new parentEditPage(ruleId);
+                parentEditPage.ShowDialog();
+                loadData();
+
+            }
+            else
+            {
+                MessageBox.Show("У вас недостатачно прав");
+            }          
         }
     }
 }

@@ -13,13 +13,17 @@ namespace PrivateSchoolWF.pages.parent
 {
     public partial class parentEditPage : Form
     {
-        public parentEditPage()
+        int ruleId;
+        public parentEditPage(int _ruleId)
         {
             InitializeComponent();
+            ruleId = _ruleId;
         }
+
         int id;
-        public parentEditPage(int _id)
+        public parentEditPage(int _id, int _ruleId)
         {
+            ruleId = _ruleId;
             InitializeComponent();
             id = _id;
             LoadString();
@@ -47,45 +51,69 @@ namespace PrivateSchoolWF.pages.parent
 
         private void addRow_Click(object sender, EventArgs e)
         {
-            connectDB connectDB = new connectDB();
-            MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
-                ($@"INSERT INTO `родитель`(`surname`, `name`, `middlename`) 
+            if (ruleId == 1 || ruleId == 2)
+            {
+                connectDB connectDB = new connectDB();
+                MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
+                    ($@"INSERT INTO `родитель`(`surname`, `name`, `middlename`) 
                     VALUES ('{surnameParent.Text}','{nameParent.Text}','{middlenameParent.Text}')", connectDB.GetConnection());
-            DataTable dataTable = new DataTable();
-            sqlDataAdapter.Fill(dataTable);
-            Close();
+                DataTable dataTable = new DataTable();
+                sqlDataAdapter.Fill(dataTable);
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("У вас недостатачно прав");
+            }
+            
         }
 
         private void changeRow_Click(object sender, EventArgs e)
         {
-            connectDB connectDB = new connectDB();
-            connectDB.openCon();
-            MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
-                ($@"UPDATE `родитель` SET `surname` = '{surnameParent.Text}', `name` = '{nameParent.Text}', `middlename` = '{middlenameParent.Text}'
-                WHERE id_parent={id}", connectDB.GetConnection());
-            DataTable dataTable = new DataTable();
-            sqlDataAdapter.Fill(dataTable);
-            connectDB.closeCon();
-            Close();
-        }
-
-        private void deleteRow_Click(object sender, EventArgs e)
-        {
-            try
+            if (ruleId == 1 || ruleId == 2)
             {
                 connectDB connectDB = new connectDB();
                 connectDB.openCon();
                 MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
-                    ($@"DELETE FROM `родитель` WHERE id_parent={id}", connectDB.GetConnection());
+                    ($@"UPDATE `родитель` SET `surname` = '{surnameParent.Text}', `name` = '{nameParent.Text}', `middlename` = '{middlenameParent.Text}'
+                WHERE id_parent={id}", connectDB.GetConnection());
                 DataTable dataTable = new DataTable();
                 sqlDataAdapter.Fill(dataTable);
                 connectDB.closeCon();
                 Close();
-            }
-            catch (Exception)
+            } else
             {
-                MessageBox.Show("Невозможно удалить запись. Убедитесь, что удаляемая запись не имеет связи с другими таблицами.");
+                MessageBox.Show("У вас недостатачно прав");
             }
+            
+        }
+
+        private void deleteRow_Click(object sender, EventArgs e)
+        {
+            if (ruleId == 1)
+            {
+                try
+                {
+                    connectDB connectDB = new connectDB();
+                    connectDB.openCon();
+                    MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
+                        ($@"DELETE FROM `родитель` WHERE id_parent={id}", connectDB.GetConnection());
+                    DataTable dataTable = new DataTable();
+                    sqlDataAdapter.Fill(dataTable);
+                    connectDB.closeCon();
+                    Close();
+
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Невозможно удалить запись. Убедитесь, что удаляемая запись не имеет связи с другими таблицами.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("У вас недостатачно прав");
+            }
+            
         }
     }
 }

@@ -14,8 +14,10 @@ namespace PrivateSchoolWF.MainPage
 {
     public partial class studentPage : Form
     {
-        public studentPage()
+        int ruleId; 
+        public studentPage(int _ruleId)
         {
+            ruleId = _ruleId;
             InitializeComponent();
             loadData();
         }
@@ -36,31 +38,47 @@ namespace PrivateSchoolWF.MainPage
 
         private void studentPage_FormClosed(object sender, FormClosedEventArgs e)
         {
-            mainPage mainPage = new mainPage();
+            mainPage mainPage = new mainPage(ruleId);
             mainPage.Show();
         }
 
         private void addRowBotton_Click(object sender, EventArgs e)
         {
-            studentEditPage studentEditPage = new studentEditPage();
-            studentEditPage.ShowDialog();
-            loadData();
+            if (ruleId == 1 || ruleId == 2)
+            {
+                studentEditPage studentEditPage = new studentEditPage(ruleId);
+                studentEditPage.ShowDialog();
+                loadData();
+            }
+            else
+            {
+                MessageBox.Show("У вас недостатачно прав");
+            }
+
         }
 
         private void studentListGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
+            if (ruleId == 1 || ruleId == 2)
             {
-                int id = Convert.ToInt32(studentListGrid[0, e.RowIndex].Value);
-                studentEditPage studentEditPage = new studentEditPage(id);
-                studentEditPage.ShowDialog();
-                loadData();
+                try
+                {
+                    int id = Convert.ToInt32(studentListGrid[0, e.RowIndex].Value);
+                    studentEditPage studentEditPage = new studentEditPage(id, ruleId);
+                    studentEditPage.ShowDialog();
+                    loadData();
+                }
+                catch (ArgumentOutOfRangeException) { }
+                catch (InvalidCastException)
+                {
+                    addRowBotton_Click(null, null);
+                }
             }
-            catch (ArgumentOutOfRangeException) { }
-            catch (InvalidCastException)
+            else
             {
-                addRowBotton_Click(null, null);
+                MessageBox.Show("У вас недостатачно прав");
             }
+            
             
         }
     }

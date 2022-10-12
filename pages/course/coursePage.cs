@@ -13,8 +13,10 @@ namespace PrivateSchoolWF.pages.course
 {
     public partial class coursePage : Form
     {
-        public coursePage()
+        int ruleId;
+        public coursePage(int _ruleId)
         {
+            ruleId = _ruleId;
             InitializeComponent();
             loadData();
         }
@@ -33,31 +35,47 @@ namespace PrivateSchoolWF.pages.course
 
         private void coursePage_FormClosed(object sender, FormClosedEventArgs e)
         {
-            mainPage mainPage = new mainPage();
+            mainPage mainPage = new mainPage(ruleId);
             mainPage.Show();
         }
 
         private void courseListGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
+            if (ruleId == 1 || ruleId == 2)
             {
-                int id = Convert.ToInt32(courseListGrid[0, e.RowIndex].Value);
-                courseEditPage courseEditPage = new courseEditPage(id);
-                courseEditPage.ShowDialog();
-                loadData();
+                try
+                {
+                    int id = Convert.ToInt32(courseListGrid[0, e.RowIndex].Value);
+                    courseEditPage courseEditPage = new courseEditPage(id, ruleId);
+                    courseEditPage.ShowDialog();
+                    loadData();
+                }
+                catch (ArgumentOutOfRangeException) { }
+                catch (InvalidCastException)
+                {
+                    addRowButton_Click(null, null);
+                }
             }
-            catch (ArgumentOutOfRangeException) { }
-            catch (InvalidCastException)
+            else
             {
-                addRowButton_Click(null, null);
+                MessageBox.Show("У вас недостатачно прав");
             }
+            
 
         }
         private void addRowButton_Click(object sender, EventArgs e)
         {
-            courseEditPage courseEditPage = new courseEditPage();
-            courseEditPage.ShowDialog();
-            loadData();
+            if (ruleId == 1 || ruleId == 2)
+            {
+                courseEditPage courseEditPage = new courseEditPage(ruleId);
+                courseEditPage.ShowDialog();
+                loadData();
+            }
+            else
+            {
+                MessageBox.Show("У вас недостатачно прав");
+            }
+            
         }
     }
 }

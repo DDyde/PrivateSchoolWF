@@ -11,11 +11,13 @@ namespace PrivateSchoolWF
 {
     public partial class mainPage : Form
     {
-        public mainPage()
+        int roleId;
+
+        public mainPage(int _roleId)
         {
             InitializeComponent();
+            roleId = _roleId;
         }
-
 
 
         private void mainPage_Load(object sender, EventArgs e)
@@ -30,7 +32,7 @@ namespace PrivateSchoolWF
 
         private void studentPage_Click(object sender, EventArgs e)
         {
-            studentPage studentPage = new studentPage();
+            studentPage studentPage = new studentPage(roleId);
             studentPage.Show();
             this.Hide();
         }
@@ -42,28 +44,28 @@ namespace PrivateSchoolWF
 
         private void coursePageButton_Click(object sender, EventArgs e)
         {
-            coursePage coursePage = new coursePage();
+            coursePage coursePage = new coursePage(roleId);
             coursePage.Show();
             this.Hide();
         }
 
         private void professorPageButton_Click(object sender, EventArgs e)
         {
-            professorPage professorPage = new professorPage();
+            professorPage professorPage = new professorPage(roleId);
             professorPage.Show();
             this.Hide();
         }
 
         private void assigmentToCoursePageButton_Click(object sender, EventArgs e)
         {
-            assigmentToCourse assigmentToCourse = new assigmentToCourse();
+            assigmentToCourse assigmentToCourse = new assigmentToCourse(roleId);
             assigmentToCourse.Show();
             this.Hide();
         }
 
         private void parentPageButton_Click(object sender, EventArgs e)
         {
-            parentPage parentPage = new parentPage();
+            parentPage parentPage = new parentPage(roleId);
             parentPage.Show();
             this.Hide();
         }

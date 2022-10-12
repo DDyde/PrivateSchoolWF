@@ -14,14 +14,17 @@ namespace PrivateSchoolWF.pages.course
 {
     public partial class courseEditPage : Form
     {
-        public courseEditPage()
+        int ruleId;
+        public courseEditPage(int _ruleId)
         {
             InitializeComponent();
             LoadCombobox();
+            ruleId = _ruleId;
         }
         int id;
-        public courseEditPage(int _id)
+        public courseEditPage(int _id, int _ruleId)
         {
+            ruleId = _ruleId;
             InitializeComponent();
             id = _id;
             LoadString();
@@ -32,7 +35,7 @@ namespace PrivateSchoolWF.pages.course
         {
             connectDB connectDB = new connectDB();
             MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
-               ($@"select *
+               ($@"SELECT *
                 FROM курс
                 WHERE id_course={id}", connectDB.GetConnection());
             DataTable dataTable = new DataTable();
@@ -66,46 +69,70 @@ namespace PrivateSchoolWF.pages.course
 
         private void addRow_Click(object sender, EventArgs e)
         {
-            connectDB connectDB = new connectDB();
-            MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
-                ($@"INSERT INTO `курс`(`Title`, `Course_term`, `Description`, `id_Course_type`, `Price`) 
+            if (ruleId == 1 || ruleId == 2)
+            {
+                connectDB connectDB = new connectDB();
+                MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
+                    ($@"INSERT INTO `курс`(`Title`, `Course_term`, `Description`, `id_Course_type`, `Price`) 
                 VALUES ('{courseTitle.Text}','{courseTerm.Text}','{descriptionBox.Text}','{courseType.SelectedValue}','{priceCourse.Text}')", connectDB.GetConnection());
-            DataTable dataTable = new DataTable();
-            sqlDataAdapter.Fill(dataTable);
-            Close();
+                DataTable dataTable = new DataTable();
+                sqlDataAdapter.Fill(dataTable);
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("У вас недостатачно прав");
+            }
+            
         }
 
         private void changeRow_Click(object sender, EventArgs e)
         {
-            connectDB connectDB = new connectDB();
-            connectDB.openCon();
-            MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
-                ($@"UPDATE `курс` SET `Title`='{courseTitle.Text}',`Course_term`='{courseTerm.Text}',
-                `Description`='{descriptionBox.Text}',`id_Course_type`='{courseType.SelectedValue}',`Price`='{priceCourse.Text}' 
-                WHERE id_course={id}", connectDB.GetConnection());
-            DataTable dataTable = new DataTable();
-            sqlDataAdapter.Fill(dataTable);
-            connectDB.closeCon();
-            Close();
-        }
-
-        private void deleteRow_Click(object sender, EventArgs e)
-        {
-            try
+            if (ruleId == 1 || ruleId == 2)
             {
                 connectDB connectDB = new connectDB();
                 connectDB.openCon();
                 MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
-                    ($@"DELETE FROM `курс` WHERE id_course={id}", connectDB.GetConnection());
+                    ($@"UPDATE `курс` SET `Title`='{courseTitle.Text}',`Course_term`='{courseTerm.Text}',
+                `Description`='{descriptionBox.Text}',`id_Course_type`='{courseType.SelectedValue}',`Price`='{priceCourse.Text}' 
+                WHERE id_course={id}", connectDB.GetConnection());
                 DataTable dataTable = new DataTable();
                 sqlDataAdapter.Fill(dataTable);
                 connectDB.closeCon();
                 Close();
-            }
-            catch (Exception)
+            } 
+            else
             {
-                MessageBox.Show("Невозможно удалить запись. Убедитесь, что удаляемая запись не имеет связи с другими таблицами.");
+                MessageBox.Show("У вас недостатачно прав");
             }
+            
+        }
+
+        private void deleteRow_Click(object sender, EventArgs e)
+        {
+            if (ruleId == 1)
+            {
+                try
+                {
+                    connectDB connectDB = new connectDB();
+                    connectDB.openCon();
+                    MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
+                        ($@"DELETE FROM `курс` WHERE id_course={id}", connectDB.GetConnection());
+                    DataTable dataTable = new DataTable();
+                    sqlDataAdapter.Fill(dataTable);
+                    connectDB.closeCon();
+                    Close();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Невозможно удалить запись. Убедитесь, что удаляемая запись не имеет связи с другими таблицами.");
+                }
+            } 
+            else
+            {
+                MessageBox.Show("У вас недостатачно прав");
+            }
+            
         }
     }
 }

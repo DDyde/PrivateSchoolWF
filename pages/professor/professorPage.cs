@@ -13,8 +13,10 @@ namespace PrivateSchoolWF.pages.professor
 {
     public partial class professorPage : Form
     {
-        public professorPage()
+        int ruleId;
+        public professorPage(int _ruleId)
         {
+            ruleId = _ruleId;
             InitializeComponent();
             loadData();
         }
@@ -34,31 +36,47 @@ namespace PrivateSchoolWF.pages.professor
 
         private void professorPage_FormClosed(object sender, FormClosedEventArgs e)
         {
-            mainPage mainPage = new mainPage();
+            mainPage mainPage = new mainPage(ruleId);
             mainPage.Show();
         }
 
         private void professorListGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
+            if (ruleId == 1 || ruleId == 2)
             {
-                int id = Convert.ToInt32(professorListGrid[0, e.RowIndex].Value);
-                professorEditPage professorEditPage = new professorEditPage(id);
-                professorEditPage.ShowDialog();
-                loadData();
+                try
+                {
+                    int id = Convert.ToInt32(professorListGrid[0, e.RowIndex].Value);
+                    professorEditPage professorEditPage = new professorEditPage(id, ruleId);
+                    professorEditPage.ShowDialog();
+                    loadData();
+                }
+                catch (ArgumentOutOfRangeException) { }
+                catch (InvalidCastException)
+                {
+                    addRowButton_Click(null, null);
+                }
             }
-            catch (ArgumentOutOfRangeException) { }
-            catch (InvalidCastException)
+            else
             {
-                addRowButton_Click(null, null);
+                MessageBox.Show("У вас недостатачно прав");
             }
+            
 
         }
         private void addRowButton_Click(object sender, EventArgs e)
         {
-            professorEditPage professorEditPage = new professorEditPage();
-            professorEditPage.ShowDialog();
-            loadData();
+            if (ruleId == 1 || ruleId == 2)
+            {
+                professorEditPage professorEditPage = new professorEditPage(ruleId);
+                professorEditPage.ShowDialog();
+                loadData();
+            }
+            else
+            {
+                MessageBox.Show("У вас недостатачно прав");
+            }
+            
         }
     }
 }
