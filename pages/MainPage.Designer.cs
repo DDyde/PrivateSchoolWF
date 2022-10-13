@@ -181,7 +181,6 @@
             this.coursePageButton.TabIndex = 1;
             this.coursePageButton.Text = "Курсы";
             this.coursePageButton.UseVisualStyleBackColor = true;
-            this.coursePageButton.Visible = false;
             this.coursePageButton.Click += new System.EventHandler(this.coursePageButton_Click);
             // 
             // studentPageButton

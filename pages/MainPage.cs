@@ -40,7 +40,6 @@ namespace PrivateSchoolWF
         {
             if (ruleId == 1)
             {
-                coursePageButton.Visible = true;
                 positionPageButton.Visible = true;
                 professorPageButton.Visible = true;
                 employeePageButton.Visible = true;

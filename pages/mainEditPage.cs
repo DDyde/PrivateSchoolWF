@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Reporting.WinForms;
 
 namespace PrivateSchoolWF.pages
 {
@@ -89,7 +90,7 @@ namespace PrivateSchoolWF.pages
                 connectDB connectDB = new connectDB();
                 MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
                     ($@"INSERT INTO `документ_обучения`(`date_begin`, `date_end`, `id_student`,  id_assignment_to_course, contract_signing_date, id_employee)
-                    VALUES ('{dateBegin.Text}','{dateEnd.Text}','{fioStudentBox.SelectedValue}', '{courseAssigBox.SelectedValue}','{dateEducDoc.Text}', '{idEmployee}')", connectDB.GetConnection());
+                    VALUES ('{dateBegin.Text}','{dateEnd.Text}','{fioStudentBox.SelectedValue}', '{courseAssigBox.SelectedValue}','{DateTime.Now.ToString("yyyy-MM-dd")}', '{idEmployee}')", connectDB.GetConnection());
                 DataTable dataTable = new DataTable();
                 sqlDataAdapter.Fill(dataTable);
                 Close();
@@ -110,7 +111,7 @@ namespace PrivateSchoolWF.pages
                 MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
                     ($@"UPDATE `документ_обучения` SET `Date_begin`='{dateBegin.Text}',`Date_end`='{dateEnd.Text}',
                 `id_Student`='{fioStudentBox.SelectedValue}',`id_Assignment_to_course`='{courseAssigBox.SelectedValue}',
-                `Contract_signing_date`='{dateEducDoc.Text}',`id_Employee`='{idEmployee.ToString()}' 
+                `Contract_signing_date`='{DateTime.Now.ToString("yyyy-MM-dd")}',`id_Employee`='{idEmployee}' 
                 WHERE id_Education_document ={id}", connectDB.GetConnection());
                 DataTable dataTable = new DataTable();
                 sqlDataAdapter.Fill(dataTable);
@@ -147,12 +148,25 @@ namespace PrivateSchoolWF.pages
         }
 
         private void printButton_Click(object sender, EventArgs e)
-        {
-            
-        }
+        { 
+            connectDB connectDB = new connectDB();
+            MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
+               ($@"SELECT документ_обучения.id_education_document, CONCAT_WS(' ', студент.surname, студент.name, студент.middlename),
+                    CONCAT_WS(' ', преподаватель.surname, преподаватель.name, преподаватель.middlename),
+                    курс.title, тип_курса.title, курс.price, документ_обучения.date_begin, документ_обучения.date_end, документ_обучения.contract_signing_date,
+                    CONCAT_WS(' ', сотрудник.surname, сотрудник.name, сотрудник.middlename)
+                    FROM документ_обучения
+                    JOIN назначение_на_курс ON назначение_на_курс.id_Assignment_to_course = документ_обучения.id_Assignment_to_course
+                    JOIN студент ON студент.id_student = документ_обучения.id_student
+                    JOIN преподаватель ON преподаватель.id_professor = назначение_на_курс.id_professor
+                    JOIN курс ON курс.id_course = назначение_на_курс.id_course
+                    JOIN тип_курса ON тип_курса.id_course_type = курс.id_course_type
+                    JOIN сотрудник ON сотрудник.id_employee = документ_обучения.id_employee
+                    WHERE id_education_document={id}", connectDB.GetConnection());
+            DataTable dataTable = new DataTable();
+            sqlDataAdapter.Fill(dataTable);
 
-        private void PrintPageHandler(object sender, PrintPageEventArgs e)
-        {
+            ReportDataSource reportData = new ReportDataSource("educateDocument", dataTable);
 
         }
     }
