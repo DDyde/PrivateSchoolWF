@@ -42,6 +42,8 @@
             // 
             // surnameProfessor
             // 
+            this.surnameProfessor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.surnameProfessor.Location = new System.Drawing.Point(12, 12);
             this.surnameProfessor.Name = "surnameProfessor";
             this.surnameProfessor.Size = new System.Drawing.Size(308, 23);
@@ -50,6 +52,8 @@
             // 
             // nameProfessor
             // 
+            this.nameProfessor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.nameProfessor.Location = new System.Drawing.Point(12, 41);
             this.nameProfessor.Name = "nameProfessor";
             this.nameProfessor.Size = new System.Drawing.Size(308, 23);
@@ -58,6 +62,8 @@
             // 
             // middlenameProfessor
             // 
+            this.middlenameProfessor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.middlenameProfessor.Location = new System.Drawing.Point(12, 70);
             this.middlenameProfessor.Name = "middlenameProfessor";
             this.middlenameProfessor.Size = new System.Drawing.Size(308, 23);
@@ -66,6 +72,8 @@
             // 
             // professorWorkExp
             // 
+            this.professorWorkExp.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.professorWorkExp.Location = new System.Drawing.Point(12, 99);
             this.professorWorkExp.Name = "professorWorkExp";
             this.professorWorkExp.Size = new System.Drawing.Size(120, 23);
@@ -73,6 +81,8 @@
             // 
             // professorQualification
             // 
+            this.professorQualification.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.professorQualification.Location = new System.Drawing.Point(12, 128);
             this.professorQualification.Name = "professorQualification";
             this.professorQualification.Size = new System.Drawing.Size(308, 23);
@@ -81,6 +91,8 @@
             // 
             // professorPosition
             // 
+            this.professorPosition.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.professorPosition.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.professorPosition.FormattingEnabled = true;
             this.professorPosition.Location = new System.Drawing.Point(11, 157);

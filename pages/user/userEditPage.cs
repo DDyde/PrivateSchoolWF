@@ -1,0 +1,101 @@
+﻿using MySql.Data.MySqlClient;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace PrivateSchoolWF.pages.user
+{
+    public partial class userEditPage : Form
+    {
+        int ruleId;
+        public userEditPage(int _ruleId)
+        {
+            ruleId = _ruleId;
+            InitializeComponent();
+            LoadCombobox();
+        }
+
+        int id;
+        public userEditPage(int _id, int _ruleId)
+        {
+            ruleId = _ruleId;
+            id = _id;
+            InitializeComponent();
+            LoadString();
+            LoadCombobox();
+        }
+
+        private void LoadCombobox()
+        {
+            connectDB connectDB = new connectDB();
+            connectDB.openCon();
+            MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter(
+                "SELECT id_employee, CONCAT_WS(' ', сотрудник.surname, сотрудник.name, сотрудник.middlename) as 'сотрудники' FROM сотрудник", connectDB.GetConnection());
+            DataTable dataTable = new DataTable();
+            sqlDataAdapter.Fill(dataTable);
+            fioEmployeeBox.DataSource = dataTable;
+            fioEmployeeBox.DisplayMember = "сотрудники";
+            fioEmployeeBox.ValueMember = "id_employee";
+            connectDB.closeCon();
+        }
+
+        private void LoadString()
+        {
+            connectDB connectDB = new connectDB();
+            MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
+               ($@"SELECT * FROM пользователь WHERE id_user={id}", connectDB.GetConnection());
+            DataTable dataTable = new DataTable();
+            sqlDataAdapter.Fill(dataTable);
+            fioEmployeeBox.SelectedValue = dataTable.Rows[0][1];
+            loginBox.Text = dataTable.Rows[0][2].ToString();
+            emailBox.Text = dataTable.Rows[0][3].ToString();
+            passwordBox.Text = dataTable.Rows[0][4].ToString();
+        }
+
+        private void addRow_Click(object sender, EventArgs e)
+        {
+            connectDB connectDB = new connectDB();
+            MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
+                ($@"INSERT INTO `пользователь`(`id_Employee`, `Login`, `Email`, `Password`)
+                    VALUES ('{fioEmployeeBox.SelectedValue}','{loginBox.Text}','{emailBox.Text}','{passwordBox.Text}')", connectDB.GetConnection());
+            DataTable dataTable = new DataTable();
+            sqlDataAdapter.Fill(dataTable);
+            Close();
+        }
+
+        private void changeRow_Click(object sender, EventArgs e)
+        {
+            connectDB connectDB = new connectDB();
+            connectDB.openCon();
+            MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
+                ($@"UPDATE `пользователь` SET `id_Employee`='{fioEmployeeBox.SelectedValue}',`Login`='{loginBox.Text}',
+                `Email`='{emailBox.Text}',`Password`='{passwordBox.Text}'
+                WHERE id_employee={id}", connectDB.GetConnection());
+            DataTable dataTable = new DataTable();
+            sqlDataAdapter.Fill(dataTable);
+            connectDB.closeCon();
+            Close();
+
+        }
+
+        private void deleteRow_Click(object sender, EventArgs e)
+        {
+
+            connectDB connectDB = new connectDB();
+            connectDB.openCon();
+            MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
+                ($@"DELETE FROM `пользователь` WHERE id_user={id}", connectDB.GetConnection());
+            DataTable dataTable = new DataTable();
+            sqlDataAdapter.Fill(dataTable);
+            connectDB.closeCon();
+            Close();
+
+        }
+    }
+}

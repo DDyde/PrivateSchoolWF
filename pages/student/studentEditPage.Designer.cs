@@ -81,6 +81,8 @@
             // 
             // parentStudent
             // 
+            this.parentStudent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.parentStudent.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.parentStudent.FormattingEnabled = true;
             this.parentStudent.Location = new System.Drawing.Point(12, 128);

@@ -25,12 +25,14 @@ namespace PrivateSchoolWF
                 connectDB connectDB = new connectDB();
                 string login = loginBox.Text;
                 string password = passwordBox.Text;
-                int roleId;
-
+                int ruleId;
+                int idEmployee;
+                connectDB.openCon();
                 MySqlDataAdapter dataAdapter = new MySqlDataAdapter();
                 DataTable dataTable = new DataTable();
 
-                string query = $@"SELECT пользователь.login, пользователь.password, пользователь.email, сотрудник.id_position
+                string query = $@"SELECT пользователь.login, пользователь.password, пользователь.email, сотрудник.id_position,
+                                пользователь.id_employee
                                 FROM пользователь 
                                 JOIN сотрудник ON сотрудник.id_Employee = пользователь.id_Employee WHERE (Login = '{login}'
                                 OR Email = '{login}') AND Password ='{password}'";
@@ -38,12 +40,15 @@ namespace PrivateSchoolWF
                 MySqlCommand sqlCommand = new MySqlCommand(query, connectDB.GetConnection());
                 dataAdapter.SelectCommand = sqlCommand;
                 dataAdapter.Fill(dataTable);
+                connectDB.closeCon();
+
 
                 if (dataTable.Rows.Count == 1)
                 {
-                    roleId = Int16.Parse(dataTable.Rows[0][3].ToString());
+                    idEmployee = Int16.Parse(dataTable.Rows[0][4].ToString());
+                    ruleId = Int16.Parse(dataTable.Rows[0][3].ToString());
                     MessageBox.Show("Вход выполнен успешно!");
-                    mainPage mainPage = new mainPage(roleId);
+                    mainPage mainPage = new mainPage(ruleId, idEmployee);
                     mainPage.Show();
                     this.Hide();
                 }

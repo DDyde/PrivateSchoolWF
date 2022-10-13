@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(courseEditPage));
             this.courseTitle = new System.Windows.Forms.TextBox();
             this.courseTerm = new System.Windows.Forms.DateTimePicker();
             this.descriptionBox = new System.Windows.Forms.RichTextBox();
@@ -41,94 +42,63 @@
             // 
             // courseTitle
             // 
-            this.courseTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.courseTitle.Location = new System.Drawing.Point(12, 12);
+            resources.ApplyResources(this.courseTitle, "courseTitle");
             this.courseTitle.Name = "courseTitle";
-            this.courseTitle.Size = new System.Drawing.Size(342, 23);
-            this.courseTitle.TabIndex = 0;
             this.courseTitle.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.blockNum_KeyPress);
             // 
             // courseTerm
             // 
-            this.courseTerm.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.courseTerm, "courseTerm");
             this.courseTerm.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.courseTerm.Location = new System.Drawing.Point(12, 41);
             this.courseTerm.Name = "courseTerm";
-            this.courseTerm.Size = new System.Drawing.Size(200, 23);
-            this.courseTerm.TabIndex = 1;
             // 
             // descriptionBox
             // 
-            this.descriptionBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.descriptionBox.Location = new System.Drawing.Point(12, 70);
+            resources.ApplyResources(this.descriptionBox, "descriptionBox");
             this.descriptionBox.Name = "descriptionBox";
-            this.descriptionBox.Size = new System.Drawing.Size(342, 96);
-            this.descriptionBox.TabIndex = 2;
-            this.descriptionBox.Text = "";
             // 
             // courseType
             // 
-            this.courseType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.courseType, "courseType");
             this.courseType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.courseType.FormattingEnabled = true;
-            this.courseType.Location = new System.Drawing.Point(12, 172);
             this.courseType.Name = "courseType";
-            this.courseType.Size = new System.Drawing.Size(342, 23);
-            this.courseType.TabIndex = 3;
             // 
             // priceCourse
             // 
-            this.priceCourse.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.priceCourse.Location = new System.Drawing.Point(12, 201);
+            resources.ApplyResources(this.priceCourse, "priceCourse");
             this.priceCourse.Maximum = new decimal(new int[] {
             99999,
             0,
             0,
             0});
             this.priceCourse.Name = "priceCourse";
-            this.priceCourse.Size = new System.Drawing.Size(342, 23);
-            this.priceCourse.TabIndex = 4;
             // 
             // addRow
             // 
-            this.addRow.Location = new System.Drawing.Point(147, 263);
+            resources.ApplyResources(this.addRow, "addRow");
             this.addRow.Name = "addRow";
-            this.addRow.Size = new System.Drawing.Size(75, 23);
-            this.addRow.TabIndex = 5;
-            this.addRow.Text = "Добавить";
             this.addRow.UseVisualStyleBackColor = true;
             this.addRow.Click += new System.EventHandler(this.addRow_Click);
             // 
             // chengeRow
             // 
-            this.chengeRow.Location = new System.Drawing.Point(12, 263);
+            resources.ApplyResources(this.chengeRow, "chengeRow");
             this.chengeRow.Name = "chengeRow";
-            this.chengeRow.Size = new System.Drawing.Size(75, 23);
-            this.chengeRow.TabIndex = 6;
-            this.chengeRow.Text = "Изменить";
             this.chengeRow.UseVisualStyleBackColor = true;
             this.chengeRow.Click += new System.EventHandler(this.changeRow_Click);
             // 
             // deleteRow
             // 
-            this.deleteRow.Location = new System.Drawing.Point(279, 263);
+            resources.ApplyResources(this.deleteRow, "deleteRow");
             this.deleteRow.Name = "deleteRow";
-            this.deleteRow.Size = new System.Drawing.Size(75, 23);
-            this.deleteRow.TabIndex = 7;
-            this.deleteRow.Text = "Удалить";
             this.deleteRow.UseVisualStyleBackColor = true;
             this.deleteRow.Click += new System.EventHandler(this.deleteRow_Click);
             // 
             // courseEditPage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(366, 324);
             this.Controls.Add(this.deleteRow);
             this.Controls.Add(this.chengeRow);
             this.Controls.Add(this.addRow);
@@ -138,7 +108,6 @@
             this.Controls.Add(this.courseTerm);
             this.Controls.Add(this.courseTitle);
             this.Name = "courseEditPage";
-            this.Text = "courseEditPage";
             ((System.ComponentModel.ISupportInitialize)(this.priceCourse)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

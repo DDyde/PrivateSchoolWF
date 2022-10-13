@@ -38,6 +38,8 @@
             // 
             // surnameParent
             // 
+            this.surnameParent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.surnameParent.Location = new System.Drawing.Point(12, 12);
             this.surnameParent.Name = "surnameParent";
             this.surnameParent.Size = new System.Drawing.Size(350, 23);
@@ -45,6 +47,8 @@
             // 
             // nameParent
             // 
+            this.nameParent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.nameParent.Location = new System.Drawing.Point(12, 41);
             this.nameParent.Name = "nameParent";
             this.nameParent.Size = new System.Drawing.Size(350, 23);
@@ -52,6 +56,8 @@
             // 
             // middlenameParent
             // 
+            this.middlenameParent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.middlenameParent.Location = new System.Drawing.Point(12, 70);
             this.middlenameParent.Name = "middlenameParent";
             this.middlenameParent.Size = new System.Drawing.Size(350, 23);
