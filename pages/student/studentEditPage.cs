@@ -77,7 +77,7 @@ namespace PrivateSchoolWF.pages.student
             {
                 connectDB connectDB = new connectDB();
                 MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
-                    ($@"INSERT INTO `student`(`surname`, `name`, `middlename`, `comment`,
+                    ($@"INSERT INTO `студент`(`surname`, `name`, `middlename`, `comment`,
                     `id_parent`, `date_of_birth`) 
                     VALUES ('{surnameStudent.Text}','{nameStudent.Text}','{middlenameStudent.Text}',
                     '{commentRichBox.Text}','{parentStudent.SelectedValue}','{dateOfBirthStudent.Text}')", connectDB.GetConnection());

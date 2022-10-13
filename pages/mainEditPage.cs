@@ -9,7 +9,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using word = Microsoft.Office.Iterop.Word;
 
 namespace PrivateSchoolWF.pages
 {
@@ -17,14 +16,6 @@ namespace PrivateSchoolWF.pages
     {
         int id;
         int ruleId;
-        public mainEditPage(int _id, int _ruleId)
-        {
-            InitializeComponent();
-            ruleId = _ruleId;
-            id = _id;
-            LoadCombobox();
-        }
-
         int idEmployee;
         public mainEditPage(int _id, int _ruleId, int _idEmployee)
         {
@@ -33,10 +24,7 @@ namespace PrivateSchoolWF.pages
             idEmployee = _idEmployee;
             id = _id;
             LoadString();
-            LoadCombobox();
-
-
-            
+            LoadCombobox();            
         }
 
         private void LoadCombobox()
@@ -71,9 +59,11 @@ namespace PrivateSchoolWF.pages
 
         private void LoadString()
         {
-            connectDB connectDB = new connectDB();
-            MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
-               ($@"SELECT документ_обучения.id_education_document, CONCAT_WS(' ', студент.surname, студент.name, студент.middlename) as 'студенты',
+            if (id != 0)
+            {
+                connectDB connectDB = new connectDB();
+                MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
+                   ($@"SELECT документ_обучения.id_education_document, CONCAT_WS(' ', студент.surname, студент.name, студент.middlename) as 'студенты',
                     CONCAT(преподаватель.surname,' ', преподаватель.name, ' ', преподаватель.middlename,' ',
                     курс.title, '(', тип_курса.title,')') as 'Преподаватель/курс', документ_обучения.date_begin, документ_обучения.date_end
                     FROM документ_обучения
@@ -83,12 +73,13 @@ namespace PrivateSchoolWF.pages
                     JOIN курс ON курс.id_course = назначение_на_курс.id_course
                     JOIN тип_курса ON тип_курса.id_course_type = курс.id_course_type
                     WHERE id_education_document={id}", connectDB.GetConnection());
-            DataTable dataTable = new DataTable();
-            sqlDataAdapter.Fill(dataTable);
-            fioStudentBox.SelectedValue = dataTable.Rows[0][1];
-            courseAssigBox.SelectedValue = dataTable.Rows[0][2];
-            dateBegin.Text = dataTable.Rows[0][3].ToString();
-            dateEnd.Text = dataTable.Rows[0][4].ToString();
+                DataTable dataTable = new DataTable();
+                sqlDataAdapter.Fill(dataTable);
+                fioStudentBox.SelectedValue = dataTable.Rows[0][1];
+                courseAssigBox.SelectedValue = dataTable.Rows[0][2];
+                dateBegin.Text = dataTable.Rows[0][3].ToString();
+                dateEnd.Text = dataTable.Rows[0][4].ToString();
+            }
         }
 
         private void addRow_Click(object sender, EventArgs e)
@@ -97,8 +88,8 @@ namespace PrivateSchoolWF.pages
             {
                 connectDB connectDB = new connectDB();
                 MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
-                    ($@"INSERT INTO `документ_обучения`(`date_begin`, `date_end`, `id_student`,  id_assignment_to_course, contract_singing_date, id_employee)
-                    VALUES ('{dateBegin.Text}','{dateEnd.Text}','{fioStudentBox.SelectedValue}','{dateEducDoc.Text}', '{idEmployee.ToString()}')", connectDB.GetConnection());
+                    ($@"INSERT INTO `документ_обучения`(`date_begin`, `date_end`, `id_student`,  id_assignment_to_course, contract_signing_date, id_employee)
+                    VALUES ('{dateBegin.Text}','{dateEnd.Text}','{fioStudentBox.SelectedValue}', '{courseAssigBox.SelectedValue}','{dateEducDoc.Text}', '{idEmployee}')", connectDB.GetConnection());
                 DataTable dataTable = new DataTable();
                 sqlDataAdapter.Fill(dataTable);
                 Close();
