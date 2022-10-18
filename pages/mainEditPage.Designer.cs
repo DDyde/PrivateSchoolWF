@@ -38,8 +38,6 @@
             this.addRow = new System.Windows.Forms.Button();
             this.deleteRow = new System.Windows.Forms.Button();
             this.printButton = new System.Windows.Forms.PictureBox();
-            this.dateEducDoc = new System.Windows.Forms.DateTimePicker();
-            this.dateSingDoc = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.printButton)).BeginInit();
             this.SuspendLayout();
             // 
@@ -99,7 +97,7 @@
             // 
             // changeRow
             // 
-            this.changeRow.Location = new System.Drawing.Point(12, 211);
+            this.changeRow.Location = new System.Drawing.Point(10, 153);
             this.changeRow.Name = "changeRow";
             this.changeRow.Size = new System.Drawing.Size(75, 23);
             this.changeRow.TabIndex = 6;
@@ -109,7 +107,7 @@
             // 
             // addRow
             // 
-            this.addRow.Location = new System.Drawing.Point(150, 211);
+            this.addRow.Location = new System.Drawing.Point(148, 153);
             this.addRow.Name = "addRow";
             this.addRow.Size = new System.Drawing.Size(75, 23);
             this.addRow.TabIndex = 7;
@@ -119,7 +117,7 @@
             // 
             // deleteRow
             // 
-            this.deleteRow.Location = new System.Drawing.Point(286, 211);
+            this.deleteRow.Location = new System.Drawing.Point(284, 153);
             this.deleteRow.Name = "deleteRow";
             this.deleteRow.Size = new System.Drawing.Size(75, 23);
             this.deleteRow.TabIndex = 8;
@@ -130,43 +128,22 @@
             // printButton
             // 
             this.printButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.printButton.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.printButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.printButton.Image = global::PrivateSchoolWF.Properties.Resources.printIcon;
-            this.printButton.Location = new System.Drawing.Point(338, 259);
+            this.printButton.Location = new System.Drawing.Point(336, 194);
             this.printButton.Name = "printButton";
             this.printButton.Size = new System.Drawing.Size(32, 32);
             this.printButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.printButton.TabIndex = 9;
+            this.printButton.TabIndex = 12;
             this.printButton.TabStop = false;
             this.printButton.Click += new System.EventHandler(this.printButton_Click);
-            // 
-            // dateEducDoc
-            // 
-            this.dateEducDoc.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dateEducDoc.CustomFormat = "yyyy-MM-dd";
-            this.dateEducDoc.Enabled = false;
-            this.dateEducDoc.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateEducDoc.Location = new System.Drawing.Point(208, 140);
-            this.dateEducDoc.Name = "dateEducDoc";
-            this.dateEducDoc.Size = new System.Drawing.Size(121, 23);
-            this.dateEducDoc.TabIndex = 10;
-            // 
-            // dateSingDoc
-            // 
-            this.dateSingDoc.AutoSize = true;
-            this.dateSingDoc.Location = new System.Drawing.Point(46, 146);
-            this.dateSingDoc.Name = "dateSingDoc";
-            this.dateSingDoc.Size = new System.Drawing.Size(159, 15);
-            this.dateSingDoc.TabIndex = 11;
-            this.dateSingDoc.Text = "Дата заключения договора:";
             // 
             // mainEditPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(373, 293);
-            this.Controls.Add(this.dateSingDoc);
-            this.Controls.Add(this.dateEducDoc);
+            this.ClientSize = new System.Drawing.Size(373, 233);
             this.Controls.Add(this.printButton);
             this.Controls.Add(this.deleteRow);
             this.Controls.Add(this.addRow);
@@ -197,7 +174,5 @@
         private Button addRow;
         private Button deleteRow;
         private PictureBox printButton;
-        private DateTimePicker dateEducDoc;
-        private Label dateSingDoc;
     }
 }

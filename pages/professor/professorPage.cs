@@ -25,9 +25,8 @@ namespace PrivateSchoolWF.pages.professor
             connectDB connectDB = new connectDB();
             MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
                     (@"select преподаватель.id_professor, преподаватель.surname, преподаватель.name, преподаватель.middlename,
-                преподаватель.work_experience, преподаватель.qualification, должность.title
-                FROM преподаватель
-                JOIN должность ON должность.id_position = преподаватель.id_position", connectDB.GetConnection());
+                преподаватель.work_experience, преподаватель.qualification
+                FROM преподаватель", connectDB.GetConnection());
             DataTable dataTable = new DataTable();
             sqlDataAdapter.Fill(dataTable);
             professorListGrid.DataSource = dataTable;

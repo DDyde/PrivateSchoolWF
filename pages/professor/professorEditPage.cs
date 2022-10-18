@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -18,7 +19,6 @@ namespace PrivateSchoolWF.pages.professor
         public professorEditPage(int _ruleId)
         {
             InitializeComponent();
-            LoadCombobox();
             ruleId = _ruleId;
         }
         int id;
@@ -27,8 +27,37 @@ namespace PrivateSchoolWF.pages.professor
             InitializeComponent();
             id = _id;
             ruleId = _ruleId;
+            LoadImg();
             LoadString();
-            LoadCombobox();
+            
+        }
+
+        private void LoadImg()
+        {
+            try
+            {
+                connectDB connectDB = new connectDB();
+                connectDB.openCon();
+
+                MySqlDataAdapter dataAdapter = new MySqlDataAdapter($@"SELECT image FROM преподаватель WHERE id_professor = {id}", connectDB.GetConnection());
+                DataTable dataTable = new DataTable();
+                dataAdapter.Fill(dataTable);
+
+                if (dataTable.Rows.Count == 1 && !dataTable.Rows[0].IsNull(0))
+                {
+                    Byte[] byteImg = new byte[0];
+                    byteImg = (Byte[])(dataTable.Rows[0][0]);
+                    MemoryStream memoryStream = new MemoryStream(byteImg);
+                    professorImage.Image = Image.FromStream(memoryStream);
+                }
+                connectDB.closeCon();
+
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
         }
 
         private void LoadString()
@@ -36,9 +65,8 @@ namespace PrivateSchoolWF.pages.professor
             connectDB connectDB = new connectDB();
             MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
                ($@"select преподаватель.surname, преподаватель.name, преподаватель.middlename,
-                преподаватель.work_experience, преподаватель.qualification, должность.title
+                преподаватель.work_experience, преподаватель.qualification
                 FROM преподаватель
-                JOIN должность ON должность.id_position = преподаватель.id_position
                 WHERE преподаватель.id_professor={id}", connectDB.GetConnection());
             DataTable dataTable = new DataTable();
             sqlDataAdapter.Fill(dataTable);
@@ -47,23 +75,7 @@ namespace PrivateSchoolWF.pages.professor
             middlenameProfessor.Text = dataTable.Rows[0][2].ToString();
             professorWorkExp.Text = dataTable.Rows[0][3].ToString();
             professorQualification.Text = dataTable.Rows[0][4].ToString();
-            professorPosition.SelectedValue = dataTable.Rows[0][5];
         }
-
-        private void LoadCombobox()
-        {
-            connectDB connectDB = new connectDB();
-            connectDB.openCon();
-            MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter(
-                "SELECT id_position, title FROM должность", connectDB.GetConnection());
-            DataTable dataTable = new DataTable();
-            sqlDataAdapter.Fill(dataTable);
-            professorPosition.DataSource = dataTable;
-            professorPosition.DisplayMember = "title";
-            professorPosition.ValueMember = "id_position";
-            connectDB.closeCon();
-        }
-
 
         private void surnameProfessor_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -77,10 +89,9 @@ namespace PrivateSchoolWF.pages.professor
             {
                 connectDB connectDB = new connectDB();
                 MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
-                    ($@"INSERT INTO `преподаватель`(`surname`, `name`, `middlename`, `work_experience` ,`qualification`,
-                    `id_position`) 
+                    ($@"INSERT INTO `преподаватель`(`surname`, `name`, `middlename`, `work_experience` ,`qualification`) 
                     VALUES ('{surnameProfessor.Text}','{nameProfessor.Text}','{middlenameProfessor.Text}',
-                    '{professorWorkExp.Text}','{professorQualification.Text}','{professorPosition.SelectedValue}')", connectDB.GetConnection());
+                    '{professorWorkExp.Text}','{professorQualification.Text}')", connectDB.GetConnection());
                 DataTable dataTable = new DataTable();
                 sqlDataAdapter.Fill(dataTable);
                 Close();
@@ -100,7 +111,7 @@ namespace PrivateSchoolWF.pages.professor
                 connectDB.openCon();
                 MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
                     ($@"UPDATE `преподаватель` SET `surname` = '{surnameProfessor.Text}', `name` = '{nameProfessor.Text}', `middlename` = '{middlenameProfessor.Text}',
-                `qualification` = '{professorQualification.Text}', `id_position` = '{professorPosition.SelectedValue}', `work_experience` = '{professorWorkExp.Text}'
+                `qualification` = '{professorQualification.Text}', `work_experience` = '{professorWorkExp.Text}'
                 WHERE id_professor={id}", connectDB.GetConnection());
                 DataTable dataTable = new DataTable();
                 sqlDataAdapter.Fill(dataTable);
@@ -131,6 +142,55 @@ namespace PrivateSchoolWF.pages.professor
             {
                 MessageBox.Show("У вас недостатачно прав");
             }
+            
+        }
+
+        private void updateProfessorImg_Click(object sender, EventArgs e)
+        {
+
+            //OpenFileDialog openFileDialog = new OpenFileDialog();
+            //openFileDialog.ShowDialog();
+
+            //FileInfo fileInfo = new FileInfo(openFileDialog.FileName);
+            //long sizeImg = fileInfo.Length;
+
+            //if (sizeImg > 65536)
+            //{
+            //    MessageBox.Show("Файл слишком большой. Размер файла не должен превышать 64 КБ");
+            //    return;
+            //}
+            //else
+            //{
+            //    try
+            //    {
+            //        connectDB connectDB = new connectDB();
+            //        MySqlCommand sqlCommand = new MySqlCommand($"UPDATE `преподаватель` SET image=@newImage WHERE id_professor={id}", connectDB.GetConnection());
+
+            //        MemoryStream memoryStream = new MemoryStream();
+
+            //        professorImage.ImageLocation = openFileDialog.FileName;
+            //        professorImage.Image.Save(memoryStream, ImageFormat.Jpeg);
+            //        Byte[] bytesImg = new Byte[memoryStream.Length];
+            //        memoryStream.Position = 0;
+            //        memoryStream.Read(bytesImg, 0, Convert.ToInt32(bytesImg.Length));
+
+            //        MySqlParameter parameter = new MySqlParameter("@newImage", MySqlDbType.LongBlob, bytesImg.Length, ParameterDirection.Input, false,
+            //            0, 0, null, DataRowVersion.Current, bytesImg);
+
+            //        sqlCommand.Parameters.Add(parameter);
+            //        connectDB.openCon();
+            //        MySqlDataAdapter dataAdapter = new MySqlDataAdapter(sqlCommand);
+            //        DataTable dt = new DataTable();
+            //        dataAdapter.Fill(dt);
+            //        connectDB.closeCon();
+
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        MessageBox.Show(ex.Message);
+            //        throw;
+            //    }
+            //}
             
         }
     }

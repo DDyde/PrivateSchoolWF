@@ -41,7 +41,7 @@ namespace PrivateSchoolWF.pages.course
 
         private void courseListGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (ruleId == 1 || ruleId == 2)
+            if (ruleId == 1)
             {
                 try
                 {
@@ -65,7 +65,7 @@ namespace PrivateSchoolWF.pages.course
         }
         private void addRowButton_Click(object sender, EventArgs e)
         {
-            if (ruleId == 1 || ruleId == 2)
+            if (ruleId == 1)
             {
                 courseEditPage courseEditPage = new courseEditPage(ruleId);
                 courseEditPage.ShowDialog();

@@ -40,7 +40,6 @@ namespace PrivateSchoolWF
         {
             if (ruleId == 1)
             {
-                coursePageButton.Visible = true;
                 positionPageButton.Visible = true;
                 professorPageButton.Visible = true;
                 employeePageButton.Visible = true;
@@ -146,7 +145,7 @@ namespace PrivateSchoolWF
 
         private void addRowButton_Click(object sender, EventArgs e)
         {
-            mainEditPage mainEditPage = new mainEditPage(0, ruleId);
+            mainEditPage mainEditPage = new mainEditPage(0, ruleId, idEmployee);
             mainEditPage.ShowDialog();
             loadData();
         }
