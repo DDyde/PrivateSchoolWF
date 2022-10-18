@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -45,10 +46,7 @@ namespace PrivateSchoolWF.pages.professor
 
                 if (dataTable.Rows.Count == 1 && !dataTable.Rows[0].IsNull(0))
                 {
-                    Byte[] byteImg = new byte[0];
-                    byteImg = (Byte[])(dataTable.Rows[0][0]);
-                    MemoryStream memoryStream = new MemoryStream(byteImg);
-                    professorImage.Image = Image.FromStream(memoryStream);
+                    professorImage.Image = ConvertByteArrayToImage((byte[])(dataTable.Rows[0][0]));
                 }
                 connectDB.closeCon();
 
@@ -148,50 +146,63 @@ namespace PrivateSchoolWF.pages.professor
         private void updateProfessorImg_Click(object sender, EventArgs e)
         {
 
-            //OpenFileDialog openFileDialog = new OpenFileDialog();
-            //openFileDialog.ShowDialog();
+            OpenFileDialog openFileDialog = new OpenFileDialog() { Filter = "Image files(*.jpg; *.png; *.jpeg;)|*.jpg;*.png;*.jpeg;",
+            Multiselect = false};
+            openFileDialog.ShowDialog();
 
-            //FileInfo fileInfo = new FileInfo(openFileDialog.FileName);
-            //long sizeImg = fileInfo.Length;
+            FileInfo fileInfo = new FileInfo(openFileDialog.FileName);
+            long sizeImg = fileInfo.Length;
 
-            //if (sizeImg > 65536)
-            //{
-            //    MessageBox.Show("Файл слишком большой. Размер файла не должен превышать 64 КБ");
-            //    return;
-            //}
-            //else
-            //{
-            //    try
-            //    {
-            //        connectDB connectDB = new connectDB();
-            //        MySqlCommand sqlCommand = new MySqlCommand($"UPDATE `преподаватель` SET image=@newImage WHERE id_professor={id}", connectDB.GetConnection());
+            if (sizeImg > 65536)
+            {
+                MessageBox.Show("Файл слишком большой. Размер файла не должен превышать 64 КБ");
+                return;
+            }
+            else
+            {
+                try
+                {
+                    connectDB connectDB = new connectDB();
+                    MySqlCommand sqlCommand = new MySqlCommand($"UPDATE `преподаватель` SET image=@newImage WHERE id_professor={id}", connectDB.GetConnection());
 
-            //        MemoryStream memoryStream = new MemoryStream();
+                    professorImage.Image = Image.FromFile(openFileDialog.FileName);
 
-            //        professorImage.ImageLocation = openFileDialog.FileName;
-            //        professorImage.Image.Save(memoryStream, ImageFormat.Jpeg);
-            //        Byte[] bytesImg = new Byte[memoryStream.Length];
-            //        memoryStream.Position = 0;
-            //        memoryStream.Read(bytesImg, 0, Convert.ToInt32(bytesImg.Length));
+                    Image newImage = professorImage.Image;
 
-            //        MySqlParameter parameter = new MySqlParameter("@newImage", MySqlDbType.LongBlob, bytesImg.Length, ParameterDirection.Input, false,
-            //            0, 0, null, DataRowVersion.Current, bytesImg);
+                    MySqlParameter newImageParam = new MySqlParameter("@newImage", ConvertImageToByte(newImage));
 
-            //        sqlCommand.Parameters.Add(parameter);
-            //        connectDB.openCon();
-            //        MySqlDataAdapter dataAdapter = new MySqlDataAdapter(sqlCommand);
-            //        DataTable dt = new DataTable();
-            //        dataAdapter.Fill(dt);
-            //        connectDB.closeCon();
+                    sqlCommand.Parameters.Add(newImageParam);
+                    connectDB.openCon();
+                    MySqlDataAdapter dataAdapter = new MySqlDataAdapter(sqlCommand);
+                    DataTable dataTable = new DataTable();
+                    dataAdapter.Fill(dataTable);
+                    connectDB.closeCon();
 
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        MessageBox.Show(ex.Message);
-            //        throw;
-            //    }
-            //}
-            
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    throw;
+                }
+            }
+
+        }
+
+        byte[] ConvertImageToByte(Image img)
+        {
+            using (MemoryStream memoryStream = new MemoryStream())
+            {
+                img.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Png);
+                return memoryStream.ToArray();
+            }
+        }
+
+        private Image ConvertByteArrayToImage(byte[] dataImg)
+        {
+            using (MemoryStream memoryStream = new MemoryStream(dataImg))
+            {
+                return Image.FromStream(memoryStream);
+            }
         }
     }
 }

@@ -141,7 +141,6 @@
             this.updateProfessorImg.TabIndex = 12;
             this.updateProfessorImg.Text = "Обновить";
             this.updateProfessorImg.UseVisualStyleBackColor = true;
-            this.updateProfessorImg.Visible = false;
             this.updateProfessorImg.Click += new System.EventHandler(this.updateProfessorImg_Click);
             // 
             // professorEditPage
