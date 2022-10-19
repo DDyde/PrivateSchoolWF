@@ -153,13 +153,13 @@ namespace PrivateSchoolWF.pages.professor
             FileInfo fileInfo = new FileInfo(openFileDialog.FileName);
             long sizeImg = fileInfo.Length;
 
-            if (sizeImg > 65536)
-            {
-                MessageBox.Show("Файл слишком большой. Размер файла не должен превышать 64 КБ");
-                return;
-            }
-            else
-            {
+            //if (sizeImg > 65536)
+            //{
+            //    MessageBox.Show("Файл слишком большой. Размер файла не должен превышать 64 КБ");
+            //    return;
+            //}
+            //else
+            //{
                 try
                 {
                     connectDB connectDB = new connectDB();
@@ -184,7 +184,7 @@ namespace PrivateSchoolWF.pages.professor
                     MessageBox.Show(ex.Message);
                     throw;
                 }
-            }
+            //}
 
         }
 

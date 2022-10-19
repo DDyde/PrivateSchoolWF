@@ -63,10 +63,17 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="courseTitle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 12</value>
+    <value>14, 16</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="courseTitle.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
+  </data>
+  <data name="courseTitle.PlaceholderText" xml:space="preserve">
+    <value>Название курса</value>
   </data>
   <data name="courseTitle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>342, 23</value>
+    <value>390, 27</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="courseTitle.TabIndex" type="System.Int32, mscorlib">
@@ -84,38 +91,17 @@
   <data name="&gt;&gt;courseTitle.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="courseTerm.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="courseTerm.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 41</value>
-  </data>
-  <data name="courseTerm.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 23</value>
-  </data>
-  <data name="courseTerm.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;courseTerm.Name" xml:space="preserve">
-    <value>courseTerm</value>
-  </data>
-  <data name="&gt;&gt;courseTerm.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;courseTerm.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;courseTerm.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
   <data name="descriptionBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
   <data name="descriptionBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 70</value>
+    <value>14, 102</value>
+  </data>
+  <data name="descriptionBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
   </data>
   <data name="descriptionBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>342, 96</value>
+    <value>390, 167</value>
   </data>
   <data name="descriptionBox.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -133,40 +119,19 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;descriptionBox.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="courseType.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="courseType.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 172</value>
-  </data>
-  <data name="courseType.Size" type="System.Drawing.Size, System.Drawing">
-    <value>342, 23</value>
-  </data>
-  <data name="courseType.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;courseType.Name" xml:space="preserve">
-    <value>courseType</value>
-  </data>
-  <data name="&gt;&gt;courseType.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;courseType.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;courseType.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="priceCourse.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
   <data name="priceCourse.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 201</value>
+    <value>14, 319</value>
+  </data>
+  <data name="priceCourse.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
   </data>
   <data name="priceCourse.Size" type="System.Drawing.Size, System.Drawing">
-    <value>342, 23</value>
+    <value>390, 27</value>
   </data>
   <data name="priceCourse.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -181,64 +146,19 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;priceCourse.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="addRow.Location" type="System.Drawing.Point, System.Drawing">
-    <value>147, 263</value>
-  </data>
-  <data name="addRow.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="addRow.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
-  <data name="addRow.Text" xml:space="preserve">
-    <value>Добавить</value>
-  </data>
-  <data name="&gt;&gt;addRow.Name" xml:space="preserve">
-    <value>addRow</value>
-  </data>
-  <data name="&gt;&gt;addRow.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;addRow.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;addRow.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="chengeRow.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 263</value>
-  </data>
-  <data name="chengeRow.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="chengeRow.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="chengeRow.Text" xml:space="preserve">
-    <value>Изменить</value>
-  </data>
-  <data name="&gt;&gt;chengeRow.Name" xml:space="preserve">
-    <value>chengeRow</value>
-  </data>
-  <data name="&gt;&gt;chengeRow.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chengeRow.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;chengeRow.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="deleteRow.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="deleteRow.Location" type="System.Drawing.Point, System.Drawing">
-    <value>279, 263</value>
+    <value>280, 363</value>
   </data>
   <data name="deleteRow.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
+    <value>106, 41</value>
   </data>
   <data name="deleteRow.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+    <value>22</value>
   </data>
   <data name="deleteRow.Text" xml:space="preserve">
     <value>Удалить</value>
@@ -247,12 +167,123 @@
     <value>deleteRow</value>
   </data>
   <data name="&gt;&gt;deleteRow.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>Guna.UI2.WinForms.Guna2Button, Guna.UI2, Culture=neutral, PublicKeyToken=4015e4865bda28a4</value>
   </data>
   <data name="&gt;&gt;deleteRow.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;deleteRow.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="changeRow.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="changeRow.Location" type="System.Drawing.Point, System.Drawing">
+    <value>31, 363</value>
+  </data>
+  <data name="changeRow.Size" type="System.Drawing.Size, System.Drawing">
+    <value>106, 41</value>
+  </data>
+  <data name="changeRow.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="changeRow.Text" xml:space="preserve">
+    <value>Изменить</value>
+  </data>
+  <data name="&gt;&gt;changeRow.Name" xml:space="preserve">
+    <value>changeRow</value>
+  </data>
+  <data name="&gt;&gt;changeRow.Type" xml:space="preserve">
+    <value>Guna.UI2.WinForms.Guna2Button, Guna.UI2, Culture=neutral, PublicKeyToken=4015e4865bda28a4</value>
+  </data>
+  <data name="&gt;&gt;changeRow.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;changeRow.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="addRow.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="addRow.Location" type="System.Drawing.Point, System.Drawing">
+    <value>155, 363</value>
+  </data>
+  <data name="addRow.Size" type="System.Drawing.Size, System.Drawing">
+    <value>106, 41</value>
+  </data>
+  <data name="addRow.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="addRow.Text" xml:space="preserve">
+    <value>Добавить</value>
+  </data>
+  <data name="&gt;&gt;addRow.Name" xml:space="preserve">
+    <value>addRow</value>
+  </data>
+  <data name="&gt;&gt;addRow.Type" xml:space="preserve">
+    <value>Guna.UI2.WinForms.Guna2Button, Guna.UI2, Culture=neutral, PublicKeyToken=4015e4865bda28a4</value>
+  </data>
+  <data name="&gt;&gt;addRow.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;addRow.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="courseType.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="courseType.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 10pt</value>
+  </data>
+  <data name="courseType.ItemHeight" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="courseType.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 276</value>
+  </data>
+  <data name="courseType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>390, 36</value>
+  </data>
+  <data name="courseType.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="&gt;&gt;courseType.Name" xml:space="preserve">
+    <value>courseType</value>
+  </data>
+  <data name="&gt;&gt;courseType.Type" xml:space="preserve">
+    <value>Guna.UI2.WinForms.Guna2ComboBox, Guna.UI2, Culture=neutral, PublicKeyToken=4015e4865bda28a4</value>
+  </data>
+  <data name="&gt;&gt;courseType.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;courseType.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="courseTerm.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="courseTerm.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="courseTerm.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 50</value>
+  </data>
+  <data name="courseTerm.Size" type="System.Drawing.Size, System.Drawing">
+    <value>250, 45</value>
+  </data>
+  <data name="courseTerm.TabIndex" type="System.Int32, mscorlib">
+    <value>24</value>
+  </data>
+  <data name="&gt;&gt;courseTerm.Name" xml:space="preserve">
+    <value>courseTerm</value>
+  </data>
+  <data name="&gt;&gt;courseTerm.Type" xml:space="preserve">
+    <value>Guna.UI2.WinForms.Guna2DateTimePicker, Guna.UI2, Culture=neutral, PublicKeyToken=4015e4865bda28a4</value>
+  </data>
+  <data name="&gt;&gt;courseTerm.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;courseTerm.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -262,10 +293,13 @@
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>7, 15</value>
+    <value>8, 20</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>366, 324</value>
+    <value>418, 432</value>
+  </data>
+  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>courseEditPage</value>

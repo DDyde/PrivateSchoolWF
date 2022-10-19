@@ -29,59 +29,81 @@
         private void InitializeComponent()
         {
             this.positionBox = new System.Windows.Forms.TextBox();
-            this.addRow = new System.Windows.Forms.Button();
-            this.changeRow = new System.Windows.Forms.Button();
-            this.deleteRow = new System.Windows.Forms.Button();
+            this.deleteRow = new Guna.UI2.WinForms.Guna2Button();
+            this.changeRow = new Guna.UI2.WinForms.Guna2Button();
+            this.addRow = new Guna.UI2.WinForms.Guna2Button();
             this.SuspendLayout();
             // 
             // positionBox
             // 
             this.positionBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.positionBox.Location = new System.Drawing.Point(12, 52);
+            this.positionBox.Location = new System.Drawing.Point(14, 69);
+            this.positionBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.positionBox.Name = "positionBox";
-            this.positionBox.Size = new System.Drawing.Size(274, 23);
+            this.positionBox.PlaceholderText = "Должность";
+            this.positionBox.Size = new System.Drawing.Size(395, 27);
             this.positionBox.TabIndex = 0;
-            // 
-            // addRow
-            // 
-            this.addRow.Location = new System.Drawing.Point(114, 116);
-            this.addRow.Name = "addRow";
-            this.addRow.Size = new System.Drawing.Size(75, 23);
-            this.addRow.TabIndex = 1;
-            this.addRow.Text = "Добавить";
-            this.addRow.UseVisualStyleBackColor = true;
-            this.addRow.Click += new System.EventHandler(this.addRow_Click);
-            // 
-            // changeRow
-            // 
-            this.changeRow.Location = new System.Drawing.Point(12, 116);
-            this.changeRow.Name = "changeRow";
-            this.changeRow.Size = new System.Drawing.Size(75, 23);
-            this.changeRow.TabIndex = 2;
-            this.changeRow.Text = "Изменить";
-            this.changeRow.UseVisualStyleBackColor = true;
-            this.changeRow.Click += new System.EventHandler(this.changeRow_Click);
             // 
             // deleteRow
             // 
-            this.deleteRow.Location = new System.Drawing.Point(211, 116);
+            this.deleteRow.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.deleteRow.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.deleteRow.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.deleteRow.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.deleteRow.FillColor = System.Drawing.Color.White;
+            this.deleteRow.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.deleteRow.ForeColor = System.Drawing.Color.Black;
+            this.deleteRow.Location = new System.Drawing.Point(282, 153);
             this.deleteRow.Name = "deleteRow";
-            this.deleteRow.Size = new System.Drawing.Size(75, 23);
-            this.deleteRow.TabIndex = 3;
+            this.deleteRow.Size = new System.Drawing.Size(106, 41);
+            this.deleteRow.TabIndex = 22;
             this.deleteRow.Text = "Удалить";
-            this.deleteRow.UseVisualStyleBackColor = true;
             this.deleteRow.Click += new System.EventHandler(this.deleteRow_Click);
+            // 
+            // changeRow
+            // 
+            this.changeRow.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.changeRow.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.changeRow.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.changeRow.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.changeRow.FillColor = System.Drawing.Color.White;
+            this.changeRow.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.changeRow.ForeColor = System.Drawing.Color.Black;
+            this.changeRow.Location = new System.Drawing.Point(33, 153);
+            this.changeRow.Name = "changeRow";
+            this.changeRow.Size = new System.Drawing.Size(106, 41);
+            this.changeRow.TabIndex = 21;
+            this.changeRow.Text = "Изменить";
+            this.changeRow.Click += new System.EventHandler(this.changeRow_Click);
+            // 
+            // addRow
+            // 
+            this.addRow.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.addRow.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.addRow.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.addRow.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.addRow.FillColor = System.Drawing.Color.White;
+            this.addRow.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.addRow.ForeColor = System.Drawing.Color.Black;
+            this.addRow.Location = new System.Drawing.Point(157, 153);
+            this.addRow.Name = "addRow";
+            this.addRow.Size = new System.Drawing.Size(106, 41);
+            this.addRow.TabIndex = 20;
+            this.addRow.Text = "Добавить";
+            this.addRow.Click += new System.EventHandler(this.addRow_Click);
             // 
             // positionEditPage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(298, 178);
+            this.ClientSize = new System.Drawing.Size(423, 237);
             this.Controls.Add(this.deleteRow);
             this.Controls.Add(this.changeRow);
             this.Controls.Add(this.addRow);
             this.Controls.Add(this.positionBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "positionEditPage";
             this.Text = "positionEditPage";
             this.ResumeLayout(false);
@@ -92,8 +114,8 @@
         #endregion
 
         private TextBox positionBox;
-        private Button addRow;
-        private Button changeRow;
-        private Button deleteRow;
+        private Guna.UI2.WinForms.Guna2Button deleteRow;
+        private Guna.UI2.WinForms.Guna2Button changeRow;
+        private Guna.UI2.WinForms.Guna2Button addRow;
     }
 }

@@ -26,7 +26,18 @@ namespace PrivateSchoolWF.pages
             idEmployee = _idEmployee;
             id = _id;
             LoadString();
-            LoadCombobox();            
+            LoadCombobox();
+            addRow.Visible = false;
+        }
+
+        public mainEditPage(int _ruleId, int _idEmployee)
+        {
+            InitializeComponent();
+            ruleId = _ruleId;
+            idEmployee = _idEmployee;
+            LoadCombobox();
+            changeRow.Visible = false;
+            deleteRow.Visible = false;
         }
 
         private void LoadCombobox()
@@ -61,8 +72,7 @@ namespace PrivateSchoolWF.pages
 
         private void LoadString()
         {
-            if (id != 0)
-            {
+
                 connectDB connectDB = new connectDB();
                 MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
                    ($@"SELECT документ_обучения.id_education_document, CONCAT_WS(' ', студент.surname, студент.name, студент.middlename) as 'студенты',
@@ -81,7 +91,7 @@ namespace PrivateSchoolWF.pages
                 courseAssigBox.SelectedValue = dataTable.Rows[0][2];
                 dateBegin.Text = dataTable.Rows[0][3].ToString();
                 dateEnd.Text = dataTable.Rows[0][4].ToString();
-            }
+            
         }
 
         private void addRow_Click(object sender, EventArgs e)
