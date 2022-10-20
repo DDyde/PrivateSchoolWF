@@ -21,6 +21,8 @@ namespace PrivateSchoolWF.pages.professor
         {
             InitializeComponent();
             ruleId = _ruleId;
+            changeRow.Visible = false;
+            deleteRow.Visible = false;
         }
         int id;
         public professorEditPage(int _id, int _ruleId)
@@ -30,6 +32,7 @@ namespace PrivateSchoolWF.pages.professor
             ruleId = _ruleId;
             LoadImg();
             LoadString();
+            addRow.Visible = false;
             
         }
 
@@ -86,10 +89,16 @@ namespace PrivateSchoolWF.pages.professor
             if (ruleId == 1 || ruleId == 2)
             {
                 connectDB connectDB = new connectDB();
-                MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
-                    ($@"INSERT INTO `преподаватель`(`surname`, `name`, `middlename`, `work_experience` ,`qualification`) 
-                    VALUES ('{surnameProfessor.Text}','{nameProfessor.Text}','{middlenameProfessor.Text}',
-                    '{professorWorkExp.Text}','{professorQualification.Text}')", connectDB.GetConnection());
+                MySqlCommand sqlCommand = new MySqlCommand(@"INSERT INTO `преподаватель`(`surname`, `name`, `middlename`, `work_experience` ,`qualification`) 
+                    VALUES (@surname, @name, @middlename, @workExp, @professorQual)", connectDB.GetConnection());
+
+                sqlCommand.Parameters.AddWithValue("@surname", surnameProfessor.Text);
+                sqlCommand.Parameters.AddWithValue("@name", nameProfessor.Text);
+                sqlCommand.Parameters.AddWithValue("@middlename", middlenameProfessor.Text);
+                sqlCommand.Parameters.AddWithValue("@workExp", professorWorkExp.Text);
+                sqlCommand.Parameters.AddWithValue("@professorQual", professorQualification.Text);
+
+                MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter(sqlCommand);
                 DataTable dataTable = new DataTable();
                 sqlDataAdapter.Fill(dataTable);
                 Close();
@@ -107,10 +116,17 @@ namespace PrivateSchoolWF.pages.professor
             {
                 connectDB connectDB = new connectDB();
                 connectDB.openCon();
-                MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
-                    ($@"UPDATE `преподаватель` SET `surname` = '{surnameProfessor.Text}', `name` = '{nameProfessor.Text}', `middlename` = '{middlenameProfessor.Text}',
-                `qualification` = '{professorQualification.Text}', `work_experience` = '{professorWorkExp.Text}'
+                MySqlCommand sqlCommand = new MySqlCommand($@"UPDATE `преподаватель` SET `surname` = @surname, `name` = @name, 
+                `middlename` = @middlename, `qualification` = @professorQual, `work_experience` = @workExp
                 WHERE id_professor={id}", connectDB.GetConnection());
+
+                sqlCommand.Parameters.AddWithValue("@surname", surnameProfessor.Text);
+                sqlCommand.Parameters.AddWithValue("@name", nameProfessor.Text);
+                sqlCommand.Parameters.AddWithValue("@middlename", middlenameProfessor.Text);
+                sqlCommand.Parameters.AddWithValue("@workExp", professorWorkExp.Text);
+                sqlCommand.Parameters.AddWithValue("@professorQual", professorQualification.Text);
+
+                MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter(sqlCommand);
                 DataTable dataTable = new DataTable();
                 sqlDataAdapter.Fill(dataTable);
                 connectDB.closeCon();
@@ -152,14 +168,6 @@ namespace PrivateSchoolWF.pages.professor
 
             FileInfo fileInfo = new FileInfo(openFileDialog.FileName);
             long sizeImg = fileInfo.Length;
-
-            if (sizeImg > 65536)
-            {
-                MessageBox.Show("Файл слишком большой. Размер файла не должен превышать 64 КБ");
-                return;
-            }
-            else
-            {
                 try
                 {
                     connectDB connectDB = new connectDB();
@@ -184,11 +192,10 @@ namespace PrivateSchoolWF.pages.professor
                     MessageBox.Show(ex.Message);
                     throw;
                 }
-            }
 
         }
 
-        byte[] ConvertImageToByte(Image img)
+        private byte[] ConvertImageToByte(Image img)
         {
             using (MemoryStream memoryStream = new MemoryStream())
             {

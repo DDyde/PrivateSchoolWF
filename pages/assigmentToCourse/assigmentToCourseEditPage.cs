@@ -19,6 +19,8 @@ namespace PrivateSchoolWF.pages.assigmentToCourse
             ruleId = _ruleId;
             InitializeComponent();
             LoadCombobox();
+            changeRow.Visible = false;
+            deleteRow.Visible = false;
         }
         int id;
         public assigmentToCourseEditPage(int _id, int _ruleId)
@@ -27,6 +29,7 @@ namespace PrivateSchoolWF.pages.assigmentToCourse
             InitializeComponent();
             id = _id;
             LoadCombobox();
+            addRow.Visible = false;
         }
 
         private void LoadCombobox()
@@ -34,21 +37,27 @@ namespace PrivateSchoolWF.pages.assigmentToCourse
             connectDB connectDB = new connectDB();
             connectDB.openCon();
             MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
-                (@"SELECT преподаватель.id_professor, concat_ws(' ', преподаватель.surname, преподаватель.name, преподаватель.middlename) as 'ФИО преподавателя', 
-                курс.id_course,concat(курс.title, ' (', тип_курса.title,')') as 'Название/тип курса'
-                FROM назначение_на_курс
-                JOIN преподаватель ON преподаватель.id_professor = назначение_на_курс.id_professor
-                JOIN курс ON курс.id_course = назначение_на_курс.id_course
+                (@"SELECT курс.id_course, concat(курс.title, ' (', тип_курса.title,')') as 'Название/тип курса'
+                FROM курс
                 JOIN тип_курса ON тип_курса.id_course_type = курс.id_course_type", connectDB.GetConnection());
             DataTable dataTable = new DataTable();
             sqlDataAdapter.Fill(dataTable);
-            assigmentProfessorBox.DataSource = dataTable;
-            assigmentProfessorBox.DisplayMember = "ФИО преподавателя";
-            assigmentProfessorBox.ValueMember = "преподаватель.id_professor";
             assigmentCourseBox.DataSource = dataTable;
             assigmentCourseBox.DisplayMember = "Название/тип курса";
             assigmentCourseBox.ValueMember = "курс.id_course";
             connectDB.closeCon();
+
+            connectDB.openCon();
+            MySqlDataAdapter sqlDataAdapter1 = new MySqlDataAdapter
+                (@"SELECT преподаватель.id_professor, concat_ws(' ', преподаватель.surname, преподаватель.name, преподаватель.middlename) as 'ФИО преподавателя'
+                FROM преподаватель", connectDB.GetConnection());
+            DataTable dataTable1 = new DataTable();
+            sqlDataAdapter1.Fill(dataTable1);
+            assigmentProfessorBox.DataSource = dataTable1;
+            assigmentProfessorBox.DisplayMember = "ФИО преподавателя";
+            assigmentProfessorBox.ValueMember = "преподаватель.id_professor";
+            connectDB.closeCon();
+
         }
 
         private void blockNum_KeyPress(object sender, KeyPressEventArgs e)
@@ -62,9 +71,13 @@ namespace PrivateSchoolWF.pages.assigmentToCourse
             if (ruleId == 1 || ruleId == 2)
             {
                 connectDB connectDB = new connectDB();
-                MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
-                    ($@"INSERT INTO `назначение_на_курс`(`id_Professor`, `id_Course`) 
-                VALUES ('{assigmentProfessorBox.SelectedValue}','{assigmentCourseBox.SelectedValue}')", connectDB.GetConnection());
+                MySqlCommand sqlCommand = new MySqlCommand(@"INSERT INTO `назначение_на_курс`(`id_Professor`, `id_Course`) 
+                VALUES (@assigmentProfessor, @assigmentCourse)", connectDB.GetConnection());
+
+                sqlCommand.Parameters.AddWithValue("@assigmentProfessor", assigmentProfessorBox.SelectedValue);
+                sqlCommand.Parameters.AddWithValue("@assigmentCourse", assigmentCourseBox.SelectedValue);
+
+                MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter(sqlCommand);
                 DataTable dataTable = new DataTable();
                 sqlDataAdapter.Fill(dataTable);
                 Close();
@@ -82,10 +95,15 @@ namespace PrivateSchoolWF.pages.assigmentToCourse
             {
                 connectDB connectDB = new connectDB();
                 connectDB.openCon();
-                MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
-                    ($@"UPDATE `назначение_на_курс` SET `id_Professor`='{assigmentProfessorBox.SelectedValue}',
-                `id_Course`='{assigmentCourseBox.SelectedValue}' 
+                MySqlCommand sqlCommand = new MySqlCommand($@"UPDATE `назначение_на_курс` SET `id_Professor`=@assigmentProfessor,
+                `id_Course`=@assigmentCourse 
                 WHERE id_Assignment_to_course={id}", connectDB.GetConnection());
+
+
+                sqlCommand.Parameters.AddWithValue("@assigmentProfessor", assigmentProfessorBox.SelectedValue);
+                sqlCommand.Parameters.AddWithValue("@assigmentCourse", assigmentCourseBox.SelectedValue);
+
+                MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter(sqlCommand);
                 DataTable dataTable = new DataTable();
                 sqlDataAdapter.Fill(dataTable);
                 connectDB.closeCon();

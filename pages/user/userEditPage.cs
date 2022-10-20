@@ -19,6 +19,8 @@ namespace PrivateSchoolWF.pages.user
             ruleId = _ruleId;
             InitializeComponent();
             LoadCombobox();
+            changeRow.Visible = false;
+            deleteRow.Visible = false;
         }
 
         int id;
@@ -29,6 +31,7 @@ namespace PrivateSchoolWF.pages.user
             InitializeComponent();
             LoadString();
             LoadCombobox();
+            addRow.Visible = false;
         }
 
         private void LoadCombobox()
@@ -61,9 +64,16 @@ namespace PrivateSchoolWF.pages.user
         private void addRow_Click(object sender, EventArgs e)
         {
             connectDB connectDB = new connectDB();
-            MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
-                ($@"INSERT INTO `пользователь`(`id_Employee`, `Login`, `Email`, `Password`)
-                    VALUES ('{fioEmployeeBox.SelectedValue}','{loginBox.Text}','{emailBox.Text}','{passwordBox.Text}')", connectDB.GetConnection());
+            MySqlCommand sqlCommand = new MySqlCommand($@"INSERT INTO `пользователь`(`id_Employee`, `Login`, `Email`, `Password`)
+                    VALUES (@fioEmployee, @login, @email, @password)", connectDB.GetConnection());
+
+            sqlCommand.Parameters.AddWithValue("@fioEmployee", fioEmployeeBox.SelectedValue);
+            sqlCommand.Parameters.AddWithValue("@login", loginBox.Text);
+            sqlCommand.Parameters.AddWithValue("@email", emailBox.Text);
+            sqlCommand.Parameters.AddWithValue("@password", passwordBox.Text);
+
+
+            MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter(sqlCommand);
             DataTable dataTable = new DataTable();
             sqlDataAdapter.Fill(dataTable);
             Close();
@@ -73,10 +83,15 @@ namespace PrivateSchoolWF.pages.user
         {
             connectDB connectDB = new connectDB();
             connectDB.openCon();
-            MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
-                ($@"UPDATE `пользователь` SET `id_Employee`='{fioEmployeeBox.SelectedValue}',`Login`='{loginBox.Text}',
-                `Email`='{emailBox.Text}',`Password`='{passwordBox.Text}'
-                WHERE id_employee={id}", connectDB.GetConnection());
+            MySqlCommand sqlCommand = new MySqlCommand(@$"UPDATE `пользователь` SET `id_Employee`=@fioEmployee,`Login`=@login,
+                `Email`= @email,`Password`= @password
+                WHERE id_employee ={id}", connectDB.GetConnection());
+
+            sqlCommand.Parameters.AddWithValue("@fioEmployee", fioEmployeeBox.SelectedValue);
+            sqlCommand.Parameters.AddWithValue("@login", loginBox.Text);
+            sqlCommand.Parameters.AddWithValue("@email", emailBox.Text);
+            sqlCommand.Parameters.AddWithValue("@password", passwordBox.Text);
+            MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter(sqlCommand);
             DataTable dataTable = new DataTable();
             sqlDataAdapter.Fill(dataTable);
             connectDB.closeCon();

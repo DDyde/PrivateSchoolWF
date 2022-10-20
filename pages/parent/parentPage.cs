@@ -24,7 +24,7 @@ namespace PrivateSchoolWF.pages.parent
         {
             connectDB connectDB = new connectDB();
             MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
-                    (@"SELECT `id_Parent`, `Surname`, `Name`, `Middlename` 
+                    (@"SELECT `id_Parent`, `Surname` as 'Фамилия', `Name` as 'Имя', `Middlename` as 'Отчество'
                     FROM `родитель`", connectDB.GetConnection());
             DataTable dataTable = new DataTable();
             sqlDataAdapter.Fill(dataTable);

@@ -25,7 +25,7 @@ namespace PrivateSchoolWF.pages.courseType
         {
             connectDB connectDB = new connectDB();
             MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
-                    (@"select * 
+                    (@"select id_course_type, title as 'Тип курса'
                         from тип_курса", connectDB.GetConnection());
             DataTable dataTable = new DataTable();
             sqlDataAdapter.Fill(dataTable);

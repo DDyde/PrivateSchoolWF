@@ -145,7 +145,7 @@ namespace PrivateSchoolWF
 
         private void addRowButton_Click(object sender, EventArgs e)
         {
-            mainEditPage mainEditPage = new mainEditPage(0, ruleId, idEmployee);
+            mainEditPage mainEditPage = new mainEditPage(ruleId, idEmployee);
             mainEditPage.ShowDialog();
             loadData();
         }

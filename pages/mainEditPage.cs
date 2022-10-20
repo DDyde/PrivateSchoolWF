@@ -26,7 +26,18 @@ namespace PrivateSchoolWF.pages
             idEmployee = _idEmployee;
             id = _id;
             LoadString();
-            LoadCombobox();            
+            LoadCombobox();
+            addRow.Visible = false;
+        }
+
+        public mainEditPage(int _ruleId, int _idEmployee)
+        {
+            InitializeComponent();
+            ruleId = _ruleId;
+            idEmployee = _idEmployee;
+            LoadCombobox();
+            changeRow.Visible = false;
+            deleteRow.Visible = false;
         }
 
         private void LoadCombobox()
@@ -61,8 +72,7 @@ namespace PrivateSchoolWF.pages
 
         private void LoadString()
         {
-            if (id != 0)
-            {
+
                 connectDB connectDB = new connectDB();
                 MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
                    ($@"SELECT документ_обучения.id_education_document, CONCAT_WS(' ', студент.surname, студент.name, студент.middlename) as 'студенты',
@@ -81,7 +91,7 @@ namespace PrivateSchoolWF.pages
                 courseAssigBox.SelectedValue = dataTable.Rows[0][2];
                 dateBegin.Text = dataTable.Rows[0][3].ToString();
                 dateEnd.Text = dataTable.Rows[0][4].ToString();
-            }
+            
         }
 
         private void addRow_Click(object sender, EventArgs e)
@@ -89,9 +99,17 @@ namespace PrivateSchoolWF.pages
             if (ruleId == 1 || ruleId == 2)
             {
                 connectDB connectDB = new connectDB();
-                MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
-                    ($@"INSERT INTO `документ_обучения`(`date_begin`, `date_end`, `id_student`,  id_assignment_to_course, contract_signing_date, id_employee)
-                    VALUES ('{dateBegin.Text}','{dateEnd.Text}','{fioStudentBox.SelectedValue}', '{courseAssigBox.SelectedValue}','{DateTime.Now.ToString("yyyy-MM-dd")}', '{idEmployee}')", connectDB.GetConnection());
+                MySqlCommand sqlCommand = new MySqlCommand($@"INSERT INTO `документ_обучения`(`date_begin`, `date_end`, `id_student`,  id_assignment_to_course, contract_signing_date, id_employee)
+                    VALUES (@dateBegin, @dateEnd, @fioStudent, @courseAssig, @signingtDate, @employee)", connectDB.GetConnection());
+
+                sqlCommand.Parameters.AddWithValue("@dateBegin", dateBegin.Text);
+                sqlCommand.Parameters.AddWithValue("@dateEnd", dateEnd.Text);
+                sqlCommand.Parameters.AddWithValue("@fioStudent", fioStudentBox.SelectedValue);
+                sqlCommand.Parameters.AddWithValue("@courseAssig", courseAssigBox.SelectedValue);
+                sqlCommand.Parameters.AddWithValue("@signingtDate", DateTime.Now.ToString("yyyy-MM-dd"));
+                sqlCommand.Parameters.AddWithValue("@employee", idEmployee.ToString());
+
+                MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter(sqlCommand);
                 DataTable dataTable = new DataTable();
                 sqlDataAdapter.Fill(dataTable);
                 Close();
@@ -109,11 +127,19 @@ namespace PrivateSchoolWF.pages
             {
                 connectDB connectDB = new connectDB();
                 connectDB.openCon();
-                MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
-                    ($@"UPDATE `документ_обучения` SET `Date_begin`='{dateBegin.Text}',`Date_end`='{dateEnd.Text}',
-                `id_Student`='{fioStudentBox.SelectedValue}',`id_Assignment_to_course`='{courseAssigBox.SelectedValue}',
-                `Contract_signing_date`='{DateTime.Now.ToString("yyyy-MM-dd")}',`id_Employee`='{idEmployee}' 
+                MySqlCommand sqlCommand = new MySqlCommand($@"UPDATE `документ_обучения` SET `Date_begin`=@dateBegin,`Date_end`=@dateEnd,
+                `id_Student`=@fioStudent,`id_Assignment_to_course`=@courseAssig,
+                `Contract_signing_date`=@signingDate,`id_Employee`=@employee 
                 WHERE id_Education_document ={id}", connectDB.GetConnection());
+
+                sqlCommand.Parameters.AddWithValue("@dateBegin", dateBegin.Text);
+                sqlCommand.Parameters.AddWithValue("@dateEnd", dateEnd.Text);
+                sqlCommand.Parameters.AddWithValue("@fioStudent", fioStudentBox.SelectedValue);
+                sqlCommand.Parameters.AddWithValue("@courseAssig", courseAssigBox.SelectedValue);
+                sqlCommand.Parameters.AddWithValue("@signingDate", DateTime.Now.ToString("yyyy-MM-dd"));
+                sqlCommand.Parameters.AddWithValue("@employee", idEmployee);
+
+                MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter(sqlCommand);
                 DataTable dataTable = new DataTable();
                 sqlDataAdapter.Fill(dataTable);
                 connectDB.closeCon();

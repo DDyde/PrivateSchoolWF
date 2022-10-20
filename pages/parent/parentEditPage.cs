@@ -18,6 +18,8 @@ namespace PrivateSchoolWF.pages.parent
         {
             InitializeComponent();
             ruleId = _ruleId;
+            changeRow.Visible = false;
+            deleteRow.Visible = false;
         }
 
         int id;
@@ -27,6 +29,7 @@ namespace PrivateSchoolWF.pages.parent
             InitializeComponent();
             id = _id;
             LoadString();
+            addRow.Visible = false;
         }
 
         private void LoadString()
@@ -54,9 +57,14 @@ namespace PrivateSchoolWF.pages.parent
             if (ruleId == 1 || ruleId == 2)
             {
                 connectDB connectDB = new connectDB();
-                MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
-                    ($@"INSERT INTO `родитель`(`surname`, `name`, `middlename`) 
-                    VALUES ('{surnameParent.Text}','{nameParent.Text}','{middlenameParent.Text}')", connectDB.GetConnection());
+                MySqlCommand sqlCommand = new MySqlCommand(@"INSERT INTO `родитель`(`surname`, `name`, `middlename`) 
+                    VALUES (@surname, @name, @middlename)", connectDB.GetConnection());
+
+                sqlCommand.Parameters.AddWithValue("@surname", surnameParent.Text);
+                sqlCommand.Parameters.AddWithValue("@name", nameParent.Text);
+                sqlCommand.Parameters.AddWithValue("@middlename", middlenameParent.Text);
+
+                MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter(sqlCommand);
                 DataTable dataTable = new DataTable();
                 sqlDataAdapter.Fill(dataTable);
                 Close();
@@ -74,9 +82,15 @@ namespace PrivateSchoolWF.pages.parent
             {
                 connectDB connectDB = new connectDB();
                 connectDB.openCon();
-                MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
-                    ($@"UPDATE `родитель` SET `surname` = '{surnameParent.Text}', `name` = '{nameParent.Text}', `middlename` = '{middlenameParent.Text}'
+                MySqlCommand sqlCommand = new MySqlCommand($@"UPDATE `родитель` SET `surname` = @surname, `name` = @name, 
+                `middlename` = @middlename
                 WHERE id_parent={id}", connectDB.GetConnection());
+
+                sqlCommand.Parameters.AddWithValue("@surname", surnameParent.Text);
+                sqlCommand.Parameters.AddWithValue("@name", nameParent.Text);
+                sqlCommand.Parameters.AddWithValue("@middlename", middlenameParent.Text);
+
+                MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter(sqlCommand);
                 DataTable dataTable = new DataTable();
                 sqlDataAdapter.Fill(dataTable);
                 connectDB.closeCon();

@@ -25,7 +25,7 @@ namespace PrivateSchoolWF.pages.position
         {
             connectDB connectDB = new connectDB();
             MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
-                    (@"select * 
+                    (@"select id_position, title as 'Должность' 
                         from должность", connectDB.GetConnection());
             DataTable dataTable = new DataTable();
             sqlDataAdapter.Fill(dataTable);

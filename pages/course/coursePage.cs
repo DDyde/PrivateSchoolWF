@@ -24,7 +24,8 @@ namespace PrivateSchoolWF.pages.course
         {
             connectDB connectDB = new connectDB();
             MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
-                    (@"SELECT курс.id_course, курс.title, курс.course_term, курс.description, тип_курса.title as 'тип курса', курс.price
+                    (@"SELECT курс.id_course, курс.title as 'Название', курс.course_term as 'Академическое время', курс.description as 'Описание',
+                    тип_курса.title as 'тип курса', курс.price as 'Цена'
                     FROM `курс`
                     JOIN тип_курса ON тип_курса.id_course_type = курс.id_course_type", connectDB.GetConnection());
             DataTable dataTable = new DataTable();
