@@ -38,11 +38,10 @@
             // 
             this.courseTypeBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.courseTypeBox.Location = new System.Drawing.Point(14, 59);
-            this.courseTypeBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.courseTypeBox.Location = new System.Drawing.Point(12, 44);
             this.courseTypeBox.Name = "courseTypeBox";
             this.courseTypeBox.PlaceholderText = "Тип курса";
-            this.courseTypeBox.Size = new System.Drawing.Size(363, 27);
+            this.courseTypeBox.Size = new System.Drawing.Size(318, 23);
             this.courseTypeBox.TabIndex = 0;
             // 
             // deleteRow
@@ -54,11 +53,13 @@
             this.deleteRow.FillColor = System.Drawing.Color.White;
             this.deleteRow.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.deleteRow.ForeColor = System.Drawing.Color.Black;
-            this.deleteRow.Location = new System.Drawing.Point(271, 157);
+            this.deleteRow.Location = new System.Drawing.Point(237, 118);
+            this.deleteRow.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.deleteRow.Name = "deleteRow";
-            this.deleteRow.Size = new System.Drawing.Size(106, 41);
+            this.deleteRow.Size = new System.Drawing.Size(93, 31);
             this.deleteRow.TabIndex = 22;
             this.deleteRow.Text = "Удалить";
+            this.deleteRow.Click += new System.EventHandler(this.deleteRow_Click);
             // 
             // changeRow
             // 
@@ -69,11 +70,13 @@
             this.changeRow.FillColor = System.Drawing.Color.White;
             this.changeRow.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.changeRow.ForeColor = System.Drawing.Color.Black;
-            this.changeRow.Location = new System.Drawing.Point(22, 157);
+            this.changeRow.Location = new System.Drawing.Point(19, 118);
+            this.changeRow.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.changeRow.Name = "changeRow";
-            this.changeRow.Size = new System.Drawing.Size(106, 41);
+            this.changeRow.Size = new System.Drawing.Size(93, 31);
             this.changeRow.TabIndex = 21;
             this.changeRow.Text = "Изменить";
+            this.changeRow.Click += new System.EventHandler(this.changeRow_Click);
             // 
             // addRow
             // 
@@ -84,25 +87,26 @@
             this.addRow.FillColor = System.Drawing.Color.White;
             this.addRow.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.addRow.ForeColor = System.Drawing.Color.Black;
-            this.addRow.Location = new System.Drawing.Point(146, 157);
+            this.addRow.Location = new System.Drawing.Point(128, 118);
+            this.addRow.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.addRow.Name = "addRow";
-            this.addRow.Size = new System.Drawing.Size(106, 41);
+            this.addRow.Size = new System.Drawing.Size(93, 31);
             this.addRow.TabIndex = 20;
             this.addRow.Text = "Добавить";
+            this.addRow.Click += new System.EventHandler(this.addRow_Click);
             // 
             // courseTypeEditPage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(391, 269);
+            this.ClientSize = new System.Drawing.Size(342, 202);
             this.Controls.Add(this.deleteRow);
             this.Controls.Add(this.changeRow);
             this.Controls.Add(this.addRow);
             this.Controls.Add(this.courseTypeBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "courseTypeEditPage";
-            this.Text = "courseTypeEditPage";
+            this.Text = "Редактирование";
             this.ResumeLayout(false);
             this.PerformLayout();
 

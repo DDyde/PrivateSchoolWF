@@ -52,7 +52,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 450);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(847, 450);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // userListGrid
@@ -67,7 +67,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.userListGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.userListGrid.ColumnHeadersHeight = 4;
+            this.userListGrid.ColumnHeadersHeight = 35;
             this.userListGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
@@ -84,7 +84,7 @@
             this.userListGrid.RowHeadersVisible = false;
             this.tableLayoutPanel1.SetRowSpan(this.userListGrid, 2);
             this.userListGrid.RowTemplate.Height = 25;
-            this.userListGrid.Size = new System.Drawing.Size(674, 444);
+            this.userListGrid.Size = new System.Drawing.Size(713, 444);
             this.userListGrid.TabIndex = 0;
             this.userListGrid.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.userListGrid.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -98,7 +98,7 @@
             this.userListGrid.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.userListGrid.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.userListGrid.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            this.userListGrid.ThemeStyle.HeaderStyle.Height = 4;
+            this.userListGrid.ThemeStyle.HeaderStyle.Height = 35;
             this.userListGrid.ThemeStyle.ReadOnly = false;
             this.userListGrid.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.userListGrid.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
@@ -111,13 +111,17 @@
             // 
             // addRowButton
             // 
+            this.addRowButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.addRowButton.Animated = true;
+            this.addRowButton.AutoRoundedCorners = true;
+            this.addRowButton.BorderRadius = 21;
             this.addRowButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.addRowButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.addRowButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.addRowButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.addRowButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.addRowButton.ForeColor = System.Drawing.Color.White;
-            this.addRowButton.Location = new System.Drawing.Point(683, 70);
+            this.addRowButton.Location = new System.Drawing.Point(726, 70);
             this.addRowButton.Name = "addRowButton";
             this.addRowButton.Size = new System.Drawing.Size(113, 45);
             this.addRowButton.TabIndex = 1;
@@ -128,10 +132,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(847, 450);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.MinimumSize = new System.Drawing.Size(863, 416);
             this.Name = "userPage";
-            this.Text = "userPage";
+            this.Text = "Пользователи";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.userPage_FormClosed);
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.userListGrid)).EndInit();

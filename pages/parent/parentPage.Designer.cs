@@ -51,22 +51,27 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 450);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(847, 450);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // addRowButton
             // 
+            this.addRowButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.addRowButton.Animated = true;
+            this.addRowButton.AutoRoundedCorners = true;
+            this.addRowButton.BorderRadius = 21;
             this.addRowButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.addRowButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.addRowButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.addRowButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.addRowButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.addRowButton.ForeColor = System.Drawing.Color.White;
-            this.addRowButton.Location = new System.Drawing.Point(683, 70);
+            this.addRowButton.Location = new System.Drawing.Point(726, 70);
             this.addRowButton.Name = "addRowButton";
             this.addRowButton.Size = new System.Drawing.Size(114, 45);
             this.addRowButton.TabIndex = 0;
             this.addRowButton.Text = "Добавить запись";
+            this.addRowButton.Click += new System.EventHandler(this.addRowButton_Click);
             // 
             // parentListGrid
             // 
@@ -80,7 +85,8 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.parentListGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.parentListGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.parentListGrid.ColumnHeadersHeight = 35;
+            this.parentListGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -96,7 +102,7 @@
             this.parentListGrid.RowHeadersVisible = false;
             this.tableLayoutPanel1.SetRowSpan(this.parentListGrid, 2);
             this.parentListGrid.RowTemplate.Height = 25;
-            this.parentListGrid.Size = new System.Drawing.Size(674, 444);
+            this.parentListGrid.Size = new System.Drawing.Size(713, 444);
             this.parentListGrid.TabIndex = 1;
             this.parentListGrid.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.parentListGrid.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -109,8 +115,8 @@
             this.parentListGrid.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.parentListGrid.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.parentListGrid.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
-            this.parentListGrid.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.parentListGrid.ThemeStyle.HeaderStyle.Height = 4;
+            this.parentListGrid.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            this.parentListGrid.ThemeStyle.HeaderStyle.Height = 35;
             this.parentListGrid.ThemeStyle.ReadOnly = false;
             this.parentListGrid.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.parentListGrid.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
@@ -119,13 +125,15 @@
             this.parentListGrid.ThemeStyle.RowsStyle.Height = 25;
             this.parentListGrid.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.parentListGrid.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.parentListGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.parentListGrid_CellClick);
             // 
             // parentPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(847, 450);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.MinimumSize = new System.Drawing.Size(863, 416);
             this.Name = "parentPage";
             this.Text = "parentPage";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.parentPage_FormClosed);

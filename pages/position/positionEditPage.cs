@@ -18,6 +18,8 @@ namespace PrivateSchoolWF.pages.position
         {
             ruleId = _ruleId;
             InitializeComponent();
+            deleteRow.Visible = false;
+            changeRow.Visible = false;
         }
         int id;
         public positionEditPage(int _id, int _ruleId)
@@ -25,7 +27,8 @@ namespace PrivateSchoolWF.pages.position
             ruleId = _ruleId;
             id = _id;
             InitializeComponent();
-            LoadString();            
+            LoadString();  
+            addRow.Visible = false;
         }
 
         private void LoadString()
@@ -42,8 +45,11 @@ namespace PrivateSchoolWF.pages.position
         {
             
                 connectDB connectDB = new connectDB();
-                MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
-                    ($@"INSERT INTO `должность`(`Title`) VALUES ('{positionBox.Text}')", connectDB.GetConnection());
+                MySqlCommand sqlCommand = new MySqlCommand(@"INSERT INTO `должность`(`Title`) VALUES (@position)", connectDB.GetConnection());
+
+                sqlCommand.Parameters.AddWithValue("@position", positionBox.Text);
+
+                MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter(sqlCommand);
                 DataTable dataTable = new DataTable();
                 sqlDataAdapter.Fill(dataTable);
                 Close();
@@ -54,9 +60,12 @@ namespace PrivateSchoolWF.pages.position
         {
                 connectDB connectDB = new connectDB();
                 connectDB.openCon();
-                MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
-                    ($@"UPDATE `должность` SET `Title`='{positionBox.Text}' 
+            MySqlCommand sqlCommand = new MySqlCommand($@"UPDATE `должность` SET `Title`=@position 
                         WHERE id_position={id}", connectDB.GetConnection());
+
+            sqlCommand.Parameters.AddWithValue("@position", positionBox.Text);
+
+            MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter(sqlCommand);
                 DataTable dataTable = new DataTable();
                 sqlDataAdapter.Fill(dataTable);
                 connectDB.closeCon();
@@ -70,7 +79,7 @@ namespace PrivateSchoolWF.pages.position
                 connectDB connectDB = new connectDB();
                 connectDB.openCon();
                 MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
-                    ($@"DELETE FROM `должность` id_position={id}", connectDB.GetConnection());
+                    ($@"DELETE FROM `должность` WHERE id_position={id}", connectDB.GetConnection());
                 DataTable dataTable = new DataTable();
                 sqlDataAdapter.Fill(dataTable);
                 connectDB.closeCon();

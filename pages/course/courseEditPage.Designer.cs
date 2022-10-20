@@ -37,6 +37,8 @@
             this.addRow = new Guna.UI2.WinForms.Guna2Button();
             this.courseType = new Guna.UI2.WinForms.Guna2ComboBox();
             this.courseTerm = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            this.courseTermLabel = new System.Windows.Forms.Label();
+            this.priceLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.priceCourse)).BeginInit();
             this.SuspendLayout();
             // 
@@ -71,6 +73,7 @@
             resources.ApplyResources(this.deleteRow, "deleteRow");
             this.deleteRow.ForeColor = System.Drawing.Color.Black;
             this.deleteRow.Name = "deleteRow";
+            this.deleteRow.Click += new System.EventHandler(this.deleteRow_Click);
             // 
             // changeRow
             // 
@@ -82,6 +85,7 @@
             resources.ApplyResources(this.changeRow, "changeRow");
             this.changeRow.ForeColor = System.Drawing.Color.Black;
             this.changeRow.Name = "changeRow";
+            this.changeRow.Click += new System.EventHandler(this.changeRow_Click);
             // 
             // addRow
             // 
@@ -93,6 +97,7 @@
             resources.ApplyResources(this.addRow, "addRow");
             this.addRow.ForeColor = System.Drawing.Color.Black;
             this.addRow.Name = "addRow";
+            this.addRow.Click += new System.EventHandler(this.addRow_Click);
             // 
             // courseType
             // 
@@ -114,12 +119,25 @@
             this.courseTerm.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.courseTerm.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.courseTerm.Name = "courseTerm";
+            this.courseTerm.ShowUpDown = true;
             this.courseTerm.Value = new System.DateTime(2022, 10, 19, 14, 20, 0, 591);
+            // 
+            // courseTermLabel
+            // 
+            resources.ApplyResources(this.courseTermLabel, "courseTermLabel");
+            this.courseTermLabel.Name = "courseTermLabel";
+            // 
+            // priceLabel
+            // 
+            resources.ApplyResources(this.priceLabel, "priceLabel");
+            this.priceLabel.Name = "priceLabel";
             // 
             // courseEditPage
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.priceLabel);
+            this.Controls.Add(this.courseTermLabel);
             this.Controls.Add(this.courseTerm);
             this.Controls.Add(this.courseType);
             this.Controls.Add(this.deleteRow);
@@ -146,5 +164,7 @@
         private Guna.UI2.WinForms.Guna2Button addRow;
         private Guna.UI2.WinForms.Guna2ComboBox courseType;
         private Guna.UI2.WinForms.Guna2DateTimePicker courseTerm;
+        private Label courseTermLabel;
+        private Label priceLabel;
     }
 }

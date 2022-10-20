@@ -25,7 +25,8 @@ namespace PrivateSchoolWF.pages.employee
         {
             connectDB connectDB = new connectDB();
             MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
-                    (@"SELECT `id_Employee`, `Work_experience`, должность.title, `Surname`, `Name`, `Middlename`
+                    (@"SELECT `id_Employee`, `Surname` as 'Фамилия', 
+                    `Name` as 'Имя', `Middlename` as 'Отчество', `Work_experience` as 'Опыт работы', должность.title as 'Должность'
                         FROM `сотрудник` 
                             JOIN должность ON должность.id_position = сотрудник.id_position", connectDB.GetConnection());
             DataTable dataTable = new DataTable();

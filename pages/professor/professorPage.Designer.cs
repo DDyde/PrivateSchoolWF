@@ -51,20 +51,25 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 450);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(847, 450);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // addRowButton
             // 
+            this.addRowButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.addRowButton.Animated = true;
+            this.addRowButton.AutoRoundedCorners = true;
+            this.addRowButton.BorderRadius = 21;
             this.addRowButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.addRowButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.addRowButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.addRowButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.addRowButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.addRowButton.ForeColor = System.Drawing.Color.White;
-            this.addRowButton.Location = new System.Drawing.Point(683, 70);
+            this.addRowButton.Location = new System.Drawing.Point(722, 70);
             this.addRowButton.Name = "addRowButton";
-            this.addRowButton.Size = new System.Drawing.Size(114, 45);
+            this.addRowButton.Size = new System.Drawing.Size(122, 45);
             this.addRowButton.TabIndex = 0;
             this.addRowButton.Text = "Добавить запись";
             this.addRowButton.Click += new System.EventHandler(this.addRowButton_Click);
@@ -81,7 +86,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.professorListGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.professorListGrid.ColumnHeadersHeight = 4;
+            this.professorListGrid.ColumnHeadersHeight = 35;
             this.professorListGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
@@ -98,7 +103,7 @@
             this.professorListGrid.RowHeadersVisible = false;
             this.tableLayoutPanel1.SetRowSpan(this.professorListGrid, 2);
             this.professorListGrid.RowTemplate.Height = 25;
-            this.professorListGrid.Size = new System.Drawing.Size(674, 444);
+            this.professorListGrid.Size = new System.Drawing.Size(713, 444);
             this.professorListGrid.TabIndex = 1;
             this.professorListGrid.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.professorListGrid.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -112,7 +117,7 @@
             this.professorListGrid.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.professorListGrid.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.professorListGrid.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            this.professorListGrid.ThemeStyle.HeaderStyle.Height = 4;
+            this.professorListGrid.ThemeStyle.HeaderStyle.Height = 35;
             this.professorListGrid.ThemeStyle.ReadOnly = false;
             this.professorListGrid.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.professorListGrid.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
@@ -127,10 +132,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(847, 450);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.MinimumSize = new System.Drawing.Size(863, 416);
             this.Name = "professorPage";
-            this.Text = "professorPage";
+            this.Text = "Преподаватели";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.professorPage_FormClosed);
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.professorListGrid)).EndInit();

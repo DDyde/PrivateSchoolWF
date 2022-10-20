@@ -100,6 +100,7 @@
             this.deleteRow.Size = new System.Drawing.Size(93, 31);
             this.deleteRow.TabIndex = 22;
             this.deleteRow.Text = "Удалить";
+            this.deleteRow.Click += new System.EventHandler(this.deleteRow_Click);
             // 
             // changeRow
             // 
@@ -116,6 +117,7 @@
             this.changeRow.Size = new System.Drawing.Size(93, 31);
             this.changeRow.TabIndex = 21;
             this.changeRow.Text = "Изменить";
+            this.changeRow.Click += new System.EventHandler(this.changeRow_Click);
             // 
             // addRow
             // 
@@ -132,6 +134,7 @@
             this.addRow.Size = new System.Drawing.Size(93, 31);
             this.addRow.TabIndex = 20;
             this.addRow.Text = "Добавить";
+            this.addRow.Click += new System.EventHandler(this.addRow_Click);
             // 
             // userEditPage
             // 
@@ -147,7 +150,7 @@
             this.Controls.Add(this.loginBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "userEditPage";
-            this.Text = "userEditPage";
+            this.Text = "Редактирование";
             this.ResumeLayout(false);
             this.PerformLayout();
 

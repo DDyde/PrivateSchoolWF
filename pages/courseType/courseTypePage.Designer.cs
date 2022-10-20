@@ -52,18 +52,22 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 450);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(847, 450);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // addRowButton
             // 
+            this.addRowButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.addRowButton.Animated = true;
+            this.addRowButton.AutoRoundedCorners = true;
+            this.addRowButton.BorderRadius = 21;
             this.addRowButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.addRowButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.addRowButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.addRowButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.addRowButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.addRowButton.ForeColor = System.Drawing.Color.White;
-            this.addRowButton.Location = new System.Drawing.Point(683, 70);
+            this.addRowButton.Location = new System.Drawing.Point(726, 70);
             this.addRowButton.Name = "addRowButton";
             this.addRowButton.Size = new System.Drawing.Size(114, 45);
             this.addRowButton.TabIndex = 0;
@@ -82,7 +86,8 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.courseTypeListGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.courseTypeListGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.courseTypeListGrid.ColumnHeadersHeight = 35;
+            this.courseTypeListGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -98,7 +103,7 @@
             this.courseTypeListGrid.RowHeadersVisible = false;
             this.tableLayoutPanel1.SetRowSpan(this.courseTypeListGrid, 2);
             this.courseTypeListGrid.RowTemplate.Height = 25;
-            this.courseTypeListGrid.Size = new System.Drawing.Size(674, 444);
+            this.courseTypeListGrid.Size = new System.Drawing.Size(713, 444);
             this.courseTypeListGrid.TabIndex = 1;
             this.courseTypeListGrid.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.courseTypeListGrid.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -111,8 +116,8 @@
             this.courseTypeListGrid.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.courseTypeListGrid.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.courseTypeListGrid.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
-            this.courseTypeListGrid.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.courseTypeListGrid.ThemeStyle.HeaderStyle.Height = 4;
+            this.courseTypeListGrid.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            this.courseTypeListGrid.ThemeStyle.HeaderStyle.Height = 35;
             this.courseTypeListGrid.ThemeStyle.ReadOnly = false;
             this.courseTypeListGrid.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.courseTypeListGrid.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
@@ -121,15 +126,17 @@
             this.courseTypeListGrid.ThemeStyle.RowsStyle.Height = 25;
             this.courseTypeListGrid.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.courseTypeListGrid.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.courseTypeListGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.courseTypeListGrid_CellClick);
             // 
             // courseTypePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(847, 450);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.MinimumSize = new System.Drawing.Size(863, 416);
             this.Name = "courseTypePage";
-            this.Text = "courseTypePage";
+            this.Text = "Виды курсов";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.courseTypePage_FormClosed);
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.courseTypeListGrid)).EndInit();

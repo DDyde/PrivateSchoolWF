@@ -24,8 +24,8 @@ namespace PrivateSchoolWF.pages.professor
         {
             connectDB connectDB = new connectDB();
             MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
-                    (@"select преподаватель.id_professor, преподаватель.surname, преподаватель.name, преподаватель.middlename,
-                преподаватель.work_experience, преподаватель.qualification
+                    (@"select преподаватель.id_professor, преподаватель.surname  as 'Фамилия', преподаватель.name  as 'Имя', преподаватель.middlename  as 'Отчество',
+                преподаватель.work_experience as 'Опыт работы', преподаватель.qualification as 'Квалификация'
                 FROM преподаватель", connectDB.GetConnection());
             DataTable dataTable = new DataTable();
             sqlDataAdapter.Fill(dataTable);

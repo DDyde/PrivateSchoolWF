@@ -52,22 +52,27 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 450);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(847, 450);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // addRowButton
             // 
+            this.addRowButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.addRowButton.Animated = true;
+            this.addRowButton.AutoRoundedCorners = true;
+            this.addRowButton.BorderRadius = 21;
             this.addRowButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.addRowButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.addRowButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.addRowButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.addRowButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.addRowButton.ForeColor = System.Drawing.Color.White;
-            this.addRowButton.Location = new System.Drawing.Point(683, 70);
+            this.addRowButton.Location = new System.Drawing.Point(726, 70);
             this.addRowButton.Name = "addRowButton";
             this.addRowButton.Size = new System.Drawing.Size(114, 45);
             this.addRowButton.TabIndex = 0;
             this.addRowButton.Text = "Добавить запись";
+            this.addRowButton.Click += new System.EventHandler(this.addRowButton_Click);
             // 
             // assigmentListGrid
             // 
@@ -81,7 +86,8 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.assigmentListGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.assigmentListGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.assigmentListGrid.ColumnHeadersHeight = 35;
+            this.assigmentListGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -97,7 +103,7 @@
             this.assigmentListGrid.RowHeadersVisible = false;
             this.tableLayoutPanel1.SetRowSpan(this.assigmentListGrid, 2);
             this.assigmentListGrid.RowTemplate.Height = 25;
-            this.assigmentListGrid.Size = new System.Drawing.Size(674, 444);
+            this.assigmentListGrid.Size = new System.Drawing.Size(713, 444);
             this.assigmentListGrid.TabIndex = 1;
             this.assigmentListGrid.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.assigmentListGrid.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -110,8 +116,8 @@
             this.assigmentListGrid.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.assigmentListGrid.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.assigmentListGrid.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
-            this.assigmentListGrid.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.assigmentListGrid.ThemeStyle.HeaderStyle.Height = 4;
+            this.assigmentListGrid.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            this.assigmentListGrid.ThemeStyle.HeaderStyle.Height = 35;
             this.assigmentListGrid.ThemeStyle.ReadOnly = false;
             this.assigmentListGrid.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.assigmentListGrid.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
@@ -120,15 +126,17 @@
             this.assigmentListGrid.ThemeStyle.RowsStyle.Height = 25;
             this.assigmentListGrid.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.assigmentListGrid.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.assigmentListGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.assigmentListGrid_CellClick);
             // 
             // assigmentToCourse
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(847, 450);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.MinimumSize = new System.Drawing.Size(863, 416);
             this.Name = "assigmentToCourse";
-            this.Text = "assigmentToCourse";
+            this.Text = "Назначение на курс";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.assigmentToCourse_FormClosed);
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.assigmentListGrid)).EndInit();

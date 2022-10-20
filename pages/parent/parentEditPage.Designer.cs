@@ -40,33 +40,30 @@
             // 
             this.surnameParent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.surnameParent.Location = new System.Drawing.Point(14, 16);
-            this.surnameParent.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.surnameParent.Location = new System.Drawing.Point(12, 12);
             this.surnameParent.Name = "surnameParent";
             this.surnameParent.PlaceholderText = "Фамилия";
-            this.surnameParent.Size = new System.Drawing.Size(399, 27);
+            this.surnameParent.Size = new System.Drawing.Size(350, 23);
             this.surnameParent.TabIndex = 0;
             // 
             // nameParent
             // 
             this.nameParent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.nameParent.Location = new System.Drawing.Point(14, 55);
-            this.nameParent.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.nameParent.Location = new System.Drawing.Point(12, 41);
             this.nameParent.Name = "nameParent";
             this.nameParent.PlaceholderText = "Имя";
-            this.nameParent.Size = new System.Drawing.Size(399, 27);
+            this.nameParent.Size = new System.Drawing.Size(350, 23);
             this.nameParent.TabIndex = 1;
             // 
             // middlenameParent
             // 
             this.middlenameParent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.middlenameParent.Location = new System.Drawing.Point(14, 93);
-            this.middlenameParent.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.middlenameParent.Location = new System.Drawing.Point(12, 70);
             this.middlenameParent.Name = "middlenameParent";
             this.middlenameParent.PlaceholderText = "Отчество";
-            this.middlenameParent.Size = new System.Drawing.Size(399, 27);
+            this.middlenameParent.Size = new System.Drawing.Size(350, 23);
             this.middlenameParent.TabIndex = 2;
             // 
             // deleteRow
@@ -78,9 +75,10 @@
             this.deleteRow.FillColor = System.Drawing.Color.White;
             this.deleteRow.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.deleteRow.ForeColor = System.Drawing.Color.Black;
-            this.deleteRow.Location = new System.Drawing.Point(278, 168);
+            this.deleteRow.Location = new System.Drawing.Point(243, 126);
+            this.deleteRow.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.deleteRow.Name = "deleteRow";
-            this.deleteRow.Size = new System.Drawing.Size(106, 41);
+            this.deleteRow.Size = new System.Drawing.Size(93, 31);
             this.deleteRow.TabIndex = 22;
             this.deleteRow.Text = "Удалить";
             this.deleteRow.Click += new System.EventHandler(this.deleteRow_Click);
@@ -94,9 +92,10 @@
             this.changeRow.FillColor = System.Drawing.Color.White;
             this.changeRow.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.changeRow.ForeColor = System.Drawing.Color.Black;
-            this.changeRow.Location = new System.Drawing.Point(29, 168);
+            this.changeRow.Location = new System.Drawing.Point(25, 126);
+            this.changeRow.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.changeRow.Name = "changeRow";
-            this.changeRow.Size = new System.Drawing.Size(106, 41);
+            this.changeRow.Size = new System.Drawing.Size(93, 31);
             this.changeRow.TabIndex = 21;
             this.changeRow.Text = "Изменить";
             this.changeRow.Click += new System.EventHandler(this.changeRow_Click);
@@ -110,18 +109,19 @@
             this.addRow.FillColor = System.Drawing.Color.White;
             this.addRow.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.addRow.ForeColor = System.Drawing.Color.Black;
-            this.addRow.Location = new System.Drawing.Point(153, 168);
+            this.addRow.Location = new System.Drawing.Point(134, 126);
+            this.addRow.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.addRow.Name = "addRow";
-            this.addRow.Size = new System.Drawing.Size(106, 41);
+            this.addRow.Size = new System.Drawing.Size(93, 31);
             this.addRow.TabIndex = 20;
             this.addRow.Text = "Добавить";
             this.addRow.Click += new System.EventHandler(this.addRow_Click);
             // 
             // parentEditPage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(427, 268);
+            this.ClientSize = new System.Drawing.Size(374, 201);
             this.Controls.Add(this.deleteRow);
             this.Controls.Add(this.changeRow);
             this.Controls.Add(this.addRow);
@@ -129,9 +129,8 @@
             this.Controls.Add(this.nameParent);
             this.Controls.Add(this.surnameParent);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "parentEditPage";
-            this.Text = "parentEditPage";
+            this.Text = "Редактирование";
             this.ResumeLayout(false);
             this.PerformLayout();
 

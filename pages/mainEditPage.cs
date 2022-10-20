@@ -100,14 +100,14 @@ namespace PrivateSchoolWF.pages
             {
                 connectDB connectDB = new connectDB();
                 MySqlCommand sqlCommand = new MySqlCommand($@"INSERT INTO `документ_обучения`(`date_begin`, `date_end`, `id_student`,  id_assignment_to_course, contract_signing_date, id_employee)
-                    VALUES (@dateBegin, @dateEnd, @fioStudent, @courseAssig, @currentDate, @employee", connectDB.GetConnection());
+                    VALUES (@dateBegin, @dateEnd, @fioStudent, @courseAssig, @signingtDate, @employee)", connectDB.GetConnection());
 
                 sqlCommand.Parameters.AddWithValue("@dateBegin", dateBegin.Text);
                 sqlCommand.Parameters.AddWithValue("@dateEnd", dateEnd.Text);
                 sqlCommand.Parameters.AddWithValue("@fioStudent", fioStudentBox.SelectedValue);
                 sqlCommand.Parameters.AddWithValue("@courseAssig", courseAssigBox.SelectedValue);
                 sqlCommand.Parameters.AddWithValue("@signingtDate", DateTime.Now.ToString("yyyy-MM-dd"));
-                sqlCommand.Parameters.AddWithValue("@employee", idEmployee);
+                sqlCommand.Parameters.AddWithValue("@employee", idEmployee.ToString());
 
                 MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter(sqlCommand);
                 DataTable dataTable = new DataTable();
@@ -136,7 +136,7 @@ namespace PrivateSchoolWF.pages
                 sqlCommand.Parameters.AddWithValue("@dateEnd", dateEnd.Text);
                 sqlCommand.Parameters.AddWithValue("@fioStudent", fioStudentBox.SelectedValue);
                 sqlCommand.Parameters.AddWithValue("@courseAssig", courseAssigBox.SelectedValue);
-                sqlCommand.Parameters.AddWithValue("@signingtDate", DateTime.Now.ToString("yyyy-MM-dd"));
+                sqlCommand.Parameters.AddWithValue("@signingDate", DateTime.Now.ToString("yyyy-MM-dd"));
                 sqlCommand.Parameters.AddWithValue("@employee", idEmployee);
 
                 MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter(sqlCommand);

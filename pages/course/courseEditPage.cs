@@ -20,6 +20,8 @@ namespace PrivateSchoolWF.pages.course
             InitializeComponent();
             LoadCombobox();
             ruleId = _ruleId;
+            changeRow.Visible = false;
+            deleteRow.Visible = false;
         }
         int id;
         public courseEditPage(int _id, int _ruleId)
@@ -29,6 +31,7 @@ namespace PrivateSchoolWF.pages.course
             id = _id;
             LoadString();
             LoadCombobox();
+            addRow.Visible = false;
         }
 
         private void LoadString()
@@ -72,9 +75,16 @@ namespace PrivateSchoolWF.pages.course
             if (ruleId == 1 || ruleId == 2)
             {
                 connectDB connectDB = new connectDB();
-                MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
-                    ($@"INSERT INTO `курс`(`Title`, `Course_term`, `Description`, `id_Course_type`, `Price`) 
-                VALUES ('{courseTitle.Text}','{courseTerm.Text}','{descriptionBox.Text}','{courseType.SelectedValue}','{priceCourse.Text}')", connectDB.GetConnection());
+                MySqlCommand sqlCommand = new MySqlCommand(@"INSERT INTO `курс`(`Title`, `Course_term`, `Description`, `id_Course_type`, `Price`) 
+                VALUES (@courseTitle, @courseTerm, @description, @courseType, @price)", connectDB.GetConnection());
+
+                sqlCommand.Parameters.AddWithValue("@courseTitle", courseTitle.Text);
+                sqlCommand.Parameters.AddWithValue("@courseTerm", courseTitle.Text);
+                sqlCommand.Parameters.AddWithValue("@description", descriptionBox.Text);
+                sqlCommand.Parameters.AddWithValue("@courseType", courseType.SelectedValue);
+                sqlCommand.Parameters.AddWithValue("@price", priceCourse.Text);
+
+                MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter(sqlCommand);
                 DataTable dataTable = new DataTable();
                 sqlDataAdapter.Fill(dataTable);
                 Close();
@@ -92,10 +102,18 @@ namespace PrivateSchoolWF.pages.course
             {
                 connectDB connectDB = new connectDB();
                 connectDB.openCon();
-                MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
-                    ($@"UPDATE `курс` SET `Title`='{courseTitle.Text}',`Course_term`='{courseTerm.Text}',
-                `Description`='{descriptionBox.Text}',`id_Course_type`='{courseType.SelectedValue}',`Price`='{priceCourse.Text}' 
+                MySqlCommand sqlCommand = new MySqlCommand($@"UPDATE `курс` SET `Title`=@courseTitle,`Course_term`=@courseTerm,
+                `Description`=@description,`id_Course_type`=@courseType,`Price`=@price 
                 WHERE id_course={id}", connectDB.GetConnection());
+
+                sqlCommand.Parameters.AddWithValue("@courseTitle", courseTitle.Text);
+                sqlCommand.Parameters.AddWithValue("@courseTerm", courseTitle.Text);
+                sqlCommand.Parameters.AddWithValue("@description", descriptionBox.Text);
+                sqlCommand.Parameters.AddWithValue("@courseType", courseType.SelectedValue);
+                sqlCommand.Parameters.AddWithValue("@price", priceCourse.Text);
+
+                MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
+                    (sqlCommand);
                 DataTable dataTable = new DataTable();
                 sqlDataAdapter.Fill(dataTable);
                 connectDB.closeCon();

@@ -19,6 +19,8 @@ namespace PrivateSchoolWF.pages.employee
             ruleId = _ruleId;
             InitializeComponent();
             LoadCombobox();
+            deleteRow.Visible = false;
+            changeRow.Visible = false;
         }
 
         int id;
@@ -29,6 +31,7 @@ namespace PrivateSchoolWF.pages.employee
             InitializeComponent();
             LoadString();
             LoadCombobox();
+            addRow.Visible = false;
         }
 
         private void LoadCombobox()
@@ -62,10 +65,17 @@ namespace PrivateSchoolWF.pages.employee
         private void addRow_Click(object sender, EventArgs e)
         {
             connectDB connectDB = new connectDB();
-            MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
-                ($@"INSERT INTO `сотрудник`(`Work_experience`, `id_Position`, `Surname`, `Name`, `Middlename`)
-                VALUES ('{workExEmployee.Text}','{positionEmployeeBox.SelectedValue}','{surnameEmployeeBox}',
-                '{nameEmployeeBox}','{middlenameEmployeeBox}')", connectDB.GetConnection());
+            MySqlCommand sqlCommand = new MySqlCommand(@"INSERT INTO `сотрудник`(`Work_experience`, `id_Position`, `Surname`, `Name`, `Middlename`)
+                VALUES (@workExp, @position, @surname,
+                @name, @middlename)", connectDB.GetConnection());
+
+            sqlCommand.Parameters.AddWithValue("@workExp", workExEmployee.Text);
+            sqlCommand.Parameters.AddWithValue("@position", positionEmployeeBox.SelectedValue);
+            sqlCommand.Parameters.AddWithValue("@surname", surnameEmployeeBox.Text);
+            sqlCommand.Parameters.AddWithValue("@name", nameEmployeeBox.Text);
+            sqlCommand.Parameters.AddWithValue("@middlename", workExEmployee.Text);
+
+            MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter(sqlCommand);
             DataTable dataTable = new DataTable();
             sqlDataAdapter.Fill(dataTable);
             Close();
@@ -75,10 +85,17 @@ namespace PrivateSchoolWF.pages.employee
         {
             connectDB connectDB = new connectDB();
             connectDB.openCon();
-            MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
-                ($@"UPDATE `сотрудник` SET `Work_experience`='{workExEmployee.Text}',`id_Position`='{positionEmployeeBox.SelectedValue}',
-                `Surname`='{surnameEmployeeBox.Text}',`Name`='{nameEmployeeBox.Text}',`Middlename`='{middlenameEmployeeBox.Text}'
+            MySqlCommand sqlCommand = new MySqlCommand($@"UPDATE `сотрудник` SET `Work_experience`=@workExp,`id_Position`=@position,
+                `Surname`=@surname,`Name`=@name,`Middlename`=@middlename
                 WHERE id_employee = {id}", connectDB.GetConnection());
+
+            sqlCommand.Parameters.AddWithValue("@workExp", workExEmployee.Text);
+            sqlCommand.Parameters.AddWithValue("@position", positionEmployeeBox.SelectedValue);
+            sqlCommand.Parameters.AddWithValue("@surname", surnameEmployeeBox.Text);
+            sqlCommand.Parameters.AddWithValue("@name", nameEmployeeBox.Text);
+            sqlCommand.Parameters.AddWithValue("@middlename", workExEmployee.Text);
+
+            MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter(sqlCommand);
             DataTable dataTable = new DataTable();
             sqlDataAdapter.Fill(dataTable);
             connectDB.closeCon();
@@ -92,7 +109,7 @@ namespace PrivateSchoolWF.pages.employee
             connectDB connectDB = new connectDB();
             connectDB.openCon();
             MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
-                ($@"DELETE FROM `пользователь` WHERE id_employee={id}", connectDB.GetConnection());
+                ($@"DELETE FROM `сотрудник` WHERE id_employee={id}", connectDB.GetConnection());
             DataTable dataTable = new DataTable();
             sqlDataAdapter.Fill(dataTable);
             connectDB.closeCon();

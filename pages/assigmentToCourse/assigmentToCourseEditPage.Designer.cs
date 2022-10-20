@@ -44,11 +44,13 @@
             this.deleteRow.FillColor = System.Drawing.Color.White;
             this.deleteRow.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.deleteRow.ForeColor = System.Drawing.Color.Black;
-            this.deleteRow.Location = new System.Drawing.Point(276, 163);
+            this.deleteRow.Location = new System.Drawing.Point(242, 122);
+            this.deleteRow.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.deleteRow.Name = "deleteRow";
-            this.deleteRow.Size = new System.Drawing.Size(106, 41);
+            this.deleteRow.Size = new System.Drawing.Size(93, 31);
             this.deleteRow.TabIndex = 22;
             this.deleteRow.Text = "Удалить";
+            this.deleteRow.Click += new System.EventHandler(this.deleteRow_Click);
             // 
             // changeRow
             // 
@@ -59,11 +61,13 @@
             this.changeRow.FillColor = System.Drawing.Color.White;
             this.changeRow.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.changeRow.ForeColor = System.Drawing.Color.Black;
-            this.changeRow.Location = new System.Drawing.Point(27, 163);
+            this.changeRow.Location = new System.Drawing.Point(24, 122);
+            this.changeRow.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.changeRow.Name = "changeRow";
-            this.changeRow.Size = new System.Drawing.Size(106, 41);
+            this.changeRow.Size = new System.Drawing.Size(93, 31);
             this.changeRow.TabIndex = 21;
             this.changeRow.Text = "Изменить";
+            this.changeRow.Click += new System.EventHandler(this.changeRow_Click);
             // 
             // addRow
             // 
@@ -74,11 +78,13 @@
             this.addRow.FillColor = System.Drawing.Color.White;
             this.addRow.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.addRow.ForeColor = System.Drawing.Color.Black;
-            this.addRow.Location = new System.Drawing.Point(151, 163);
+            this.addRow.Location = new System.Drawing.Point(132, 122);
+            this.addRow.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.addRow.Name = "addRow";
-            this.addRow.Size = new System.Drawing.Size(106, 41);
+            this.addRow.Size = new System.Drawing.Size(93, 31);
             this.addRow.TabIndex = 20;
             this.addRow.Text = "Добавить";
+            this.addRow.Click += new System.EventHandler(this.addRow_Click);
             // 
             // assigmentProfessorBox
             // 
@@ -90,9 +96,10 @@
             this.assigmentProfessorBox.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.assigmentProfessorBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.assigmentProfessorBox.ItemHeight = 30;
-            this.assigmentProfessorBox.Location = new System.Drawing.Point(14, 12);
+            this.assigmentProfessorBox.Location = new System.Drawing.Point(12, 9);
+            this.assigmentProfessorBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.assigmentProfessorBox.Name = "assigmentProfessorBox";
-            this.assigmentProfessorBox.Size = new System.Drawing.Size(383, 36);
+            this.assigmentProfessorBox.Size = new System.Drawing.Size(336, 36);
             this.assigmentProfessorBox.TabIndex = 23;
             // 
             // assigmentCourseBox
@@ -105,25 +112,25 @@
             this.assigmentCourseBox.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.assigmentCourseBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.assigmentCourseBox.ItemHeight = 30;
-            this.assigmentCourseBox.Location = new System.Drawing.Point(16, 78);
+            this.assigmentCourseBox.Location = new System.Drawing.Point(14, 58);
+            this.assigmentCourseBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.assigmentCourseBox.Name = "assigmentCourseBox";
-            this.assigmentCourseBox.Size = new System.Drawing.Size(383, 36);
+            this.assigmentCourseBox.Size = new System.Drawing.Size(336, 36);
             this.assigmentCourseBox.TabIndex = 24;
             // 
             // assigmentToCourseEditPage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(411, 261);
+            this.ClientSize = new System.Drawing.Size(360, 196);
             this.Controls.Add(this.assigmentCourseBox);
             this.Controls.Add(this.assigmentProfessorBox);
             this.Controls.Add(this.deleteRow);
             this.Controls.Add(this.changeRow);
             this.Controls.Add(this.addRow);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "assigmentToCourseEditPage";
-            this.Text = "assigmentToCourseEditPage";
+            this.Text = "Редактирование";
             this.ResumeLayout(false);
 
         }

@@ -43,7 +43,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.passwordBox.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.passwordBox.Location = new System.Drawing.Point(280, 341);
+            this.passwordBox.Location = new System.Drawing.Point(246, 245);
             this.passwordBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.passwordBox.Name = "passwordBox";
             this.passwordBox.PlaceholderText = "Пароль";

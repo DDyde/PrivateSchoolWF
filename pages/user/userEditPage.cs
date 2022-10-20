@@ -19,6 +19,8 @@ namespace PrivateSchoolWF.pages.user
             ruleId = _ruleId;
             InitializeComponent();
             LoadCombobox();
+            changeRow.Visible = false;
+            deleteRow.Visible = false;
         }
 
         int id;
@@ -29,6 +31,7 @@ namespace PrivateSchoolWF.pages.user
             InitializeComponent();
             LoadString();
             LoadCombobox();
+            addRow.Visible = false;
         }
 
         private void LoadCombobox()

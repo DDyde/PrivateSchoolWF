@@ -18,6 +18,8 @@ namespace PrivateSchoolWF.pages.courseType
         {
             ruleId = _ruleId;
             InitializeComponent();
+            changeRow.Visible = false;
+            deleteRow.Visible = false;
         }
         int id;
         public courseTypeEditPage(int _id, int _ruleId)
@@ -26,6 +28,7 @@ namespace PrivateSchoolWF.pages.courseType
             id = _id;
             InitializeComponent();
             LoadString();
+            addRow.Visible = false;
         }
 
         private void LoadString()
@@ -42,8 +45,11 @@ namespace PrivateSchoolWF.pages.courseType
         {
 
             connectDB connectDB = new connectDB();
-            MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
-                ($@"INSERT INTO `тип_курса`(`Title`) VALUES ('{courseTypeBox.Text}')", connectDB.GetConnection());
+            MySqlCommand sqlCommand = new MySqlCommand(@"INSERT INTO `тип_курса`(`Title`) VALUES (@courseType)", connectDB.GetConnection());
+
+            sqlCommand.Parameters.AddWithValue("@courseType", courseTypeBox.Text);
+
+            MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter(sqlCommand);
             DataTable dataTable = new DataTable();
             sqlDataAdapter.Fill(dataTable);
             Close();
@@ -54,9 +60,12 @@ namespace PrivateSchoolWF.pages.courseType
         {
             connectDB connectDB = new connectDB();
             connectDB.openCon();
-            MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
-                ($@"UPDATE `тип_курса` SET `Title`='{courseTypeBox.Text}' 
-                        WHERE id_courseType={id}", connectDB.GetConnection());
+            MySqlCommand sqlCommand = new MySqlCommand($@"UPDATE `тип_курса` SET `Title`=@courseType 
+                        WHERE id_course_type={id}", connectDB.GetConnection());
+
+            sqlCommand.Parameters.AddWithValue("@courseType", courseTypeBox.Text);
+
+            MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter(sqlCommand);
             DataTable dataTable = new DataTable();
             sqlDataAdapter.Fill(dataTable);
             connectDB.closeCon();
@@ -70,7 +79,7 @@ namespace PrivateSchoolWF.pages.courseType
             connectDB connectDB = new connectDB();
             connectDB.openCon();
             MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
-                ($@"DELETE FROM `тип_курса` id_courseType={id}", connectDB.GetConnection());
+                ($@"DELETE FROM `тип_курса` WHERE id_course_type={id}", connectDB.GetConnection());
             DataTable dataTable = new DataTable();
             sqlDataAdapter.Fill(dataTable);
             connectDB.closeCon();

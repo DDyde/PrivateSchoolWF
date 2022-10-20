@@ -26,8 +26,8 @@ namespace PrivateSchoolWF.MainPage
         {
             connectDB connectDB = new connectDB();
             MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
-                    (@"select студент.id_student, студент.surname, студент.name, студент.middlename,
-                студент.comment, CONCAT_WS(' ', родитель.surname, родитель.name, родитель.middlename) as 'ФИО родителя', студент.date_of_birth
+                    (@"select студент.id_student, студент.surname as 'Фамилия', студент.name as 'Имя', студент.middlename as 'Отчество',
+                студент.comment as 'Коментарий', CONCAT_WS(' ', родитель.surname, родитель.name, родитель.middlename) as 'ФИО родителя', студент.date_of_birth as 'Дата рождения'
                 FROM студент
                 JOIN родитель ON родитель.id_parent = студент.id_parent", connectDB.GetConnection());
             DataTable dataTable = new DataTable();

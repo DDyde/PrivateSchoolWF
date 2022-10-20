@@ -85,7 +85,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;courseTitle.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
   </data>
   <data name="descriptionBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -112,16 +112,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;descriptionBox.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="priceCourse.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
   <data name="priceCourse.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 266</value>
+    <value>119, 266</value>
   </data>
   <data name="priceCourse.Size" type="System.Drawing.Size, System.Drawing">
-    <value>342, 23</value>
+    <value>184, 23</value>
   </data>
   <data name="priceCourse.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -136,7 +136,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;priceCourse.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="deleteRow.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
@@ -167,7 +167,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;deleteRow.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="changeRow.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
@@ -197,7 +197,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;changeRow.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="addRow.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
@@ -227,7 +227,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;addRow.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="courseType.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -260,7 +260,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;courseType.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="courseTerm.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -269,7 +269,7 @@
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="courseTerm.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 38</value>
+    <value>170, 37</value>
   </data>
   <data name="courseTerm.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
@@ -290,6 +290,72 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;courseTerm.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="courseTermLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="courseTermLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 11pt</value>
+  </data>
+  <data name="courseTermLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="courseTermLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 42</value>
+  </data>
+  <data name="courseTermLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>148, 20</value>
+  </data>
+  <data name="courseTermLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <data name="courseTermLabel.Text" xml:space="preserve">
+    <value>Академический час:</value>
+  </data>
+  <data name="&gt;&gt;courseTermLabel.Name" xml:space="preserve">
+    <value>courseTermLabel</value>
+  </data>
+  <data name="&gt;&gt;courseTermLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;courseTermLabel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;courseTermLabel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="priceLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="priceLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 11pt</value>
+  </data>
+  <data name="priceLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="priceLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>65, 266</value>
+  </data>
+  <data name="priceLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 20</value>
+  </data>
+  <data name="priceLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>26</value>
+  </data>
+  <data name="priceLabel.Text" xml:space="preserve">
+    <value>Цена:</value>
+  </data>
+  <data name="&gt;&gt;priceLabel.Name" xml:space="preserve">
+    <value>priceLabel</value>
+  </data>
+  <data name="&gt;&gt;priceLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;priceLabel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;priceLabel.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -302,7 +368,7 @@
     <value>366, 349</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>courseEditPage</value>
+    <value>Редактирование</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>courseEditPage</value>

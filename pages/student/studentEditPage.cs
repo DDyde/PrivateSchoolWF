@@ -24,6 +24,8 @@ namespace PrivateSchoolWF.pages.student
             ruleId = _ruleId;
             InitializeComponent();
             LoadCombobox();
+            changeRow.Visible = false;
+            changeRow.Visible = false;
         }
         int id;
         public studentEditPage(int _id, int _ruleId)
@@ -33,6 +35,7 @@ namespace PrivateSchoolWF.pages.student
             id = _id;
             LoadString();
             LoadCombobox();
+            addRow.Visible = false;
         }
 
         private void LoadString()
@@ -78,17 +81,16 @@ namespace PrivateSchoolWF.pages.student
                 connectDB connectDB = new connectDB();
                 MySqlCommand sqlCommand = new MySqlCommand(@"INSERT INTO `студент`(`surname`, `name`, `middlename`, `comment`,
                     `id_parent`, `date_of_birth`) 
-                    VALUES ('@surname','{nameStudent.Text}','{middlenameStudent.Text}',
-                    '{commentRichBox.Text}','{parentStudent.SelectedValue}','{dateOfBirthStudent.Text}')", connectDB.GetConnection());
+                    VALUES (@surname,@name,@middlename,
+                    @comment, @idParent, @dateOfBirth)", connectDB.GetConnection());
                 sqlCommand.Parameters.AddWithValue("@surname", surnameStudent.Text);
-                sqlCommand.Parameters.AddWithValue("@name", surnameStudent.Text);
-                sqlCommand.Parameters.AddWithValue("@middlename", surnameStudent.Text);
-                sqlCommand.Parameters.AddWithValue("@comment", surnameStudent.Text);
-                sqlCommand.Parameters.AddWithValue("@idParent", surnameStudent.Text);
-                sqlCommand.Parameters.AddWithValue("@dateOfBirth", surnameStudent.Text);
+                sqlCommand.Parameters.AddWithValue("@name", nameStudent.Text);
+                sqlCommand.Parameters.AddWithValue("@middlename", middlenameStudent.Text);
+                sqlCommand.Parameters.AddWithValue("@comment", commentRichBox.Text);
+                sqlCommand.Parameters.AddWithValue("@idParent", parentStudent.SelectedValue);
+                sqlCommand.Parameters.AddWithValue("@dateOfBirth", dateOfBirthStudent.Text);
 
-                MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
-                    (, connectDB.GetConnection());
+                MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter(sqlCommand);
                 DataTable dataTable = new DataTable();
                 sqlDataAdapter.Fill(dataTable);
                 Close();
@@ -106,10 +108,18 @@ namespace PrivateSchoolWF.pages.student
             {
                 connectDB connectDB = new connectDB();
                 connectDB.openCon();
-                MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
-                    ($@"UPDATE `студент` SET `surname` = '{surnameStudent.Text}', `name` = '{nameStudent.Text}', `middlename` = '{middlenameStudent.Text}',
-                `comment` = '{commentRichBox.Text}', `id_parent` = '{parentStudent.SelectedValue}', `date_of_birth` = '{dateOfBirthStudent.Text}'
+                MySqlCommand sqlCommand = new MySqlCommand(@$"UPDATE `студент` SET `surname` = @surname, `name` = @name, 
+                `middlename` = @middlename, `comment` = @comment, `id_parent` = @idParent, `date_of_birth` = @dateOfBirth
                 WHERE id_student={id}", connectDB.GetConnection());
+
+                sqlCommand.Parameters.AddWithValue("@surname", surnameStudent.Text);
+                sqlCommand.Parameters.AddWithValue("@name", nameStudent.Text);
+                sqlCommand.Parameters.AddWithValue("@middlename", middlenameStudent.Text);
+                sqlCommand.Parameters.AddWithValue("@comment", commentRichBox.Text);
+                sqlCommand.Parameters.AddWithValue("@idParent", parentStudent.SelectedValue);
+                sqlCommand.Parameters.AddWithValue("@dateOfBirth", dateOfBirthStudent.Text);
+
+                MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter(sqlCommand);
                 DataTable dataTable = new DataTable();
                 sqlDataAdapter.Fill(dataTable);
                 connectDB.closeCon();
@@ -135,7 +145,7 @@ namespace PrivateSchoolWF.pages.student
                 connectDB connectDB = new connectDB();
                 connectDB.openCon();
                 MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
-                    ($@"DELETE FROM `студент` id_student={id}", connectDB.GetConnection());
+                    ($@"DELETE FROM `студент` WHERE id_student={id}", connectDB.GetConnection());
                 DataTable dataTable = new DataTable();
                 sqlDataAdapter.Fill(dataTable);
                 connectDB.closeCon();
