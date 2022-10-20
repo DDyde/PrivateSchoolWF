@@ -25,8 +25,10 @@ namespace PrivateSchoolWF.pages.user
         {
             connectDB connectDB = new connectDB();
             MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
-                    (@"select * 
-                        from пользователь", connectDB.GetConnection());
+                    (@"select id_user, concat_ws(' ', сотрудник.surname, сотрудник.name, сотрудник.middlename) as 'ФИО сотрудника',
+                        Login as 'Логин', Email as 'Почта', Password as 'Пароль'
+                        from пользователь
+                        JOIN сотрудник ON сотрудник.id_employee = пользователь.id_employee", connectDB.GetConnection());
             DataTable dataTable = new DataTable();
             sqlDataAdapter.Fill(dataTable);
             userListGrid.DataSource = dataTable;

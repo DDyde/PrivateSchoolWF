@@ -41,33 +41,30 @@
             // 
             this.loginBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.loginBox.Location = new System.Drawing.Point(14, 55);
-            this.loginBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.loginBox.Location = new System.Drawing.Point(12, 63);
             this.loginBox.Name = "loginBox";
             this.loginBox.PlaceholderText = "Логин";
-            this.loginBox.Size = new System.Drawing.Size(376, 27);
+            this.loginBox.Size = new System.Drawing.Size(330, 23);
             this.loginBox.TabIndex = 1;
             // 
             // emailBox
             // 
             this.emailBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.emailBox.Location = new System.Drawing.Point(14, 93);
-            this.emailBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.emailBox.Location = new System.Drawing.Point(12, 92);
             this.emailBox.Name = "emailBox";
             this.emailBox.PlaceholderText = "Email";
-            this.emailBox.Size = new System.Drawing.Size(376, 27);
+            this.emailBox.Size = new System.Drawing.Size(330, 23);
             this.emailBox.TabIndex = 2;
             // 
             // passwordBox
             // 
             this.passwordBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.passwordBox.Location = new System.Drawing.Point(14, 132);
-            this.passwordBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.passwordBox.Location = new System.Drawing.Point(12, 121);
             this.passwordBox.Name = "passwordBox";
             this.passwordBox.PlaceholderText = "Пароль";
-            this.passwordBox.Size = new System.Drawing.Size(376, 27);
+            this.passwordBox.Size = new System.Drawing.Size(330, 23);
             this.passwordBox.TabIndex = 3;
             // 
             // fioEmployeeBox
@@ -82,9 +79,10 @@
             this.fioEmployeeBox.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.fioEmployeeBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.fioEmployeeBox.ItemHeight = 30;
-            this.fioEmployeeBox.Location = new System.Drawing.Point(14, 12);
+            this.fioEmployeeBox.Location = new System.Drawing.Point(12, 9);
+            this.fioEmployeeBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.fioEmployeeBox.Name = "fioEmployeeBox";
-            this.fioEmployeeBox.Size = new System.Drawing.Size(376, 36);
+            this.fioEmployeeBox.Size = new System.Drawing.Size(330, 36);
             this.fioEmployeeBox.TabIndex = 7;
             // 
             // deleteRow
@@ -96,9 +94,10 @@
             this.deleteRow.FillColor = System.Drawing.Color.White;
             this.deleteRow.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.deleteRow.ForeColor = System.Drawing.Color.Black;
-            this.deleteRow.Location = new System.Drawing.Point(267, 195);
+            this.deleteRow.Location = new System.Drawing.Point(236, 174);
+            this.deleteRow.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.deleteRow.Name = "deleteRow";
-            this.deleteRow.Size = new System.Drawing.Size(106, 41);
+            this.deleteRow.Size = new System.Drawing.Size(93, 31);
             this.deleteRow.TabIndex = 22;
             this.deleteRow.Text = "Удалить";
             // 
@@ -111,9 +110,10 @@
             this.changeRow.FillColor = System.Drawing.Color.White;
             this.changeRow.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.changeRow.ForeColor = System.Drawing.Color.Black;
-            this.changeRow.Location = new System.Drawing.Point(18, 195);
+            this.changeRow.Location = new System.Drawing.Point(18, 174);
+            this.changeRow.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.changeRow.Name = "changeRow";
-            this.changeRow.Size = new System.Drawing.Size(106, 41);
+            this.changeRow.Size = new System.Drawing.Size(93, 31);
             this.changeRow.TabIndex = 21;
             this.changeRow.Text = "Изменить";
             // 
@@ -126,17 +126,18 @@
             this.addRow.FillColor = System.Drawing.Color.White;
             this.addRow.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.addRow.ForeColor = System.Drawing.Color.Black;
-            this.addRow.Location = new System.Drawing.Point(142, 195);
+            this.addRow.Location = new System.Drawing.Point(126, 174);
+            this.addRow.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.addRow.Name = "addRow";
-            this.addRow.Size = new System.Drawing.Size(106, 41);
+            this.addRow.Size = new System.Drawing.Size(93, 31);
             this.addRow.TabIndex = 20;
             this.addRow.Text = "Добавить";
             // 
             // userEditPage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(404, 288);
+            this.ClientSize = new System.Drawing.Size(354, 216);
             this.Controls.Add(this.deleteRow);
             this.Controls.Add(this.changeRow);
             this.Controls.Add(this.addRow);
@@ -145,7 +146,6 @@
             this.Controls.Add(this.emailBox);
             this.Controls.Add(this.loginBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "userEditPage";
             this.Text = "userEditPage";
             this.ResumeLayout(false);

@@ -31,33 +31,43 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.addRowButton = new System.Windows.Forms.Button();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.addRowButton = new Guna.UI2.WinForms.Guna2Button();
             this.assigmentListGrid = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.panel1.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.assigmentListGrid)).BeginInit();
             this.SuspendLayout();
             // 
-            // panel1
+            // tableLayoutPanel1
             // 
-            this.panel1.Controls.Add(this.addRowButton);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(685, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(229, 600);
-            this.panel1.TabIndex = 0;
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 85F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel1.Controls.Add(this.addRowButton, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.assigmentListGrid, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 450);
+            this.tableLayoutPanel1.TabIndex = 0;
             // 
             // addRowButton
             // 
-            this.addRowButton.Location = new System.Drawing.Point(53, 64);
-            this.addRowButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.addRowButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.addRowButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.addRowButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.addRowButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.addRowButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.addRowButton.ForeColor = System.Drawing.Color.White;
+            this.addRowButton.Location = new System.Drawing.Point(683, 70);
             this.addRowButton.Name = "addRowButton";
-            this.addRowButton.Size = new System.Drawing.Size(127, 31);
+            this.addRowButton.Size = new System.Drawing.Size(114, 45);
             this.addRowButton.TabIndex = 0;
             this.addRowButton.Text = "Добавить запись";
-            this.addRowButton.UseVisualStyleBackColor = true;
-            this.addRowButton.Click += new System.EventHandler(this.addRowButton_Click);
             // 
             // assigmentListGrid
             // 
@@ -80,13 +90,14 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.assigmentListGrid.DefaultCellStyle = dataGridViewCellStyle3;
+            this.assigmentListGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.assigmentListGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.assigmentListGrid.Location = new System.Drawing.Point(0, 0);
+            this.assigmentListGrid.Location = new System.Drawing.Point(3, 3);
             this.assigmentListGrid.Name = "assigmentListGrid";
             this.assigmentListGrid.RowHeadersVisible = false;
-            this.assigmentListGrid.RowHeadersWidth = 51;
-            this.assigmentListGrid.RowTemplate.Height = 29;
-            this.assigmentListGrid.Size = new System.Drawing.Size(686, 600);
+            this.tableLayoutPanel1.SetRowSpan(this.assigmentListGrid, 2);
+            this.assigmentListGrid.RowTemplate.Height = 25;
+            this.assigmentListGrid.Size = new System.Drawing.Size(674, 444);
             this.assigmentListGrid.TabIndex = 1;
             this.assigmentListGrid.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.assigmentListGrid.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -106,23 +117,20 @@
             this.assigmentListGrid.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.assigmentListGrid.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.assigmentListGrid.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.assigmentListGrid.ThemeStyle.RowsStyle.Height = 29;
+            this.assigmentListGrid.ThemeStyle.RowsStyle.Height = 25;
             this.assigmentListGrid.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.assigmentListGrid.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.assigmentListGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.assigmentListGrid_CellClick);
             // 
             // assigmentToCourse
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(914, 600);
-            this.Controls.Add(this.assigmentListGrid);
-            this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "assigmentToCourse";
             this.Text = "assigmentToCourse";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.assigmentToCourse_FormClosed);
-            this.panel1.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.assigmentListGrid)).EndInit();
             this.ResumeLayout(false);
 
@@ -130,8 +138,8 @@
 
         #endregion
 
-        private Panel panel1;
-        private Button addRowButton;
+        private TableLayoutPanel tableLayoutPanel1;
+        private Guna.UI2.WinForms.Guna2Button addRowButton;
         private Guna.UI2.WinForms.Guna2DataGridView assigmentListGrid;
     }
 }

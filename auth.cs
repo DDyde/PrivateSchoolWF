@@ -47,7 +47,6 @@ namespace PrivateSchoolWF
                 {
                     idEmployee = Int16.Parse(dataTable.Rows[0][4].ToString());
                     ruleId = Int16.Parse(dataTable.Rows[0][3].ToString());
-                    MessageBox.Show("Вход выполнен успешно!");
                     mainPage mainPage = new mainPage(ruleId, idEmployee);
                     mainPage.Show();
                     this.Hide();
@@ -63,18 +62,16 @@ namespace PrivateSchoolWF
             }
         }
 
-        private void showPass_Click(object sender, EventArgs e)
+        private void showHidePassButton_Click(object sender, EventArgs e)
         {
-            passwordBox.UseSystemPasswordChar = false;
-            showPass.Visible = false;
-            hidePass.Visible = true;
-        }
-
-        private void hidePass_Click(object sender, EventArgs e)
-        {
-            passwordBox.UseSystemPasswordChar = true;
-            showPass.Visible = true;
-            hidePass.Visible = false;
+            if (showHidePassButton.Checked)
+            {
+                passwordBox.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                passwordBox.UseSystemPasswordChar = true;
+            }
         }
     }
 }

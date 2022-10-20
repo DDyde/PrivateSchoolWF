@@ -31,32 +31,42 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.addRowButton = new System.Windows.Forms.Button();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.addRowButton = new Guna.UI2.WinForms.Guna2Button();
             this.positionListGrid = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.panel1.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.positionListGrid)).BeginInit();
             this.SuspendLayout();
             // 
-            // panel1
+            // tableLayoutPanel1
             // 
-            this.panel1.Controls.Add(this.addRowButton);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(685, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(229, 600);
-            this.panel1.TabIndex = 1;
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 85F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel1.Controls.Add(this.addRowButton, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.positionListGrid, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 450);
+            this.tableLayoutPanel1.TabIndex = 0;
             // 
             // addRowButton
             // 
-            this.addRowButton.Location = new System.Drawing.Point(48, 53);
-            this.addRowButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.addRowButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.addRowButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.addRowButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.addRowButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.addRowButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.addRowButton.ForeColor = System.Drawing.Color.White;
+            this.addRowButton.Location = new System.Drawing.Point(683, 70);
             this.addRowButton.Name = "addRowButton";
-            this.addRowButton.Size = new System.Drawing.Size(139, 31);
+            this.addRowButton.Size = new System.Drawing.Size(114, 45);
             this.addRowButton.TabIndex = 0;
             this.addRowButton.Text = "Добавить запись";
-            this.addRowButton.UseVisualStyleBackColor = true;
             this.addRowButton.Click += new System.EventHandler(this.addRowBotton_Click);
             // 
             // positionListGrid
@@ -80,14 +90,15 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.positionListGrid.DefaultCellStyle = dataGridViewCellStyle3;
+            this.positionListGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.positionListGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.positionListGrid.Location = new System.Drawing.Point(0, 0);
+            this.positionListGrid.Location = new System.Drawing.Point(3, 3);
             this.positionListGrid.Name = "positionListGrid";
             this.positionListGrid.RowHeadersVisible = false;
-            this.positionListGrid.RowHeadersWidth = 51;
-            this.positionListGrid.RowTemplate.Height = 29;
-            this.positionListGrid.Size = new System.Drawing.Size(686, 600);
-            this.positionListGrid.TabIndex = 2;
+            this.tableLayoutPanel1.SetRowSpan(this.positionListGrid, 2);
+            this.positionListGrid.RowTemplate.Height = 25;
+            this.positionListGrid.Size = new System.Drawing.Size(674, 444);
+            this.positionListGrid.TabIndex = 1;
             this.positionListGrid.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.positionListGrid.ThemeStyle.AlternatingRowsStyle.Font = null;
             this.positionListGrid.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
@@ -106,31 +117,30 @@
             this.positionListGrid.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.positionListGrid.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.positionListGrid.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.positionListGrid.ThemeStyle.RowsStyle.Height = 29;
+            this.positionListGrid.ThemeStyle.RowsStyle.Height = 25;
             this.positionListGrid.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.positionListGrid.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.positionListGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.positionListGrid_CellClick);
             // 
             // positionPage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(914, 600);
-            this.Controls.Add(this.positionListGrid);
-            this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "positionPage";
             this.Text = "positionPage";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.positionPage_FormClosed);
-            this.panel1.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.positionListGrid)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private Panel panel1;
-        private Button addRowButton;
+
+        private TableLayoutPanel tableLayoutPanel1;
+        private Guna.UI2.WinForms.Guna2Button addRowButton;
         private Guna.UI2.WinForms.Guna2DataGridView positionListGrid;
     }
 }

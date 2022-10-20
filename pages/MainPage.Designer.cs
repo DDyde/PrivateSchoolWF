@@ -31,7 +31,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.addRowButton = new System.Windows.Forms.Button();
             this.userPageButton = new System.Windows.Forms.Button();
             this.coureTypePageButton = new System.Windows.Forms.Button();
             this.employeePageButton = new System.Windows.Forms.Button();
@@ -43,29 +42,18 @@
             this.studentPageButton = new System.Windows.Forms.Button();
             this.studentListGrid = new Guna.UI2.WinForms.Guna2DataGridView();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.addRowButton = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.studentListGrid)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // addRowButton
-            // 
-            this.addRowButton.Dock = System.Windows.Forms.DockStyle.Top;
-            this.addRowButton.Location = new System.Drawing.Point(1128, 69);
-            this.addRowButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.addRowButton.Name = "addRowButton";
-            this.addRowButton.Size = new System.Drawing.Size(123, 57);
-            this.addRowButton.TabIndex = 0;
-            this.addRowButton.Text = "Добавить запись";
-            this.addRowButton.UseVisualStyleBackColor = true;
-            this.addRowButton.Click += new System.EventHandler(this.addRowButton_Click);
-            // 
             // userPageButton
             // 
             this.userPageButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.userPageButton.Location = new System.Drawing.Point(995, 7);
-            this.userPageButton.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
+            this.userPageButton.Location = new System.Drawing.Point(862, 0);
+            this.userPageButton.Margin = new System.Windows.Forms.Padding(0);
             this.userPageButton.Name = "userPageButton";
-            this.userPageButton.Size = new System.Drawing.Size(124, 51);
+            this.userPageButton.Size = new System.Drawing.Size(119, 48);
             this.userPageButton.TabIndex = 8;
             this.userPageButton.Text = "Пользователь";
             this.userPageButton.UseVisualStyleBackColor = true;
@@ -75,10 +63,10 @@
             // coureTypePageButton
             // 
             this.coureTypePageButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.coureTypePageButton.Location = new System.Drawing.Point(756, 7);
-            this.coureTypePageButton.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
+            this.coureTypePageButton.Location = new System.Drawing.Point(654, 0);
+            this.coureTypePageButton.Margin = new System.Windows.Forms.Padding(0);
             this.coureTypePageButton.Name = "coureTypePageButton";
-            this.coureTypePageButton.Size = new System.Drawing.Size(113, 51);
+            this.coureTypePageButton.Size = new System.Drawing.Size(109, 48);
             this.coureTypePageButton.TabIndex = 7;
             this.coureTypePageButton.Text = "Тип курса";
             this.coureTypePageButton.UseVisualStyleBackColor = true;
@@ -88,10 +76,10 @@
             // employeePageButton
             // 
             this.employeePageButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.employeePageButton.Location = new System.Drawing.Point(530, 7);
-            this.employeePageButton.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
+            this.employeePageButton.Location = new System.Drawing.Point(457, 0);
+            this.employeePageButton.Margin = new System.Windows.Forms.Padding(0);
             this.employeePageButton.Name = "employeePageButton";
-            this.employeePageButton.Size = new System.Drawing.Size(108, 51);
+            this.employeePageButton.Size = new System.Drawing.Size(105, 48);
             this.employeePageButton.TabIndex = 6;
             this.employeePageButton.Text = "Сотрудник";
             this.employeePageButton.UseVisualStyleBackColor = true;
@@ -101,10 +89,10 @@
             // positionPageButton
             // 
             this.positionPageButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.positionPageButton.Location = new System.Drawing.Point(256, 7);
-            this.positionPageButton.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
+            this.positionPageButton.Location = new System.Drawing.Point(218, 0);
+            this.positionPageButton.Margin = new System.Windows.Forms.Padding(0);
             this.positionPageButton.Name = "positionPageButton";
-            this.positionPageButton.Size = new System.Drawing.Size(113, 51);
+            this.positionPageButton.Size = new System.Drawing.Size(109, 48);
             this.positionPageButton.TabIndex = 5;
             this.positionPageButton.Text = "Должность";
             this.positionPageButton.UseVisualStyleBackColor = true;
@@ -114,10 +102,10 @@
             // parentPageButton
             // 
             this.parentPageButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.parentPageButton.Location = new System.Drawing.Point(6, 7);
-            this.parentPageButton.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
+            this.parentPageButton.Location = new System.Drawing.Point(0, 0);
+            this.parentPageButton.Margin = new System.Windows.Forms.Padding(0);
             this.parentPageButton.Name = "parentPageButton";
-            this.parentPageButton.Size = new System.Drawing.Size(113, 51);
+            this.parentPageButton.Size = new System.Drawing.Size(109, 48);
             this.parentPageButton.TabIndex = 4;
             this.parentPageButton.Text = "Родители";
             this.parentPageButton.UseVisualStyleBackColor = true;
@@ -126,10 +114,10 @@
             // assigmentToCoursePageButton
             // 
             this.assigmentToCoursePageButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.assigmentToCoursePageButton.Location = new System.Drawing.Point(131, 7);
-            this.assigmentToCoursePageButton.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
+            this.assigmentToCoursePageButton.Location = new System.Drawing.Point(109, 0);
+            this.assigmentToCoursePageButton.Margin = new System.Windows.Forms.Padding(0);
             this.assigmentToCoursePageButton.Name = "assigmentToCoursePageButton";
-            this.assigmentToCoursePageButton.Size = new System.Drawing.Size(113, 51);
+            this.assigmentToCoursePageButton.Size = new System.Drawing.Size(109, 48);
             this.assigmentToCoursePageButton.TabIndex = 3;
             this.assigmentToCoursePageButton.Text = "Назначение на курс";
             this.assigmentToCoursePageButton.UseVisualStyleBackColor = true;
@@ -138,10 +126,10 @@
             // professorPageButton
             // 
             this.professorPageButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.professorPageButton.Location = new System.Drawing.Point(381, 7);
-            this.professorPageButton.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
+            this.professorPageButton.Location = new System.Drawing.Point(327, 0);
+            this.professorPageButton.Margin = new System.Windows.Forms.Padding(0);
             this.professorPageButton.Name = "professorPageButton";
-            this.professorPageButton.Size = new System.Drawing.Size(137, 51);
+            this.professorPageButton.Size = new System.Drawing.Size(130, 48);
             this.professorPageButton.TabIndex = 2;
             this.professorPageButton.Text = "Преподаватель";
             this.professorPageButton.UseVisualStyleBackColor = true;
@@ -151,10 +139,10 @@
             // coursePageButton
             // 
             this.coursePageButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.coursePageButton.Location = new System.Drawing.Point(650, 7);
-            this.coursePageButton.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
+            this.coursePageButton.Location = new System.Drawing.Point(562, 0);
+            this.coursePageButton.Margin = new System.Windows.Forms.Padding(0);
             this.coursePageButton.Name = "coursePageButton";
-            this.coursePageButton.Size = new System.Drawing.Size(94, 51);
+            this.coursePageButton.Size = new System.Drawing.Size(92, 48);
             this.coursePageButton.TabIndex = 1;
             this.coursePageButton.Text = "Курсы";
             this.coursePageButton.UseVisualStyleBackColor = true;
@@ -163,10 +151,10 @@
             // studentPageButton
             // 
             this.studentPageButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.studentPageButton.Location = new System.Drawing.Point(881, 7);
-            this.studentPageButton.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
+            this.studentPageButton.Location = new System.Drawing.Point(763, 0);
+            this.studentPageButton.Margin = new System.Windows.Forms.Padding(0);
             this.studentPageButton.Name = "studentPageButton";
-            this.studentPageButton.Size = new System.Drawing.Size(102, 51);
+            this.studentPageButton.Size = new System.Drawing.Size(99, 48);
             this.studentPageButton.TabIndex = 0;
             this.studentPageButton.Text = "Студенты";
             this.studentPageButton.Click += new System.EventHandler(this.studentPage_Click);
@@ -175,9 +163,6 @@
             // 
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             this.studentListGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.studentListGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.studentListGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
@@ -187,7 +172,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.studentListGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.studentListGrid.ColumnHeadersHeight = 4;
+            this.studentListGrid.ColumnHeadersHeight = 35;
             this.studentListGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.tableLayoutPanel1.SetColumnSpan(this.studentListGrid, 9);
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -198,15 +183,17 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.studentListGrid.DefaultCellStyle = dataGridViewCellStyle3;
+            this.studentListGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.studentListGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.studentListGrid.Location = new System.Drawing.Point(3, 68);
+            this.studentListGrid.Location = new System.Drawing.Point(3, 50);
+            this.studentListGrid.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.studentListGrid.Name = "studentListGrid";
             this.studentListGrid.ReadOnly = true;
             this.studentListGrid.RowHeadersVisible = false;
-            this.studentListGrid.RowHeadersWidth = 51;
+            this.studentListGrid.RowHeadersWidth = 50;
             this.tableLayoutPanel1.SetRowSpan(this.studentListGrid, 2);
             this.studentListGrid.RowTemplate.Height = 29;
-            this.studentListGrid.Size = new System.Drawing.Size(1119, 497);
+            this.studentListGrid.Size = new System.Drawing.Size(975, 374);
             this.studentListGrid.TabIndex = 3;
             this.studentListGrid.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.studentListGrid.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -220,7 +207,7 @@
             this.studentListGrid.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.studentListGrid.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.studentListGrid.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            this.studentListGrid.ThemeStyle.HeaderStyle.Height = 4;
+            this.studentListGrid.ThemeStyle.HeaderStyle.Height = 35;
             this.studentListGrid.ThemeStyle.ReadOnly = true;
             this.studentListGrid.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.studentListGrid.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
@@ -244,7 +231,6 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10.84529F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.Controls.Add(this.addRowButton, 9, 1);
             this.tableLayoutPanel1.Controls.Add(this.studentListGrid, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.userPageButton, 8, 0);
             this.tableLayoutPanel1.Controls.Add(this.parentPageButton, 0, 0);
@@ -255,23 +241,39 @@
             this.tableLayoutPanel1.Controls.Add(this.coursePageButton, 5, 0);
             this.tableLayoutPanel1.Controls.Add(this.professorPageButton, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.employeePageButton, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.addRowButton, 9, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.44366F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 46.65493F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 41.66667F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1254, 568);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1097, 426);
             this.tableLayoutPanel1.TabIndex = 4;
+            // 
+            // addRowButton
+            // 
+            this.addRowButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.addRowButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.addRowButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.addRowButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.addRowButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.addRowButton.ForeColor = System.Drawing.Color.White;
+            this.addRowButton.Location = new System.Drawing.Point(984, 51);
+            this.addRowButton.Name = "addRowButton";
+            this.addRowButton.Size = new System.Drawing.Size(110, 45);
+            this.addRowButton.TabIndex = 9;
+            this.addRowButton.Text = "Добавить запись";
+            this.addRowButton.Click += new System.EventHandler(this.addRowButton_Click);
             // 
             // mainPage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1254, 568);
+            this.ClientSize = new System.Drawing.Size(1097, 426);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "mainPage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Главная";
@@ -292,8 +294,8 @@
         private Button userPageButton;
         private Button coureTypePageButton;
         private Button employeePageButton;
-        private Button addRowButton;
         private Guna.UI2.WinForms.Guna2DataGridView studentListGrid;
         private TableLayoutPanel tableLayoutPanel1;
+        private Guna.UI2.WinForms.Guna2Button addRowButton;
     }
 }
