@@ -46,7 +46,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.passwordBox.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.passwordBox.Location = new System.Drawing.Point(280, 341);
+            this.passwordBox.Location = new System.Drawing.Point(280, 340);
             this.passwordBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.passwordBox.Name = "passwordBox";
             this.passwordBox.PlaceholderText = "Пароль";
@@ -83,7 +83,7 @@
             // 
             this.showPass.Image = global::PrivateSchoolWF.Properties.Resources.closeEyeIcon;
             this.showPass.InitialImage = null;
-            this.showPass.Location = new System.Drawing.Point(639, 454);
+            this.showPass.Location = new System.Drawing.Point(639, 453);
             this.showPass.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.showPass.Name = "showPass";
             this.showPass.Size = new System.Drawing.Size(37, 39);
@@ -95,7 +95,7 @@
             // hidePass
             // 
             this.hidePass.Image = global::PrivateSchoolWF.Properties.Resources.openEyeIcon;
-            this.hidePass.Location = new System.Drawing.Point(639, 341);
+            this.hidePass.Location = new System.Drawing.Point(639, 340);
             this.hidePass.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.hidePass.Name = "hidePass";
             this.hidePass.Size = new System.Drawing.Size(37, 39);
@@ -116,7 +116,7 @@
             this.authButton.Dock = System.Windows.Forms.DockStyle.Top;
             this.authButton.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.authButton.ForeColor = System.Drawing.Color.White;
-            this.authButton.Location = new System.Drawing.Point(280, 453);
+            this.authButton.Location = new System.Drawing.Point(280, 452);
             this.authButton.Name = "authButton";
             this.authButton.Size = new System.Drawing.Size(353, 56);
             this.authButton.TabIndex = 3;

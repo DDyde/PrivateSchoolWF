@@ -23,8 +23,6 @@ namespace PrivateSchoolWF
             try
             {
                 connectDB connectDB = new connectDB();
-                string login = loginBox.Text;
-                string password = passwordBox.Text;
                 int ruleId;
                 int idEmployee;
                 connectDB.openCon();
@@ -34,10 +32,12 @@ namespace PrivateSchoolWF
                 string query = $@"SELECT пользователь.login, пользователь.password, пользователь.email, сотрудник.id_position,
                                 пользователь.id_employee
                                 FROM пользователь 
-                                JOIN сотрудник ON сотрудник.id_Employee = пользователь.id_Employee WHERE (Login = '{login}'
-                                OR Email = '{login}') AND Password ='{password}'";
+                                JOIN сотрудник ON сотрудник.id_Employee = пользователь.id_Employee WHERE (Login = @login
+                                OR Email = @login) AND Password = @password";
 
                 MySqlCommand sqlCommand = new MySqlCommand(query, connectDB.GetConnection());
+                sqlCommand.Parameters.AddWithValue("@login", loginBox.Text);
+                sqlCommand.Parameters.AddWithValue("@password", passwordBox.Text);
                 dataAdapter.SelectCommand = sqlCommand;
                 dataAdapter.Fill(dataTable);
                 connectDB.closeCon();

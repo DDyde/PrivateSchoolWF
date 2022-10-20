@@ -76,11 +76,19 @@ namespace PrivateSchoolWF.pages.student
             if (ruleId == 1 || ruleId == 2)
             {
                 connectDB connectDB = new connectDB();
-                MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
-                    ($@"INSERT INTO `студент`(`surname`, `name`, `middlename`, `comment`,
+                MySqlCommand sqlCommand = new MySqlCommand(@"INSERT INTO `студент`(`surname`, `name`, `middlename`, `comment`,
                     `id_parent`, `date_of_birth`) 
-                    VALUES ('{surnameStudent.Text}','{nameStudent.Text}','{middlenameStudent.Text}',
+                    VALUES ('@surname','{nameStudent.Text}','{middlenameStudent.Text}',
                     '{commentRichBox.Text}','{parentStudent.SelectedValue}','{dateOfBirthStudent.Text}')", connectDB.GetConnection());
+                sqlCommand.Parameters.AddWithValue("@surname", surnameStudent.Text);
+                sqlCommand.Parameters.AddWithValue("@name", surnameStudent.Text);
+                sqlCommand.Parameters.AddWithValue("@middlename", surnameStudent.Text);
+                sqlCommand.Parameters.AddWithValue("@comment", surnameStudent.Text);
+                sqlCommand.Parameters.AddWithValue("@idParent", surnameStudent.Text);
+                sqlCommand.Parameters.AddWithValue("@dateOfBirth", surnameStudent.Text);
+
+                MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
+                    (, connectDB.GetConnection());
                 DataTable dataTable = new DataTable();
                 sqlDataAdapter.Fill(dataTable);
                 Close();
