@@ -45,29 +45,34 @@ namespace PrivateSchoolWF.pages
             connectDB connectDB = new connectDB();
             connectDB.openCon();
             MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter(
-                $@"SELECT id_student, CONCAT_WS(' ', студент.surname, студент.name, студент.middlename) as 'студенты'
+                $@"SELECT id_student, CONCAT_WS(' ', студент.surname, студент.name, студент.middlename) as 'ФИО студента'
                 FROM студент", connectDB.GetConnection());
             DataTable dataTable = new DataTable();
             sqlDataAdapter.Fill(dataTable);
             fioStudentBox.DataSource = dataTable;
-            fioStudentBox.DisplayMember = "студенты";
+            fioStudentBox.DisplayMember = "ФИО студента";
             fioStudentBox.ValueMember = "id_student";
             connectDB.closeCon();
 
             connectDB.openCon();
             MySqlDataAdapter sqlDataAdapter2 = new MySqlDataAdapter(
-                $@"SELECT id_assignment_to_course, concat(преподаватель.surname,' ', преподаватель.name, ' ', преподаватель.middlename,' ',
+                $@"SELECT id_assignment_to_course, concat(преподаватель.surname, ' ',преподаватель.name, ' ',преподаватель.middlename, ' ',
                 курс.title, '(', тип_курса.title,')') as 'Преподаватель/курс'
                 FROM назначение_на_курс
                 JOIN преподаватель ON преподаватель.id_professor = назначение_на_курс.id_professor
                 JOIN курс ON курс.id_course = назначение_на_курс.id_course
-                JOIN тип_курса ON тип_курса.id_course_type = курс.id_course_type", connectDB.GetConnection());
+                JOIN тип_курса ON тип_курса.id_course_type = курс.id_course_type
+                ORDER BY  id_assignment_to_course ASC", connectDB.GetConnection());
             DataTable dataTable2 = new DataTable();
             sqlDataAdapter2.Fill(dataTable2);
             courseAssigBox.DataSource = dataTable2;
             courseAssigBox.DisplayMember = "Преподаватель/курс";
             courseAssigBox.ValueMember = "id_assignment_to_course";
+
+            fioStudentBox.SelectedIndex = --id;
+            courseAssigBox.SelectedIndex = id;
             connectDB.closeCon();
+
         }
 
         private void LoadString()

@@ -149,5 +149,90 @@ namespace PrivateSchoolWF
             mainEditPage.ShowDialog();
             loadData();
         }
+
+        private void singleCourseTypeRadio_CheckedChanged(object sender, EventArgs e)
+        {
+            connectDB connectDB = new connectDB();
+            MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
+                    (@"SELECT id_education_document, CONCAT_WS(' ', студент.surname, студент.name, студент.middlename) as 'ФИО студента', курс.title as 'Название курса',
+                    тип_курса.title as 'Тип курса', документ_обучения.date_begin as 'Дата начала обучения', документ_обучения.date_end as 'Дата окончания обучения', 
+                    CONCAT_WS(' ', преподаватель.surname, преподаватель.name, преподаватель.middlename) as 'ФИО Преподавателя', курс.price as 'Цена'
+                    FROM студент
+                    JOIN документ_обучения ON документ_обучения.id_student = студент.id_student
+                    JOIN назначение_на_курс ON назначение_на_курс.id_assignment_to_course = документ_обучения.id_assignment_to_course
+                    JOIN преподаватель ON преподаватель.id_professor = назначение_на_курс.id_professor
+                    JOIN курс ON курс.id_course = назначение_на_курс.id_course
+                    JOIN тип_курса ON тип_курса.id_course_type = курс.id_course_type
+                    WHERE тип_курса.title like 'Индивидуальный'", connectDB.GetConnection());
+            DataTable dataTable = new DataTable();
+            sqlDataAdapter.Fill(dataTable);
+            studentListGrid.DataSource = dataTable;
+            studentListGrid.Columns[0].Visible = false;
+        }
+
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
+            singleCourseTypeRadio.Checked = false;
+            loadData();
+        }
+
+        private void groupCourseTypeRadio_CheckedChanged(object sender, EventArgs e)
+        {
+            connectDB connectDB = new connectDB();
+            MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
+                    (@"SELECT id_education_document, CONCAT_WS(' ', студент.surname, студент.name, студент.middlename) as 'ФИО студента', курс.title as 'Название курса',
+                    тип_курса.title as 'Тип курса', документ_обучения.date_begin as 'Дата начала обучения', документ_обучения.date_end as 'Дата окончания обучения', 
+                    CONCAT_WS(' ', преподаватель.surname, преподаватель.name, преподаватель.middlename) as 'ФИО Преподавателя', курс.price as 'Цена'
+                    FROM студент
+                    JOIN документ_обучения ON документ_обучения.id_student = студент.id_student
+                    JOIN назначение_на_курс ON назначение_на_курс.id_assignment_to_course = документ_обучения.id_assignment_to_course
+                    JOIN преподаватель ON преподаватель.id_professor = назначение_на_курс.id_professor
+                    JOIN курс ON курс.id_course = назначение_на_курс.id_course
+                    JOIN тип_курса ON тип_курса.id_course_type = курс.id_course_type
+                    WHERE тип_курса.title like 'Групповой'", connectDB.GetConnection());
+            DataTable dataTable = new DataTable();
+            sqlDataAdapter.Fill(dataTable);
+            studentListGrid.DataSource = dataTable;
+            studentListGrid.Columns[0].Visible = false;
+        }
+
+        private void searchStudBox_TextChanged(object sender, EventArgs e)
+        {
+            connectDB connectDB = new connectDB();
+            MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
+                    (@"SELECT id_education_document, CONCAT_WS(' ', студент.surname, студент.name, студент.middlename) as 'ФИО студента', курс.title as 'Название курса',
+                    тип_курса.title as 'Тип курса', документ_обучения.date_begin as 'Дата начала обучения', документ_обучения.date_end as 'Дата окончания обучения', 
+                    CONCAT_WS(' ', преподаватель.surname, преподаватель.name, преподаватель.middlename) as 'ФИО Преподавателя', курс.price as 'Цена'
+                    FROM студент
+                    JOIN документ_обучения ON документ_обучения.id_student = студент.id_student
+                    JOIN назначение_на_курс ON назначение_на_курс.id_assignment_to_course = документ_обучения.id_assignment_to_course
+                    JOIN преподаватель ON преподаватель.id_professor = назначение_на_курс.id_professor
+                    JOIN курс ON курс.id_course = назначение_на_курс.id_course
+                    JOIN тип_курса ON тип_курса.id_course_type = курс.id_course_type", connectDB.GetConnection());
+            DataTable dataTable = new DataTable();
+            sqlDataAdapter.Fill(dataTable);
+            studentListGrid.DataSource = dataTable;
+            studentListGrid.Columns[0].Visible = false;
+
+            string searchValue = searchStudBox.Text;
+            try
+            {
+                var resultSearch = from row in dataTable.AsEnumerable()
+                                   where row[1].ToString().Contains(searchValue)
+                                   select row;
+                if (resultSearch.Count() == 0)
+                {
+                    MessageBox.Show("Нет данных");
+                }
+                else
+                {
+                    studentListGrid.DataSource = resultSearch.CopyToDataTable();
+                }
+            } 
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

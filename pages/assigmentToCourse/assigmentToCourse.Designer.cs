@@ -47,12 +47,13 @@
             this.tableLayoutPanel1.Controls.Add(this.assigmentListGrid, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(847, 450);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(968, 600);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // addRowButton
@@ -60,16 +61,17 @@
             this.addRowButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.addRowButton.Animated = true;
             this.addRowButton.AutoRoundedCorners = true;
-            this.addRowButton.BorderRadius = 21;
+            this.addRowButton.BorderRadius = 29;
             this.addRowButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.addRowButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.addRowButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.addRowButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.addRowButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.addRowButton.ForeColor = System.Drawing.Color.White;
-            this.addRowButton.Location = new System.Drawing.Point(726, 70);
+            this.addRowButton.Location = new System.Drawing.Point(830, 94);
+            this.addRowButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.addRowButton.Name = "addRowButton";
-            this.addRowButton.Size = new System.Drawing.Size(114, 45);
+            this.addRowButton.Size = new System.Drawing.Size(130, 60);
             this.addRowButton.TabIndex = 0;
             this.addRowButton.Text = "Добавить запись";
             this.addRowButton.Click += new System.EventHandler(this.addRowButton_Click);
@@ -98,12 +100,15 @@
             this.assigmentListGrid.DefaultCellStyle = dataGridViewCellStyle3;
             this.assigmentListGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.assigmentListGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.assigmentListGrid.Location = new System.Drawing.Point(3, 3);
+            this.assigmentListGrid.Location = new System.Drawing.Point(3, 4);
+            this.assigmentListGrid.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.assigmentListGrid.Name = "assigmentListGrid";
+            this.assigmentListGrid.ReadOnly = true;
             this.assigmentListGrid.RowHeadersVisible = false;
+            this.assigmentListGrid.RowHeadersWidth = 51;
             this.tableLayoutPanel1.SetRowSpan(this.assigmentListGrid, 2);
             this.assigmentListGrid.RowTemplate.Height = 25;
-            this.assigmentListGrid.Size = new System.Drawing.Size(713, 444);
+            this.assigmentListGrid.Size = new System.Drawing.Size(816, 592);
             this.assigmentListGrid.TabIndex = 1;
             this.assigmentListGrid.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.assigmentListGrid.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -118,7 +123,7 @@
             this.assigmentListGrid.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.assigmentListGrid.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.assigmentListGrid.ThemeStyle.HeaderStyle.Height = 35;
-            this.assigmentListGrid.ThemeStyle.ReadOnly = false;
+            this.assigmentListGrid.ThemeStyle.ReadOnly = true;
             this.assigmentListGrid.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.assigmentListGrid.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.assigmentListGrid.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -130,11 +135,12 @@
             // 
             // assigmentToCourse
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(847, 450);
+            this.ClientSize = new System.Drawing.Size(968, 600);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.MinimumSize = new System.Drawing.Size(863, 416);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.MinimumSize = new System.Drawing.Size(984, 539);
             this.Name = "assigmentToCourse";
             this.Text = "Назначение на курс";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.assigmentToCourse_FormClosed);

@@ -39,7 +39,8 @@ namespace PrivateSchoolWF.pages.assigmentToCourse
             MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
                 (@"SELECT курс.id_course, concat(курс.title, ' (', тип_курса.title,')') as 'Название/тип курса'
                 FROM курс
-                JOIN тип_курса ON тип_курса.id_course_type = курс.id_course_type", connectDB.GetConnection());
+                JOIN тип_курса ON тип_курса.id_course_type = курс.id_course_type
+                ORDER BY курс.id_course ASC", connectDB.GetConnection());
             DataTable dataTable = new DataTable();
             sqlDataAdapter.Fill(dataTable);
             assigmentCourseBox.DataSource = dataTable;
@@ -57,6 +58,9 @@ namespace PrivateSchoolWF.pages.assigmentToCourse
             assigmentProfessorBox.DisplayMember = "ФИО преподавателя";
             assigmentProfessorBox.ValueMember = "преподаватель.id_professor";
             connectDB.closeCon();
+
+            assigmentCourseBox.SelectedIndex = --id;
+            assigmentProfessorBox.SelectedIndex = id;
 
         }
 

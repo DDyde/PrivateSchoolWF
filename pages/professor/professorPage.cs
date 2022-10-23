@@ -24,7 +24,7 @@ namespace PrivateSchoolWF.pages.professor
         {
             connectDB connectDB = new connectDB();
             MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
-                    (@"select преподаватель.id_professor, преподаватель.surname  as 'Фамилия', преподаватель.name  as 'Имя', преподаватель.middlename  as 'Отчество',
+                    (@"select преподаватель.id_professor, CONCAT_WS(' ', преподаватель.surname, преподаватель.name, преподаватель.middlename) as 'ФИО преподаватель',
                 преподаватель.work_experience as 'Опыт работы', преподаватель.qualification as 'Квалификация'
                 FROM преподаватель", connectDB.GetConnection());
             DataTable dataTable = new DataTable();
@@ -76,6 +76,21 @@ namespace PrivateSchoolWF.pages.professor
                 MessageBox.Show("У вас недостатачно прав");
             }
             
+        }
+
+        private void searchProfessor_TextChanged(object sender, EventArgs e)
+        {
+            connectDB connectDB = new connectDB();
+            MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
+                    (@"select преподаватель.id_professor, CONCAT_WS(' ', преподаватель.surname, преподаватель.name, преподаватель.middlename) as 'ФИО преподаватель',
+                преподаватель.work_experience as 'Опыт работы', преподаватель.qualification as 'Квалификация'
+                FROM преподаватель", connectDB.GetConnection());
+            DataTable dataTable = new DataTable();
+            sqlDataAdapter.Fill(dataTable);
+            professorListGrid.DataSource = dataTable;
+            professorListGrid.Columns[0].Visible = false;
+
+
         }
     }
 }

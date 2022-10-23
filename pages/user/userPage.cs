@@ -65,5 +65,42 @@ namespace PrivateSchoolWF.pages.user
                 addRowBotton_Click(null, null);
             }
         }
+
+        private void userSearchBox_TextChanged(object sender, EventArgs e)
+        {
+            connectDB connectDB = new connectDB();
+            MySqlCommand sqlCommand = new MySqlCommand(@"select id_user, concat_ws(' ', сотрудник.surname, сотрудник.name, сотрудник.middlename) as 'ФИО сотрудника',
+                        Login as 'Логин', Email as 'Почта', Password as 'Пароль'
+                        from пользователь
+                        JOIN сотрудник ON сотрудник.id_employee = пользователь.id_employee", connectDB.GetConnection());
+
+            sqlCommand.Parameters.AddWithValue("@fioUser", userSearchBox.Text);
+
+            MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter(sqlCommand);
+            DataTable dataTable = new DataTable();
+            sqlDataAdapter.Fill(dataTable);
+            userListGrid.DataSource = dataTable;
+            userListGrid.Columns[0].Visible = false;
+
+            string searchValue = userSearchBox.Text;
+            try
+            {
+                var resultSearch = from row in dataTable.AsEnumerable()
+                                   where row[1].ToString().Contains(searchValue)
+                                   select row;
+                if (resultSearch.Count() == 0)
+                {
+                    MessageBox.Show("Нет данных");
+                }
+                else
+                {
+                    userListGrid.DataSource = resultSearch.CopyToDataTable();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

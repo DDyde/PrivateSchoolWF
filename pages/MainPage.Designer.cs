@@ -43,17 +43,25 @@
             this.studentListGrid = new Guna.UI2.WinForms.Guna2DataGridView();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.addRowButton = new Guna.UI2.WinForms.Guna2Button();
+            this.filterMain = new Guna.UI2.WinForms.Guna2GroupBox();
+            this.searchStudBox = new System.Windows.Forms.TextBox();
+            this.searchFioStud = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.groupCourseTypeRadio = new Guna.UI2.WinForms.Guna2RadioButton();
+            this.cancelButton = new Guna.UI2.WinForms.Guna2Button();
+            this.singleCourseTypeRadio = new Guna.UI2.WinForms.Guna2RadioButton();
+            this.typeCourseLabel = new Guna.UI2.WinForms.Guna2HtmlLabel();
             ((System.ComponentModel.ISupportInitialize)(this.studentListGrid)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
+            this.filterMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // userPageButton
             // 
             this.userPageButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.userPageButton.Location = new System.Drawing.Point(1001, 0);
+            this.userPageButton.Location = new System.Drawing.Point(1137, 0);
             this.userPageButton.Margin = new System.Windows.Forms.Padding(0);
             this.userPageButton.Name = "userPageButton";
-            this.userPageButton.Size = new System.Drawing.Size(137, 61);
+            this.userPageButton.Size = new System.Drawing.Size(131, 82);
             this.userPageButton.TabIndex = 8;
             this.userPageButton.Text = "Пользователь";
             this.userPageButton.UseVisualStyleBackColor = true;
@@ -63,10 +71,10 @@
             // coureTypePageButton
             // 
             this.coureTypePageButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.coureTypePageButton.Location = new System.Drawing.Point(759, 0);
+            this.coureTypePageButton.Location = new System.Drawing.Point(862, 0);
             this.coureTypePageButton.Margin = new System.Windows.Forms.Padding(0);
             this.coureTypePageButton.Name = "coureTypePageButton";
-            this.coureTypePageButton.Size = new System.Drawing.Size(127, 61);
+            this.coureTypePageButton.Size = new System.Drawing.Size(144, 82);
             this.coureTypePageButton.TabIndex = 7;
             this.coureTypePageButton.Text = "Тип курса";
             this.coureTypePageButton.UseVisualStyleBackColor = true;
@@ -76,10 +84,10 @@
             // employeePageButton
             // 
             this.employeePageButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.employeePageButton.Location = new System.Drawing.Point(531, 0);
+            this.employeePageButton.Location = new System.Drawing.Point(603, 0);
             this.employeePageButton.Margin = new System.Windows.Forms.Padding(0);
             this.employeePageButton.Name = "employeePageButton";
-            this.employeePageButton.Size = new System.Drawing.Size(121, 61);
+            this.employeePageButton.Size = new System.Drawing.Size(138, 82);
             this.employeePageButton.TabIndex = 6;
             this.employeePageButton.Text = "Сотрудник";
             this.employeePageButton.UseVisualStyleBackColor = true;
@@ -89,10 +97,10 @@
             // positionPageButton
             // 
             this.positionPageButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.positionPageButton.Location = new System.Drawing.Point(254, 0);
+            this.positionPageButton.Location = new System.Drawing.Point(288, 0);
             this.positionPageButton.Margin = new System.Windows.Forms.Padding(0);
             this.positionPageButton.Name = "positionPageButton";
-            this.positionPageButton.Size = new System.Drawing.Size(127, 61);
+            this.positionPageButton.Size = new System.Drawing.Size(144, 82);
             this.positionPageButton.TabIndex = 5;
             this.positionPageButton.Text = "Должность";
             this.positionPageButton.UseVisualStyleBackColor = true;
@@ -105,7 +113,7 @@
             this.parentPageButton.Location = new System.Drawing.Point(0, 0);
             this.parentPageButton.Margin = new System.Windows.Forms.Padding(0);
             this.parentPageButton.Name = "parentPageButton";
-            this.parentPageButton.Size = new System.Drawing.Size(127, 61);
+            this.parentPageButton.Size = new System.Drawing.Size(144, 82);
             this.parentPageButton.TabIndex = 4;
             this.parentPageButton.Text = "Родители";
             this.parentPageButton.UseVisualStyleBackColor = true;
@@ -114,10 +122,10 @@
             // assigmentToCoursePageButton
             // 
             this.assigmentToCoursePageButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.assigmentToCoursePageButton.Location = new System.Drawing.Point(127, 0);
+            this.assigmentToCoursePageButton.Location = new System.Drawing.Point(144, 0);
             this.assigmentToCoursePageButton.Margin = new System.Windows.Forms.Padding(0);
             this.assigmentToCoursePageButton.Name = "assigmentToCoursePageButton";
-            this.assigmentToCoursePageButton.Size = new System.Drawing.Size(127, 61);
+            this.assigmentToCoursePageButton.Size = new System.Drawing.Size(144, 82);
             this.assigmentToCoursePageButton.TabIndex = 3;
             this.assigmentToCoursePageButton.Text = "Назначение на курс";
             this.assigmentToCoursePageButton.UseVisualStyleBackColor = true;
@@ -126,10 +134,10 @@
             // professorPageButton
             // 
             this.professorPageButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.professorPageButton.Location = new System.Drawing.Point(381, 0);
+            this.professorPageButton.Location = new System.Drawing.Point(432, 0);
             this.professorPageButton.Margin = new System.Windows.Forms.Padding(0);
             this.professorPageButton.Name = "professorPageButton";
-            this.professorPageButton.Size = new System.Drawing.Size(150, 61);
+            this.professorPageButton.Size = new System.Drawing.Size(171, 82);
             this.professorPageButton.TabIndex = 2;
             this.professorPageButton.Text = "Преподаватель";
             this.professorPageButton.UseVisualStyleBackColor = true;
@@ -139,10 +147,10 @@
             // coursePageButton
             // 
             this.coursePageButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.coursePageButton.Location = new System.Drawing.Point(652, 0);
+            this.coursePageButton.Location = new System.Drawing.Point(741, 0);
             this.coursePageButton.Margin = new System.Windows.Forms.Padding(0);
             this.coursePageButton.Name = "coursePageButton";
-            this.coursePageButton.Size = new System.Drawing.Size(107, 61);
+            this.coursePageButton.Size = new System.Drawing.Size(121, 82);
             this.coursePageButton.TabIndex = 1;
             this.coursePageButton.Text = "Курсы";
             this.coursePageButton.UseVisualStyleBackColor = true;
@@ -151,10 +159,10 @@
             // studentPageButton
             // 
             this.studentPageButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.studentPageButton.Location = new System.Drawing.Point(886, 0);
+            this.studentPageButton.Location = new System.Drawing.Point(1006, 0);
             this.studentPageButton.Margin = new System.Windows.Forms.Padding(0);
             this.studentPageButton.Name = "studentPageButton";
-            this.studentPageButton.Size = new System.Drawing.Size(115, 61);
+            this.studentPageButton.Size = new System.Drawing.Size(131, 82);
             this.studentPageButton.TabIndex = 0;
             this.studentPageButton.Text = "Студенты";
             this.studentPageButton.Click += new System.EventHandler(this.studentPage_Click);
@@ -185,15 +193,14 @@
             this.studentListGrid.DefaultCellStyle = dataGridViewCellStyle3;
             this.studentListGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.studentListGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.studentListGrid.Location = new System.Drawing.Point(3, 63);
-            this.studentListGrid.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.studentListGrid.Location = new System.Drawing.Point(3, 85);
             this.studentListGrid.Name = "studentListGrid";
             this.studentListGrid.ReadOnly = true;
             this.studentListGrid.RowHeadersVisible = false;
             this.studentListGrid.RowHeadersWidth = 50;
             this.tableLayoutPanel1.SetRowSpan(this.studentListGrid, 2);
             this.studentListGrid.RowTemplate.Height = 29;
-            this.studentListGrid.Size = new System.Drawing.Size(1132, 473);
+            this.studentListGrid.Size = new System.Drawing.Size(1262, 629);
             this.studentListGrid.TabIndex = 3;
             this.studentListGrid.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.studentListGrid.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -229,8 +236,8 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.45295F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10.84529F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.109731F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.35335F));
             this.tableLayoutPanel1.Controls.Add(this.studentListGrid, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.userPageButton, 8, 0);
             this.tableLayoutPanel1.Controls.Add(this.parentPageButton, 0, 0);
@@ -242,15 +249,15 @@
             this.tableLayoutPanel1.Controls.Add(this.professorPageButton, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.employeePageButton, 4, 0);
             this.tableLayoutPanel1.Controls.Add(this.addRowButton, 9, 1);
+            this.tableLayoutPanel1.Controls.Add(this.filterMain, 9, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.44366F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 46.65493F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 41.66667F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1268, 538);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.1576F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 77.40586F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1449, 717);
             this.tableLayoutPanel1.TabIndex = 4;
             // 
             // addRowButton
@@ -258,33 +265,138 @@
             this.addRowButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.addRowButton.Animated = true;
             this.addRowButton.AutoRoundedCorners = true;
-            this.addRowButton.BorderRadius = 21;
+            this.addRowButton.BorderRadius = 29;
             this.addRowButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.addRowButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.addRowButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.addRowButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.addRowButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.addRowButton.ForeColor = System.Drawing.Color.White;
-            this.addRowButton.Location = new System.Drawing.Point(1148, 64);
+            this.addRowButton.Location = new System.Drawing.Point(1295, 86);
+            this.addRowButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.addRowButton.Name = "addRowButton";
-            this.addRowButton.Size = new System.Drawing.Size(110, 45);
+            this.addRowButton.Size = new System.Drawing.Size(126, 60);
             this.addRowButton.TabIndex = 9;
             this.addRowButton.Text = "Добавить запись";
             this.addRowButton.Click += new System.EventHandler(this.addRowButton_Click);
             // 
+            // filterMain
+            // 
+            this.filterMain.Controls.Add(this.searchStudBox);
+            this.filterMain.Controls.Add(this.searchFioStud);
+            this.filterMain.Controls.Add(this.groupCourseTypeRadio);
+            this.filterMain.Controls.Add(this.cancelButton);
+            this.filterMain.Controls.Add(this.singleCourseTypeRadio);
+            this.filterMain.Controls.Add(this.typeCourseLabel);
+            this.filterMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.filterMain.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.filterMain.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.filterMain.Location = new System.Drawing.Point(1271, 164);
+            this.filterMain.Name = "filterMain";
+            this.filterMain.Size = new System.Drawing.Size(175, 550);
+            this.filterMain.TabIndex = 10;
+            this.filterMain.Text = "Фильтр";
+            // 
+            // searchStudBox
+            // 
+            this.searchStudBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.searchStudBox.Location = new System.Drawing.Point(10, 195);
+            this.searchStudBox.Name = "searchStudBox";
+            this.searchStudBox.PlaceholderText = "Поиск...";
+            this.searchStudBox.Size = new System.Drawing.Size(152, 27);
+            this.searchStudBox.TabIndex = 7;
+            this.searchStudBox.TextChanged += new System.EventHandler(this.searchStudBox_TextChanged);
+            // 
+            // searchFioStud
+            // 
+            this.searchFioStud.BackColor = System.Drawing.Color.Transparent;
+            this.searchFioStud.ForeColor = System.Drawing.Color.Black;
+            this.searchFioStud.Location = new System.Drawing.Point(60, 157);
+            this.searchFioStud.Name = "searchFioStud";
+            this.searchFioStud.Size = new System.Drawing.Size(46, 22);
+            this.searchFioStud.TabIndex = 6;
+            this.searchFioStud.Text = "Поиск";
+            // 
+            // groupCourseTypeRadio
+            // 
+            this.groupCourseTypeRadio.AutoSize = true;
+            this.groupCourseTypeRadio.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.groupCourseTypeRadio.CheckedState.BorderThickness = 0;
+            this.groupCourseTypeRadio.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.groupCourseTypeRadio.CheckedState.InnerColor = System.Drawing.Color.White;
+            this.groupCourseTypeRadio.CheckedState.InnerOffset = -4;
+            this.groupCourseTypeRadio.Location = new System.Drawing.Point(10, 113);
+            this.groupCourseTypeRadio.Name = "groupCourseTypeRadio";
+            this.groupCourseTypeRadio.Size = new System.Drawing.Size(106, 24);
+            this.groupCourseTypeRadio.TabIndex = 5;
+            this.groupCourseTypeRadio.Text = "Групповой";
+            this.groupCourseTypeRadio.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.groupCourseTypeRadio.UncheckedState.BorderThickness = 2;
+            this.groupCourseTypeRadio.UncheckedState.FillColor = System.Drawing.Color.Transparent;
+            this.groupCourseTypeRadio.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
+            this.groupCourseTypeRadio.CheckedChanged += new System.EventHandler(this.groupCourseTypeRadio_CheckedChanged);
+            // 
+            // cancelButton
+            // 
+            this.cancelButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.cancelButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.cancelButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.cancelButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.cancelButton.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.cancelButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cancelButton.ForeColor = System.Drawing.Color.White;
+            this.cancelButton.Location = new System.Drawing.Point(0, 494);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(175, 56);
+            this.cancelButton.TabIndex = 4;
+            this.cancelButton.Text = "Сброс";
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
+            // 
+            // singleCourseTypeRadio
+            // 
+            this.singleCourseTypeRadio.AutoSize = true;
+            this.singleCourseTypeRadio.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.singleCourseTypeRadio.CheckedState.BorderThickness = 0;
+            this.singleCourseTypeRadio.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.singleCourseTypeRadio.CheckedState.InnerColor = System.Drawing.Color.White;
+            this.singleCourseTypeRadio.CheckedState.InnerOffset = -4;
+            this.singleCourseTypeRadio.Location = new System.Drawing.Point(10, 83);
+            this.singleCourseTypeRadio.Name = "singleCourseTypeRadio";
+            this.singleCourseTypeRadio.Size = new System.Drawing.Size(152, 24);
+            this.singleCourseTypeRadio.TabIndex = 3;
+            this.singleCourseTypeRadio.Text = "Индивидуальный";
+            this.singleCourseTypeRadio.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.singleCourseTypeRadio.UncheckedState.BorderThickness = 2;
+            this.singleCourseTypeRadio.UncheckedState.FillColor = System.Drawing.Color.Transparent;
+            this.singleCourseTypeRadio.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
+            this.singleCourseTypeRadio.CheckedChanged += new System.EventHandler(this.singleCourseTypeRadio_CheckedChanged);
+            // 
+            // typeCourseLabel
+            // 
+            this.typeCourseLabel.BackColor = System.Drawing.Color.Transparent;
+            this.typeCourseLabel.Location = new System.Drawing.Point(40, 55);
+            this.typeCourseLabel.Name = "typeCourseLabel";
+            this.typeCourseLabel.Size = new System.Drawing.Size(91, 22);
+            this.typeCourseLabel.TabIndex = 2;
+            this.typeCourseLabel.Text = "Типы курсов";
+            // 
             // mainPage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1268, 538);
+            this.ClientSize = new System.Drawing.Size(1449, 717);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.MinimumSize = new System.Drawing.Size(863, 416);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.MinimumSize = new System.Drawing.Size(984, 539);
             this.Name = "mainPage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Главная";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.mainPage_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.studentListGrid)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.filterMain.ResumeLayout(false);
+            this.filterMain.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -302,5 +414,12 @@
         private Guna.UI2.WinForms.Guna2DataGridView studentListGrid;
         private TableLayoutPanel tableLayoutPanel1;
         private Guna.UI2.WinForms.Guna2Button addRowButton;
+        private Guna.UI2.WinForms.Guna2GroupBox filterMain;
+        private Guna.UI2.WinForms.Guna2HtmlLabel typeCourseLabel;
+        private Guna.UI2.WinForms.Guna2RadioButton singleCourseTypeRadio;
+        private Guna.UI2.WinForms.Guna2Button cancelButton;
+        private Guna.UI2.WinForms.Guna2RadioButton groupCourseTypeRadio;
+        private TextBox searchStudBox;
+        private Guna.UI2.WinForms.Guna2HtmlLabel searchFioStud;
     }
 }

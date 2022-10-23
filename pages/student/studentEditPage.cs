@@ -65,6 +65,8 @@ namespace PrivateSchoolWF.pages.student
             parentStudent.DisplayMember = "родители";
             parentStudent.ValueMember = "id_parent";
             connectDB.closeCon();
+
+            parentStudent.SelectedIndex = --id;
         }
     
 

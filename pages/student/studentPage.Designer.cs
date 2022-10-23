@@ -34,8 +34,11 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.studentListGrid = new Guna.UI2.WinForms.Guna2DataGridView();
             this.addRow = new Guna.UI2.WinForms.Guna2Button();
+            this.filterStudent = new Guna.UI2.WinForms.Guna2GroupBox();
+            this.searchStudBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.studentListGrid)).BeginInit();
+            this.filterStudent.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel2
@@ -45,13 +48,16 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.tableLayoutPanel2.Controls.Add(this.studentListGrid, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.addRow, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.filterStudent, 1, 2);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 2;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(847, 377);
+            this.tableLayoutPanel2.RowCount = 3;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.91054F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.90457F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 69.18489F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(968, 503);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // studentListGrid
@@ -78,12 +84,14 @@
             this.studentListGrid.DefaultCellStyle = dataGridViewCellStyle3;
             this.studentListGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.studentListGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.studentListGrid.Location = new System.Drawing.Point(3, 3);
+            this.studentListGrid.Location = new System.Drawing.Point(3, 4);
+            this.studentListGrid.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.studentListGrid.Name = "studentListGrid";
             this.studentListGrid.RowHeadersVisible = false;
-            this.tableLayoutPanel2.SetRowSpan(this.studentListGrid, 2);
+            this.studentListGrid.RowHeadersWidth = 51;
+            this.tableLayoutPanel2.SetRowSpan(this.studentListGrid, 3);
             this.studentListGrid.RowTemplate.Height = 25;
-            this.studentListGrid.Size = new System.Drawing.Size(713, 371);
+            this.studentListGrid.Size = new System.Drawing.Size(816, 495);
             this.studentListGrid.TabIndex = 0;
             this.studentListGrid.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.studentListGrid.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -113,32 +121,58 @@
             this.addRow.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.addRow.Animated = true;
             this.addRow.AutoRoundedCorners = true;
-            this.addRow.BorderRadius = 21;
+            this.addRow.BorderRadius = 29;
             this.addRow.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.addRow.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.addRow.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.addRow.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.addRow.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.addRow.ForeColor = System.Drawing.Color.White;
-            this.addRow.Location = new System.Drawing.Point(722, 59);
+            this.addRow.Location = new System.Drawing.Point(825, 79);
+            this.addRow.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.addRow.Name = "addRow";
-            this.addRow.Size = new System.Drawing.Size(122, 45);
+            this.addRow.Size = new System.Drawing.Size(139, 60);
             this.addRow.TabIndex = 1;
             this.addRow.Text = "Добавить запись";
             this.addRow.Click += new System.EventHandler(this.addRowBotton_Click);
             // 
+            // filterStudent
+            // 
+            this.filterStudent.Controls.Add(this.searchStudBox);
+            this.filterStudent.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.filterStudent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.filterStudent.Location = new System.Drawing.Point(825, 157);
+            this.filterStudent.Name = "filterStudent";
+            this.filterStudent.Size = new System.Drawing.Size(140, 250);
+            this.filterStudent.TabIndex = 2;
+            this.filterStudent.Text = "Фильтр";
+            // 
+            // searchStudBox
+            // 
+            this.searchStudBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.searchStudBox.Location = new System.Drawing.Point(6, 49);
+            this.searchStudBox.Name = "searchStudBox";
+            this.searchStudBox.PlaceholderText = "Поиск...";
+            this.searchStudBox.Size = new System.Drawing.Size(125, 27);
+            this.searchStudBox.TabIndex = 0;
+            this.searchStudBox.TextChanged += new System.EventHandler(this.searchStudBox_TextChanged);
+            // 
             // studentPage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(847, 377);
+            this.ClientSize = new System.Drawing.Size(968, 503);
             this.Controls.Add(this.tableLayoutPanel2);
-            this.MinimumSize = new System.Drawing.Size(863, 416);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.MinimumSize = new System.Drawing.Size(984, 539);
             this.Name = "studentPage";
             this.Text = "Студенты";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.studentPage_FormClosed);
             this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.studentListGrid)).EndInit();
+            this.filterStudent.ResumeLayout(false);
+            this.filterStudent.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -151,5 +185,7 @@
         private TableLayoutPanel tableLayoutPanel2;
         private Guna.UI2.WinForms.Guna2DataGridView studentListGrid;
         private Guna.UI2.WinForms.Guna2Button addRow;
+        private Guna.UI2.WinForms.Guna2GroupBox filterStudent;
+        private TextBox searchStudBox;
     }
 }

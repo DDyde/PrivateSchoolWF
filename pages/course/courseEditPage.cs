@@ -62,6 +62,8 @@ namespace PrivateSchoolWF.pages.course
             courseType.DisplayMember = "title";
             courseType.ValueMember = "id_course_type";
             connectDB.closeCon();
+
+            courseType.SelectedIndex = --id;
         }
 
         private void blockNum_KeyPress(object sender, KeyPressEventArgs e)

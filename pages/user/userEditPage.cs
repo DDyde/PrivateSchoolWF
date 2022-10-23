@@ -46,6 +46,8 @@ namespace PrivateSchoolWF.pages.user
             fioEmployeeBox.DisplayMember = "сотрудники";
             fioEmployeeBox.ValueMember = "id_employee";
             connectDB.closeCon();
+
+            fioEmployeeBox.SelectedIndex = --id;
         }
 
         private void LoadString()
