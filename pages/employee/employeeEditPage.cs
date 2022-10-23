@@ -29,8 +29,8 @@ namespace PrivateSchoolWF.pages.employee
             ruleId = _ruleId;
             id = _id;
             InitializeComponent();
-            LoadString();
             LoadCombobox();
+            LoadString();
             addRow.Visible = false;
         }
 
@@ -93,7 +93,7 @@ namespace PrivateSchoolWF.pages.employee
             sqlCommand.Parameters.AddWithValue("@position", positionEmployeeBox.SelectedValue);
             sqlCommand.Parameters.AddWithValue("@surname", surnameEmployeeBox.Text);
             sqlCommand.Parameters.AddWithValue("@name", nameEmployeeBox.Text);
-            sqlCommand.Parameters.AddWithValue("@middlename", workExEmployee.Text);
+            sqlCommand.Parameters.AddWithValue("@middlename", middlenameEmployeeBox.Text);
 
             MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter(sqlCommand);
             DataTable dataTable = new DataTable();
@@ -105,8 +105,9 @@ namespace PrivateSchoolWF.pages.employee
 
         private void deleteRow_Click(object sender, EventArgs e)
         {
-
-            connectDB connectDB = new connectDB();
+            try
+            {
+                connectDB connectDB = new connectDB();
             connectDB.openCon();
             MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
                 ($@"DELETE FROM `сотрудник` WHERE id_employee={id}", connectDB.GetConnection());
@@ -114,6 +115,16 @@ namespace PrivateSchoolWF.pages.employee
             sqlDataAdapter.Fill(dataTable);
             connectDB.closeCon();
             Close();
+            }
+            catch (MySqlException)
+            {
+                MessageBox.Show("Данную запись невозможно удалить. Убедитесь, что запись не имеет связей с другой таблицей.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            } 
+            
 
         }
     }

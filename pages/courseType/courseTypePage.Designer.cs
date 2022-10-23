@@ -31,6 +31,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(courseTypePage));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.addRowButton = new Guna.UI2.WinForms.Guna2Button();
             this.courseTypeListGrid = new Guna.UI2.WinForms.Guna2DataGridView();
@@ -134,8 +135,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(847, 450);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(863, 416);
             this.Name = "courseTypePage";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Виды курсов";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.courseTypePage_FormClosed);
             this.tableLayoutPanel1.ResumeLayout(false);

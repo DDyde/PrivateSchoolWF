@@ -44,7 +44,7 @@
             this.deleteRow.FillColor = System.Drawing.Color.White;
             this.deleteRow.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.deleteRow.ForeColor = System.Drawing.Color.Black;
-            this.deleteRow.Location = new System.Drawing.Point(242, 122);
+            this.deleteRow.Location = new System.Drawing.Point(246, 147);
             this.deleteRow.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.deleteRow.Name = "deleteRow";
             this.deleteRow.Size = new System.Drawing.Size(93, 31);
@@ -61,7 +61,7 @@
             this.changeRow.FillColor = System.Drawing.Color.White;
             this.changeRow.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.changeRow.ForeColor = System.Drawing.Color.Black;
-            this.changeRow.Location = new System.Drawing.Point(24, 122);
+            this.changeRow.Location = new System.Drawing.Point(28, 147);
             this.changeRow.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.changeRow.Name = "changeRow";
             this.changeRow.Size = new System.Drawing.Size(93, 31);
@@ -78,7 +78,7 @@
             this.addRow.FillColor = System.Drawing.Color.White;
             this.addRow.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.addRow.ForeColor = System.Drawing.Color.Black;
-            this.addRow.Location = new System.Drawing.Point(132, 122);
+            this.addRow.Location = new System.Drawing.Point(136, 147);
             this.addRow.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.addRow.Name = "addRow";
             this.addRow.Size = new System.Drawing.Size(93, 31);
@@ -96,7 +96,7 @@
             this.assigmentProfessorBox.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.assigmentProfessorBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.assigmentProfessorBox.ItemHeight = 30;
-            this.assigmentProfessorBox.Location = new System.Drawing.Point(12, 9);
+            this.assigmentProfessorBox.Location = new System.Drawing.Point(12, 11);
             this.assigmentProfessorBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.assigmentProfessorBox.Name = "assigmentProfessorBox";
             this.assigmentProfessorBox.Size = new System.Drawing.Size(336, 36);
@@ -112,7 +112,7 @@
             this.assigmentCourseBox.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.assigmentCourseBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.assigmentCourseBox.ItemHeight = 30;
-            this.assigmentCourseBox.Location = new System.Drawing.Point(14, 58);
+            this.assigmentCourseBox.Location = new System.Drawing.Point(12, 70);
             this.assigmentCourseBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.assigmentCourseBox.Name = "assigmentCourseBox";
             this.assigmentCourseBox.Size = new System.Drawing.Size(336, 36);
@@ -122,7 +122,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(360, 196);
+            this.ClientSize = new System.Drawing.Size(360, 208);
             this.Controls.Add(this.assigmentCourseBox);
             this.Controls.Add(this.assigmentProfessorBox);
             this.Controls.Add(this.deleteRow);
@@ -130,6 +130,7 @@
             this.Controls.Add(this.addRow);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "assigmentToCourseEditPage";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Редактирование";
             this.ResumeLayout(false);
 

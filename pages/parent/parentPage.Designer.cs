@@ -31,11 +31,15 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(parentPage));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.addRowButton = new Guna.UI2.WinForms.Guna2Button();
             this.parentListGrid = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.filterParent = new Guna.UI2.WinForms.Guna2GroupBox();
+            this.searchParentBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.parentListGrid)).BeginInit();
+            this.filterParent.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -45,12 +49,14 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.tableLayoutPanel1.Controls.Add(this.addRowButton, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.parentListGrid, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.filterParent, 1, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85F));
+            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.33333F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 76.66666F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(847, 450);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -66,7 +72,7 @@
             this.addRowButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.addRowButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.addRowButton.ForeColor = System.Drawing.Color.White;
-            this.addRowButton.Location = new System.Drawing.Point(726, 70);
+            this.addRowButton.Location = new System.Drawing.Point(726, 48);
             this.addRowButton.Name = "addRowButton";
             this.addRowButton.Size = new System.Drawing.Size(114, 45);
             this.addRowButton.TabIndex = 0;
@@ -100,7 +106,7 @@
             this.parentListGrid.Location = new System.Drawing.Point(3, 3);
             this.parentListGrid.Name = "parentListGrid";
             this.parentListGrid.RowHeadersVisible = false;
-            this.tableLayoutPanel1.SetRowSpan(this.parentListGrid, 2);
+            this.tableLayoutPanel1.SetRowSpan(this.parentListGrid, 3);
             this.parentListGrid.RowTemplate.Height = 25;
             this.parentListGrid.Size = new System.Drawing.Size(713, 444);
             this.parentListGrid.TabIndex = 1;
@@ -127,18 +133,45 @@
             this.parentListGrid.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.parentListGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.parentListGrid_CellClick);
             // 
+            // filterParent
+            // 
+            this.filterParent.Controls.Add(this.searchParentBox);
+            this.filterParent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.filterParent.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.filterParent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.filterParent.Location = new System.Drawing.Point(722, 107);
+            this.filterParent.Name = "filterParent";
+            this.filterParent.Size = new System.Drawing.Size(122, 340);
+            this.filterParent.TabIndex = 2;
+            this.filterParent.Text = "Фильтр";
+            // 
+            // searchParentBox
+            // 
+            this.searchParentBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.searchParentBox.Location = new System.Drawing.Point(4, 50);
+            this.searchParentBox.Name = "searchParentBox";
+            this.searchParentBox.PlaceholderText = "Поиск...";
+            this.searchParentBox.Size = new System.Drawing.Size(114, 23);
+            this.searchParentBox.TabIndex = 0;
+            this.searchParentBox.TextChanged += new System.EventHandler(this.searchParentBox_TextChanged);
+            // 
             // parentPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(847, 450);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(863, 416);
             this.Name = "parentPage";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "parentPage";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.parentPage_FormClosed);
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.parentListGrid)).EndInit();
+            this.filterParent.ResumeLayout(false);
+            this.filterParent.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -148,5 +181,7 @@
         private TableLayoutPanel tableLayoutPanel1;
         private Guna.UI2.WinForms.Guna2Button addRowButton;
         private Guna.UI2.WinForms.Guna2DataGridView parentListGrid;
+        private Guna.UI2.WinForms.Guna2GroupBox filterParent;
+        private TextBox searchParentBox;
     }
 }

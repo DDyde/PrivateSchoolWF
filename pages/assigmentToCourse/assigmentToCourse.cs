@@ -24,7 +24,8 @@ namespace PrivateSchoolWF.pages.assigmentToCourse
         {
             connectDB connectDB = new connectDB();
             MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
-                    (@"SELECT id_assignment_to_course, concat_ws(' ', преподаватель.surname, преподаватель.name, преподаватель.middlename) as 'ФИО преподавателя', concat(курс.title, ' (', тип_курса.title,')') as 'Название/тип курса'
+                    (@"SELECT id_assignment_to_course, concat_ws(' ', преподаватель.surname, преподаватель.name, преподаватель.middlename) as 'ФИО преподавателя',
+                    курс.title as 'Название', тип_курса.title as 'Тип курса'
                     FROM назначение_на_курс
                     JOIN преподаватель ON преподаватель.id_professor = назначение_на_курс.id_professor
                     JOIN курс ON курс.id_course = назначение_на_курс.id_course

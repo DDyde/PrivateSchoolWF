@@ -106,6 +106,7 @@
             this.Controls.Add(this.courseTypeBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "courseTypeEditPage";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Редактирование";
             this.ResumeLayout(false);
             this.PerformLayout();

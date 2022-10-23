@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Reporting.WinForms;
 using PrivateSchoolWF.Report;
+using Guna.UI2.WinForms;
 
 namespace PrivateSchoolWF.pages
 {
@@ -25,8 +26,8 @@ namespace PrivateSchoolWF.pages
             ruleId = _ruleId;
             idEmployee = _idEmployee;
             id = _id;
-            LoadString();
             LoadCombobox();
+            LoadString();
             addRow.Visible = false;
         }
 
@@ -42,37 +43,32 @@ namespace PrivateSchoolWF.pages
 
         private void LoadCombobox()
         {
-            connectDB connectDB = new connectDB();
-            connectDB.openCon();
-            MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter(
-                $@"SELECT id_student, CONCAT_WS(' ', студент.surname, студент.name, студент.middlename) as 'ФИО студента'
-                FROM студент", connectDB.GetConnection());
-            DataTable dataTable = new DataTable();
-            sqlDataAdapter.Fill(dataTable);
-            fioStudentBox.DataSource = dataTable;
-            fioStudentBox.DisplayMember = "ФИО студента";
-            fioStudentBox.ValueMember = "id_student";
-            connectDB.closeCon();
-
-            connectDB.openCon();
-            MySqlDataAdapter sqlDataAdapter2 = new MySqlDataAdapter(
-                $@"SELECT id_assignment_to_course, concat(преподаватель.surname, ' ',преподаватель.name, ' ',преподаватель.middlename, ' ',
+            string queryStudent = @"SELECT id_student, CONCAT_WS(' ', студент.surname, студент.name, студент.middlename) as 'ФИО студента'
+                FROM студент";
+            string queryAssigCourse = @"SELECT id_assignment_to_course, concat(преподаватель.surname, ' ',преподаватель.name, ' ',преподаватель.middlename, ' ',
                 курс.title, '(', тип_курса.title,')') as 'Преподаватель/курс'
                 FROM назначение_на_курс
                 JOIN преподаватель ON преподаватель.id_professor = назначение_на_курс.id_professor
                 JOIN курс ON курс.id_course = назначение_на_курс.id_course
                 JOIN тип_курса ON тип_курса.id_course_type = курс.id_course_type
-                ORDER BY  id_assignment_to_course ASC", connectDB.GetConnection());
-            DataTable dataTable2 = new DataTable();
-            sqlDataAdapter2.Fill(dataTable2);
-            courseAssigBox.DataSource = dataTable2;
-            courseAssigBox.DisplayMember = "Преподаватель/курс";
-            courseAssigBox.ValueMember = "id_assignment_to_course";
+                ORDER BY  id_assignment_to_course ASC";
 
-            fioStudentBox.SelectedIndex = --id;
-            courseAssigBox.SelectedIndex = id;
+            LoadingCombobox(queryStudent, fioStudentBox, "ФИО студента", "id_student");
+            LoadingCombobox(queryAssigCourse, courseAssigBox, "Преподаватель/курс", "id_assignment_to_course");
+
+        }
+
+        private void LoadingCombobox(string query, Guna2ComboBox comboBox, string displayMember, string valueMember)
+        {
+            connectDB connectDB = new connectDB();
+            connectDB.openCon();
+            MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter(query, connectDB.GetConnection());
+            DataTable dataTable = new DataTable();
+            sqlDataAdapter.Fill(dataTable);
+            comboBox.DataSource = dataTable;
+            comboBox.DisplayMember = displayMember;
+            comboBox.ValueMember = valueMember;
             connectDB.closeCon();
-
         }
 
         private void LoadString()

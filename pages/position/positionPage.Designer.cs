@@ -31,6 +31,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(positionPage));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.addRowButton = new Guna.UI2.WinForms.Guna2Button();
             this.positionListGrid = new Guna.UI2.WinForms.Guna2DataGridView();
@@ -48,9 +49,10 @@
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85F));
+            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.33333F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 76.66666F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(847, 450);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -66,7 +68,7 @@
             this.addRowButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.addRowButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.addRowButton.ForeColor = System.Drawing.Color.White;
-            this.addRowButton.Location = new System.Drawing.Point(726, 70);
+            this.addRowButton.Location = new System.Drawing.Point(726, 48);
             this.addRowButton.Name = "addRowButton";
             this.addRowButton.Size = new System.Drawing.Size(114, 45);
             this.addRowButton.TabIndex = 0;
@@ -100,7 +102,7 @@
             this.positionListGrid.Location = new System.Drawing.Point(3, 3);
             this.positionListGrid.Name = "positionListGrid";
             this.positionListGrid.RowHeadersVisible = false;
-            this.tableLayoutPanel1.SetRowSpan(this.positionListGrid, 2);
+            this.tableLayoutPanel1.SetRowSpan(this.positionListGrid, 3);
             this.positionListGrid.RowTemplate.Height = 25;
             this.positionListGrid.Size = new System.Drawing.Size(713, 444);
             this.positionListGrid.TabIndex = 1;
@@ -133,8 +135,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(847, 450);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(863, 416);
             this.Name = "positionPage";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Должности";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.positionPage_FormClosed);
             this.tableLayoutPanel1.ResumeLayout(false);

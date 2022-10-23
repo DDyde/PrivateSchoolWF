@@ -89,14 +89,15 @@ namespace PrivateSchoolWF.pages.professor
             if (ruleId == 1 || ruleId == 2)
             {
                 connectDB connectDB = new connectDB();
-                MySqlCommand sqlCommand = new MySqlCommand(@"INSERT INTO `преподаватель`(`surname`, `name`, `middlename`, `work_experience` ,`qualification`) 
-                    VALUES (@surname, @name, @middlename, @workExp, @professorQual)", connectDB.GetConnection());
+                MySqlCommand sqlCommand = new MySqlCommand(@"INSERT INTO `преподаватель`(`Image`, `surname`, `name`, `middlename`, `work_experience` ,`qualification`) 
+                    VALUES (@image, @surname, @name, @middlename, @workExp, @professorQual)", connectDB.GetConnection());
 
                 sqlCommand.Parameters.AddWithValue("@surname", surnameProfessor.Text);
                 sqlCommand.Parameters.AddWithValue("@name", nameProfessor.Text);
                 sqlCommand.Parameters.AddWithValue("@middlename", middlenameProfessor.Text);
                 sqlCommand.Parameters.AddWithValue("@workExp", professorWorkExp.Text);
                 sqlCommand.Parameters.AddWithValue("@professorQual", professorQualification.Text);
+                sqlCommand.Parameters.AddWithValue("@image", ConvertImageToByte(professorImage.Image));
 
                 MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter(sqlCommand);
                 DataTable dataTable = new DataTable();
@@ -116,7 +117,7 @@ namespace PrivateSchoolWF.pages.professor
             {
                 connectDB connectDB = new connectDB();
                 connectDB.openCon();
-                MySqlCommand sqlCommand = new MySqlCommand($@"UPDATE `преподаватель` SET `surname` = @surname, `name` = @name, 
+                MySqlCommand sqlCommand = new MySqlCommand($@"UPDATE `преподаватель` SET image=@image, `surname` = @surname, `name` = @name, 
                 `middlename` = @middlename, `qualification` = @professorQual, `work_experience` = @workExp
                 WHERE id_professor={id}", connectDB.GetConnection());
 
@@ -125,6 +126,7 @@ namespace PrivateSchoolWF.pages.professor
                 sqlCommand.Parameters.AddWithValue("@middlename", middlenameProfessor.Text);
                 sqlCommand.Parameters.AddWithValue("@workExp", professorWorkExp.Text);
                 sqlCommand.Parameters.AddWithValue("@professorQual", professorQualification.Text);
+                sqlCommand.Parameters.AddWithValue("@image", ConvertImageToByte(professorImage.Image));
 
                 MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter(sqlCommand);
                 DataTable dataTable = new DataTable();
@@ -165,41 +167,14 @@ namespace PrivateSchoolWF.pages.professor
             OpenFileDialog openFileDialog = new OpenFileDialog() { Filter = "Image files(*.jpg; *.png; *.jpeg;)|*.jpg;*.png;*.jpeg;",
             Multiselect = false};
             openFileDialog.ShowDialog();
-
-            FileInfo fileInfo = new FileInfo(openFileDialog.FileName);
-            long sizeImg = fileInfo.Length;
-                try
-                {
-                    connectDB connectDB = new connectDB();
-                    MySqlCommand sqlCommand = new MySqlCommand($"UPDATE `преподаватель` SET image=@newImage WHERE id_professor={id}", connectDB.GetConnection());
-
-                    professorImage.Image = Image.FromFile(openFileDialog.FileName);
-
-                    Image newImage = professorImage.Image;
-
-                    MySqlParameter newImageParam = new MySqlParameter("@newImage", ConvertImageToByte(newImage));
-
-                    sqlCommand.Parameters.Add(newImageParam);
-                    connectDB.openCon();
-                    MySqlDataAdapter dataAdapter = new MySqlDataAdapter(sqlCommand);
-                    DataTable dataTable = new DataTable();
-                    dataAdapter.Fill(dataTable);
-                    connectDB.closeCon();
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                    throw;
-                }
-
+            professorImage.Image = Image.FromFile(openFileDialog.FileName);
         }
 
         private byte[] ConvertImageToByte(Image img)
         {
             using (MemoryStream memoryStream = new MemoryStream())
             {
-                img.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Png);
+                img.Save(memoryStream, ImageFormat.Png);
                 return memoryStream.ToArray();
             }
         }

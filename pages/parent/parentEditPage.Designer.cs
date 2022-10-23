@@ -130,6 +130,7 @@
             this.Controls.Add(this.surnameParent);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "parentEditPage";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Редактирование";
             this.ResumeLayout(false);
             this.PerformLayout();

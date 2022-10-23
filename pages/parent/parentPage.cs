@@ -24,7 +24,7 @@ namespace PrivateSchoolWF.pages.parent
         {
             connectDB connectDB = new connectDB();
             MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
-                    (@"SELECT `id_Parent`, `Surname` as 'Фамилия', `Name` as 'Имя', `Middlename` as 'Отчество'
+                    (@"SELECT `id_Parent`, CONCAT_WS(' ', `Surname`, `Name`, `Middlename`) as 'ФИО родителя'
                     FROM `родитель`", connectDB.GetConnection());
             DataTable dataTable = new DataTable();
             sqlDataAdapter.Fill(dataTable);
@@ -74,6 +74,21 @@ namespace PrivateSchoolWF.pages.parent
             {
                 MessageBox.Show("У вас недостатачно прав");
             }          
+        }
+
+        private void searchParentBox_TextChanged(object sender, EventArgs e)
+        {
+            DataTable dataTable = parentListGrid.DataSource as DataTable;
+
+            string searchValue = searchParentBox.Text;
+            try
+            {
+                dataTable.DefaultView.RowFilter = $@"`ФИО родителя` LIKE '%{searchValue}%'";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

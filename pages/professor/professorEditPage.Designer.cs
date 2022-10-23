@@ -192,6 +192,7 @@
             this.Controls.Add(this.surnameProfessor);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "professorEditPage";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Редактирование";
             ((System.ComponentModel.ISupportInitialize)(this.professorWorkExp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.professorImage)).EndInit();

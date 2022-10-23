@@ -80,17 +80,17 @@ namespace PrivateSchoolWF.pages.professor
 
         private void searchProfessor_TextChanged(object sender, EventArgs e)
         {
-            connectDB connectDB = new connectDB();
-            MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
-                    (@"select преподаватель.id_professor, CONCAT_WS(' ', преподаватель.surname, преподаватель.name, преподаватель.middlename) as 'ФИО преподаватель',
-                преподаватель.work_experience as 'Опыт работы', преподаватель.qualification as 'Квалификация'
-                FROM преподаватель", connectDB.GetConnection());
-            DataTable dataTable = new DataTable();
-            sqlDataAdapter.Fill(dataTable);
-            professorListGrid.DataSource = dataTable;
-            professorListGrid.Columns[0].Visible = false;
+            DataTable dataTable = professorListGrid.DataSource as DataTable;
 
-
+            string searchValue = searchProfessor.Text;
+            try
+            {
+                dataTable.DefaultView.RowFilter = $@"`ФИО преподаватель` LIKE '%{searchValue}%'";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

@@ -85,33 +85,12 @@ namespace PrivateSchoolWF.MainPage
 
         private void searchStudBox_TextChanged(object sender, EventArgs e)
         {
-            connectDB connectDB = new connectDB();
-            MySqlCommand sqlCommand = new MySqlCommand(@"select студент.id_student, CONCAT_WS(' ', студент.surname, студент.name, студент.middlename) as 'ФИО студент',
-                студент.comment as 'Коментарий', CONCAT_WS(' ', родитель.surname, родитель.name, родитель.middlename) as 'ФИО родителя', 
-                студент.date_of_birth as 'Дата рождения'
-                FROM студент
-                JOIN родитель ON родитель.id_parent = студент.id_parent", connectDB.GetConnection());
-
-            MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter(sqlCommand);
-            DataTable dataTable = new DataTable();
-            sqlDataAdapter.Fill(dataTable);
-            studentListGrid.DataSource = dataTable;
-            studentListGrid.Columns[0].Visible = false;
+            DataTable dataTable = studentListGrid.DataSource as DataTable;
 
             string searchValue = searchStudBox.Text;
             try
             {
-                var resultSearch = from row in dataTable.AsEnumerable()
-                                   where row[1].ToString().Contains(searchValue)
-                                   select row;
-                if (resultSearch.Count() == 0)
-                {
-                    MessageBox.Show("Нет данных");
-                }
-                else
-                {
-                    studentListGrid.DataSource = resultSearch.CopyToDataTable();
-                }
+                dataTable.DefaultView.RowFilter = $@"`ФИО студента` LIKE '%{searchValue}%' OR `ФИО родителя` LIKE '%{searchValue}%'";
             }
             catch (Exception ex)
             {

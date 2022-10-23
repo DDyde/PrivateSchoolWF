@@ -31,6 +31,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(professorPage));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.addRowButton = new Guna.UI2.WinForms.Guna2Button();
             this.professorListGrid = new Guna.UI2.WinForms.Guna2DataGridView();
@@ -51,13 +52,12 @@
             this.tableLayoutPanel1.Controls.Add(this.filterProfessor, 1, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.16667F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 76.83334F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(968, 600);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(847, 450);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // addRowButton
@@ -66,17 +66,16 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.addRowButton.Animated = true;
             this.addRowButton.AutoRoundedCorners = true;
-            this.addRowButton.BorderRadius = 29;
+            this.addRowButton.BorderRadius = 21;
             this.addRowButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.addRowButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.addRowButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.addRowButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.addRowButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.addRowButton.ForeColor = System.Drawing.Color.White;
-            this.addRowButton.Location = new System.Drawing.Point(825, 63);
-            this.addRowButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.addRowButton.Location = new System.Drawing.Point(722, 47);
             this.addRowButton.Name = "addRowButton";
-            this.addRowButton.Size = new System.Drawing.Size(140, 60);
+            this.addRowButton.Size = new System.Drawing.Size(122, 45);
             this.addRowButton.TabIndex = 0;
             this.addRowButton.Text = "Добавить запись";
             this.addRowButton.Click += new System.EventHandler(this.addRowButton_Click);
@@ -105,14 +104,13 @@
             this.professorListGrid.DefaultCellStyle = dataGridViewCellStyle3;
             this.professorListGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.professorListGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.professorListGrid.Location = new System.Drawing.Point(3, 4);
-            this.professorListGrid.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.professorListGrid.Location = new System.Drawing.Point(3, 3);
             this.professorListGrid.Name = "professorListGrid";
             this.professorListGrid.RowHeadersVisible = false;
             this.professorListGrid.RowHeadersWidth = 51;
             this.tableLayoutPanel1.SetRowSpan(this.professorListGrid, 3);
             this.professorListGrid.RowTemplate.Height = 25;
-            this.professorListGrid.Size = new System.Drawing.Size(816, 592);
+            this.professorListGrid.Size = new System.Drawing.Size(713, 444);
             this.professorListGrid.TabIndex = 1;
             this.professorListGrid.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.professorListGrid.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -143,9 +141,10 @@
             this.filterProfessor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.filterProfessor.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.filterProfessor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.filterProfessor.Location = new System.Drawing.Point(825, 141);
+            this.filterProfessor.Location = new System.Drawing.Point(722, 105);
+            this.filterProfessor.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.filterProfessor.Name = "filterProfessor";
-            this.filterProfessor.Size = new System.Drawing.Size(140, 456);
+            this.filterProfessor.Size = new System.Drawing.Size(122, 343);
             this.filterProfessor.TabIndex = 2;
             this.filterProfessor.Text = "Фильтр";
             // 
@@ -153,22 +152,24 @@
             // 
             this.searchProfessor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.searchProfessor.Location = new System.Drawing.Point(6, 51);
+            this.searchProfessor.Location = new System.Drawing.Point(3, 49);
+            this.searchProfessor.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.searchProfessor.Name = "searchProfessor";
             this.searchProfessor.PlaceholderText = "Поиск...";
-            this.searchProfessor.Size = new System.Drawing.Size(125, 27);
+            this.searchProfessor.Size = new System.Drawing.Size(116, 23);
             this.searchProfessor.TabIndex = 0;
             this.searchProfessor.TextChanged += new System.EventHandler(this.searchProfessor_TextChanged);
             // 
             // professorPage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(968, 600);
+            this.ClientSize = new System.Drawing.Size(847, 450);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.MinimumSize = new System.Drawing.Size(984, 539);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(863, 414);
             this.Name = "professorPage";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Преподаватели";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.professorPage_FormClosed);
             this.tableLayoutPanel1.ResumeLayout(false);

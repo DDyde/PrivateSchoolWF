@@ -29,8 +29,8 @@ namespace PrivateSchoolWF.pages.course
             ruleId = _ruleId;
             InitializeComponent();
             id = _id;
-            LoadString();
             LoadCombobox();
+            LoadString();
             addRow.Visible = false;
         }
 
@@ -62,8 +62,6 @@ namespace PrivateSchoolWF.pages.course
             courseType.DisplayMember = "title";
             courseType.ValueMember = "id_course_type";
             connectDB.closeCon();
-
-            courseType.SelectedIndex = --id;
         }
 
         private void blockNum_KeyPress(object sender, KeyPressEventArgs e)
@@ -81,7 +79,7 @@ namespace PrivateSchoolWF.pages.course
                 VALUES (@courseTitle, @courseTerm, @description, @courseType, @price)", connectDB.GetConnection());
 
                 sqlCommand.Parameters.AddWithValue("@courseTitle", courseTitle.Text);
-                sqlCommand.Parameters.AddWithValue("@courseTerm", courseTitle.Text);
+                sqlCommand.Parameters.AddWithValue("@courseTerm", courseTerm.Text);
                 sqlCommand.Parameters.AddWithValue("@description", descriptionBox.Text);
                 sqlCommand.Parameters.AddWithValue("@courseType", courseType.SelectedValue);
                 sqlCommand.Parameters.AddWithValue("@price", priceCourse.Text);
@@ -109,7 +107,7 @@ namespace PrivateSchoolWF.pages.course
                 WHERE id_course={id}", connectDB.GetConnection());
 
                 sqlCommand.Parameters.AddWithValue("@courseTitle", courseTitle.Text);
-                sqlCommand.Parameters.AddWithValue("@courseTerm", courseTitle.Text);
+                sqlCommand.Parameters.AddWithValue("@courseTerm", courseTerm.Text);
                 sqlCommand.Parameters.AddWithValue("@description", descriptionBox.Text);
                 sqlCommand.Parameters.AddWithValue("@courseType", courseType.SelectedValue);
                 sqlCommand.Parameters.AddWithValue("@price", priceCourse.Text);

@@ -197,6 +197,7 @@
             this.Controls.Add(this.surnameStudent);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "studentEditPage";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Редактирование";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.studentEditPage_FormClosed);
             this.ResumeLayout(false);

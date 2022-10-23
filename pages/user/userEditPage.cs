@@ -29,8 +29,8 @@ namespace PrivateSchoolWF.pages.user
             ruleId = _ruleId;
             id = _id;
             InitializeComponent();
-            LoadString();
             LoadCombobox();
+            LoadString();
             addRow.Visible = false;
         }
 
@@ -46,8 +46,6 @@ namespace PrivateSchoolWF.pages.user
             fioEmployeeBox.DisplayMember = "сотрудники";
             fioEmployeeBox.ValueMember = "id_employee";
             connectDB.closeCon();
-
-            fioEmployeeBox.SelectedIndex = --id;
         }
 
         private void LoadString()

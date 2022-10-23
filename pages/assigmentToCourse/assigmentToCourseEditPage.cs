@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Guna.UI2.WinForms;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -29,45 +30,53 @@ namespace PrivateSchoolWF.pages.assigmentToCourse
             InitializeComponent();
             id = _id;
             LoadCombobox();
+            LoadString();
             addRow.Visible = false;
+        }
+
+        private void LoadString()
+        {
+            connectDB connectDB = new connectDB();
+            MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
+               ($@"SELECT id_assignment_to_course, concat_ws(' ', преподаватель.surname, преподаватель.name, преподаватель.middlename),
+                    concat(курс.title, ' (', тип_курса.title,')')
+                    FROM назначение_на_курс
+                    JOIN преподаватель ON преподаватель.id_professor = назначение_на_курс.id_professor
+                    JOIN курс ON курс.id_course = назначение_на_курс.id_course
+                    JOIN тип_курса ON тип_курса.id_course_type = курс.id_course_type
+                    WHERE id_assignment_to_course={id}", connectDB.GetConnection());
+            DataTable dataTable = new DataTable();
+            sqlDataAdapter.Fill(dataTable);
+            assigmentProfessorBox.Text = dataTable.Rows[0][1].ToString();
+            assigmentCourseBox.Text = dataTable.Rows[0][2].ToString();
         }
 
         private void LoadCombobox()
         {
-            connectDB connectDB = new connectDB();
-            connectDB.openCon();
-            MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
-                (@"SELECT курс.id_course, concat(курс.title, ' (', тип_курса.title,')') as 'Название/тип курса'
+            string queryCourseTitle = @"SELECT курс.id_course, concat(курс.title, ' (', тип_курса.title,')') as 'Название/тип курса'
                 FROM курс
-                JOIN тип_курса ON тип_курса.id_course_type = курс.id_course_type
-                ORDER BY курс.id_course ASC", connectDB.GetConnection());
-            DataTable dataTable = new DataTable();
-            sqlDataAdapter.Fill(dataTable);
-            assigmentCourseBox.DataSource = dataTable;
-            assigmentCourseBox.DisplayMember = "Название/тип курса";
-            assigmentCourseBox.ValueMember = "курс.id_course";
-            connectDB.closeCon();
+                JOIN тип_курса ON тип_курса.id_course_type = курс.id_course_type";
 
-            connectDB.openCon();
-            MySqlDataAdapter sqlDataAdapter1 = new MySqlDataAdapter
-                (@"SELECT преподаватель.id_professor, concat_ws(' ', преподаватель.surname, преподаватель.name, преподаватель.middlename) as 'ФИО преподавателя'
-                FROM преподаватель", connectDB.GetConnection());
-            DataTable dataTable1 = new DataTable();
-            sqlDataAdapter1.Fill(dataTable1);
-            assigmentProfessorBox.DataSource = dataTable1;
-            assigmentProfessorBox.DisplayMember = "ФИО преподавателя";
-            assigmentProfessorBox.ValueMember = "преподаватель.id_professor";
-            connectDB.closeCon();
+            LoadingComboBox(queryCourseTitle, assigmentCourseBox, "Название/тип курса", "курс.id_course");
 
-            assigmentCourseBox.SelectedIndex = --id;
-            assigmentProfessorBox.SelectedIndex = id;
 
+            string queryProfessor = @"SELECT id_professor, CONCAT_WS(' ', surname, name, middlename) as 'ФИО преподавателя'
+                FROM преподаватель";
+
+            LoadingComboBox(queryProfessor, assigmentProfessorBox, "ФИО преподавателя", "id_professor");
         }
 
-        private void blockNum_KeyPress(object sender, KeyPressEventArgs e)
+        private void LoadingComboBox(string query, Guna2ComboBox comboBox, string displayMember, string valueMember)
         {
-            if (e.KeyChar != 8 && (e.KeyChar < 65 || (e.KeyChar < 97 && e.KeyChar > 90) || (e.KeyChar < 128 && e.KeyChar > 122)))
-                e.Handled = true;
+            connectDB connectDB = new connectDB();
+            connectDB.openCon();
+            MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter(query, connectDB.GetConnection());
+            DataTable dataTable = new DataTable();
+            sqlDataAdapter.Fill(dataTable);
+            comboBox.DataSource = dataTable;
+            comboBox.DisplayMember = displayMember;
+            comboBox.ValueMember = valueMember;
+            connectDB.closeCon();
         }
 
         private void addRow_Click(object sender, EventArgs e)
