@@ -48,10 +48,9 @@ namespace PrivateSchoolWF.pages
             string queryAssigCourse = @"SELECT id_assignment_to_course, concat(преподаватель.surname, ' ',преподаватель.name, ' ',преподаватель.middlename, ' ',
                 курс.title, '(', тип_курса.title,')') as 'Преподаватель/курс'
                 FROM назначение_на_курс
-                JOIN преподаватель ON преподаватель.id_professor = назначение_на_курс.id_professor
+                JOIN преподаватель ON преподаватель.id_employee = назначение_на_курс.id_professor
                 JOIN курс ON курс.id_course = назначение_на_курс.id_course
-                JOIN тип_курса ON тип_курса.id_course_type = курс.id_course_type
-                ORDER BY  id_assignment_to_course ASC";
+                JOIN тип_курса ON тип_курса.id_course_type = курс.id_course_type";
 
             LoadingCombobox(queryStudent, fioStudentBox, "ФИО студента", "id_student");
             LoadingCombobox(queryAssigCourse, courseAssigBox, "Преподаватель/курс", "id_assignment_to_course");
@@ -82,14 +81,14 @@ namespace PrivateSchoolWF.pages
                     FROM документ_обучения
                     JOIN назначение_на_курс ON назначение_на_курс.id_Assignment_to_course = документ_обучения.id_Assignment_to_course
                     JOIN студент ON студент.id_student = документ_обучения.id_student
-                    JOIN преподаватель ON преподаватель.id_professor = назначение_на_курс.id_professor
+                    JOIN преподаватель ON преподаватель.id_employee = назначение_на_курс.id_professor
                     JOIN курс ON курс.id_course = назначение_на_курс.id_course
                     JOIN тип_курса ON тип_курса.id_course_type = курс.id_course_type
                     WHERE id_education_document={id}", connectDB.GetConnection());
                 DataTable dataTable = new DataTable();
                 sqlDataAdapter.Fill(dataTable);
-                fioStudentBox.SelectedValue = dataTable.Rows[0][1];
-                courseAssigBox.SelectedValue = dataTable.Rows[0][2];
+                fioStudentBox.Text = dataTable.Rows[0][1].ToString();
+                courseAssigBox.Text = dataTable.Rows[0][2].ToString();
                 dateBegin.Text = dataTable.Rows[0][3].ToString();
                 dateEnd.Text = dataTable.Rows[0][4].ToString();
             

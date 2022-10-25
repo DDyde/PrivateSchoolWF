@@ -55,11 +55,11 @@ namespace PrivateSchoolWF.pages.employee
                ($@"SELECT * FROM сотрудник WHERE id_employee={id}", connectDB.GetConnection());
             DataTable dataTable = new DataTable();
             sqlDataAdapter.Fill(dataTable);
-            surnameEmployeeBox.Text = dataTable.Rows[0][3].ToString();
-            nameEmployeeBox.Text = dataTable.Rows[0][4].ToString();
-            middlenameEmployeeBox.Text = dataTable.Rows[0][5].ToString();
-            positionEmployeeBox.SelectedValue = dataTable.Rows[0][2];
-            workExEmployee.Text = dataTable.Rows[0][1].ToString();
+            surnameEmployeeBox.Text = dataTable.Rows[0][2].ToString();
+            nameEmployeeBox.Text = dataTable.Rows[0][3].ToString();
+            middlenameEmployeeBox.Text = dataTable.Rows[0][4].ToString();
+            positionEmployeeBox.SelectedValue = dataTable.Rows[0][5];
+            workExEmployee.Text = dataTable.Rows[0][6].ToString();
         }
 
         private void addRow_Click(object sender, EventArgs e)
