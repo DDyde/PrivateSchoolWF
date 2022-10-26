@@ -29,14 +29,15 @@ namespace PrivateSchoolWF.Report
                ($@"SELECT документ_обучения.id_education_document, CONCAT_WS(' ', студент.surname, студент.name, студент.middlename),
                     CONCAT_WS(' ', преподаватель.surname, преподаватель.name, преподаватель.middlename),
                     курс.title, тип_курса.title, курс.price, документ_обучения.date_begin, документ_обучения.date_end, документ_обучения.contract_signing_date,
-                    CONCAT_WS(' ', сотрудник.surname, сотрудник.name, сотрудник.middlename)
+                    CONCAT_WS(' ', сотрудник.surname, сотрудник.name, сотрудник.middlename), CONCAT_WS(' ', родитель.surname, родитель.name, родитель.middlename)
                     FROM документ_обучения
                     JOIN назначение_на_курс ON назначение_на_курс.id_Assignment_to_course = документ_обучения.id_Assignment_to_course
                     JOIN студент ON студент.id_student = документ_обучения.id_student
-                    JOIN преподаватель ON преподаватель.id_professor = назначение_на_курс.id_professor
+                    JOIN преподаватель ON преподаватель.id_employee = назначение_на_курс.id_professor
                     JOIN курс ON курс.id_course = назначение_на_курс.id_course
                     JOIN тип_курса ON тип_курса.id_course_type = курс.id_course_type
                     JOIN сотрудник ON сотрудник.id_employee = документ_обучения.id_employee
+                    JOIN родитель ON родитель.id_parent = студент.id_parent
                     WHERE id_education_document={id}", connectDB.GetConnection());
             DataTable dataTable = new DataTable();
             sqlDataAdapter.Fill(dataTable);
@@ -77,6 +78,9 @@ namespace PrivateSchoolWF.Report
 
             ReportParameter fioProf = new ReportParameter("fioProf", dataTable.Rows[0][2].ToString());
             this.educateReportViewer.LocalReport.SetParameters(fioProf);
+
+            ReportParameter fioParent = new ReportParameter("fioParent", dataTable.Rows[0][10].ToString());
+            this.educateReportViewer.LocalReport.SetParameters(fioParent);
 
 
             educateReportViewer.RefreshReport();

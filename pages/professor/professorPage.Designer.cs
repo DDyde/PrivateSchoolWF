@@ -62,8 +62,7 @@
             // 
             // addRowButton
             // 
-            this.addRowButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.addRowButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.addRowButton.Animated = true;
             this.addRowButton.AutoRoundedCorners = true;
             this.addRowButton.BorderRadius = 21;
