@@ -43,7 +43,8 @@ namespace PrivateSchoolWF.pages.professor
                 connectDB connectDB = new connectDB();
                 connectDB.openCon();
 
-                MySqlDataAdapter dataAdapter = new MySqlDataAdapter($@"SELECT image FROM преподаватель WHERE id_professor = {id}", connectDB.GetConnection());
+                MySqlDataAdapter dataAdapter = new MySqlDataAdapter($@"SELECT image FROM преподаватель
+                                                                        WHERE id_employee = {id}", connectDB.GetConnection());
                 DataTable dataTable = new DataTable();
                 dataAdapter.Fill(dataTable);
 
@@ -65,10 +66,10 @@ namespace PrivateSchoolWF.pages.professor
         {
             connectDB connectDB = new connectDB();
             MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
-               ($@"select преподаватель.surname, преподаватель.name, преподаватель.middlename,
-                преподаватель.work_experience, преподаватель.qualification
+               ($@"select surname, name, middlename,
+                work_experience, qualification
                 FROM преподаватель
-                WHERE преподаватель.id_professor={id}", connectDB.GetConnection());
+                WHERE id_employee={id}", connectDB.GetConnection());
             DataTable dataTable = new DataTable();
             sqlDataAdapter.Fill(dataTable);
             surnameProfessor.Text = dataTable.Rows[0][0].ToString();
@@ -89,8 +90,8 @@ namespace PrivateSchoolWF.pages.professor
             if (ruleId == 1 || ruleId == 2)
             {
                 connectDB connectDB = new connectDB();
-                MySqlCommand sqlCommand = new MySqlCommand(@"INSERT INTO `преподаватель`(`Image`, `surname`, `name`, `middlename`, `work_experience` ,`qualification`) 
-                    VALUES (@image, @surname, @name, @middlename, @workExp, @professorQual)", connectDB.GetConnection());
+                MySqlCommand sqlCommand = new MySqlCommand($@"INSERT INTO `сотрудник`(`Image`, `surname`, `name`, `middlename`, `id_position`, `work_experience` ,`qualification`) 
+                    VALUES (@image, @surname, @name, @middlename, '{3}',@workExp, @professorQual)", connectDB.GetConnection());
 
                 sqlCommand.Parameters.AddWithValue("@surname", surnameProfessor.Text);
                 sqlCommand.Parameters.AddWithValue("@name", nameProfessor.Text);
@@ -118,8 +119,8 @@ namespace PrivateSchoolWF.pages.professor
                 connectDB connectDB = new connectDB();
                 connectDB.openCon();
                 MySqlCommand sqlCommand = new MySqlCommand($@"UPDATE `преподаватель` SET image=@image, `surname` = @surname, `name` = @name, 
-                `middlename` = @middlename, `qualification` = @professorQual, `work_experience` = @workExp
-                WHERE id_professor={id}", connectDB.GetConnection());
+                `middlename` = @middlename, `id_position`='{3}' ,`qualification` = @professorQual, `work_experience` = @workExp
+                WHERE id_employee={id}", connectDB.GetConnection());
 
                 sqlCommand.Parameters.AddWithValue("@surname", surnameProfessor.Text);
                 sqlCommand.Parameters.AddWithValue("@name", nameProfessor.Text);
@@ -148,7 +149,7 @@ namespace PrivateSchoolWF.pages.professor
                 connectDB connectDB = new connectDB();
                 connectDB.openCon();
                 MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter
-                    ($@"DELETE FROM `преподаватель` WHERE id_professor={id}", connectDB.GetConnection());
+                    ($@"DELETE FROM `преподаватель` WHERE id_employee={id}", connectDB.GetConnection());
                 DataTable dataTable = new DataTable();
                 sqlDataAdapter.Fill(dataTable);
                 connectDB.closeCon();

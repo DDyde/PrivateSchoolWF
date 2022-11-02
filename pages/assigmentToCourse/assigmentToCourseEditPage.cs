@@ -41,7 +41,7 @@ namespace PrivateSchoolWF.pages.assigmentToCourse
                ($@"SELECT id_assignment_to_course, concat_ws(' ', преподаватель.surname, преподаватель.name, преподаватель.middlename),
                     concat(курс.title, ' (', тип_курса.title,')')
                     FROM назначение_на_курс
-                    JOIN преподаватель ON преподаватель.id_professor = назначение_на_курс.id_professor
+                    JOIN преподаватель ON преподаватель.id_employee = назначение_на_курс.id_professor
                     JOIN курс ON курс.id_course = назначение_на_курс.id_course
                     JOIN тип_курса ON тип_курса.id_course_type = курс.id_course_type
                     WHERE id_assignment_to_course={id}", connectDB.GetConnection());
@@ -60,10 +60,11 @@ namespace PrivateSchoolWF.pages.assigmentToCourse
             LoadingComboBox(queryCourseTitle, assigmentCourseBox, "Название/тип курса", "курс.id_course");
 
 
-            string queryProfessor = @"SELECT id_professor, CONCAT_WS(' ', surname, name, middlename) as 'ФИО преподавателя'
-                FROM преподаватель";
+            string queryProfessor = @"SELECT id_employee, CONCAT_WS(' ', surname, name, middlename) as 'ФИО преподавателя'
+                FROM преподаватель
+                WHERE id_position=3";
 
-            LoadingComboBox(queryProfessor, assigmentProfessorBox, "ФИО преподавателя", "id_professor");
+            LoadingComboBox(queryProfessor, assigmentProfessorBox, "ФИО преподавателя", "id_employee");
         }
 
         private void LoadingComboBox(string query, Guna2ComboBox comboBox, string displayMember, string valueMember)

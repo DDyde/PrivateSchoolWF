@@ -27,7 +27,7 @@ namespace PrivateSchoolWF.pages.assigmentToCourse
                     (@"SELECT id_assignment_to_course, concat_ws(' ', преподаватель.surname, преподаватель.name, преподаватель.middlename) as 'ФИО преподавателя',
                     курс.title as 'Название', тип_курса.title as 'Тип курса'
                     FROM назначение_на_курс
-                    JOIN преподаватель ON преподаватель.id_professor = назначение_на_курс.id_professor
+                    JOIN преподаватель ON преподаватель.id_employee = назначение_на_курс.id_professor
                     JOIN курс ON курс.id_course = назначение_на_курс.id_course
                     JOIN тип_курса ON тип_курса.id_course_type = курс.id_course_type", connectDB.GetConnection());
             DataTable dataTable = new DataTable();
